@@ -30,7 +30,7 @@ const SpotlightCanvas = () => {
       // cursor changes
       const gradient = ctx.createRadialGradient(
         x, adjustedY, 0,
-        x, adjustedY, 300
+        x, adjustedY, 200
       );
       
       gradient.addColorStop(0, "rgba(0, 123, 255, 0.4)");
