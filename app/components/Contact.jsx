@@ -41,7 +41,7 @@ function Contact() {
             <div className="relative bg-black/70 backdrop-blur-sm border border-blue-400/25 p-6 rounded-lg text-slate-300 shadow-2xl shadow-blue-500/10 hover:shadow-blue-500/30 transition-all duration-300 hover:transform hover:scale-105 hover:bg-black/80">
               <div className="absolute top-2 right-2 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
               <h2 className="text-xl font-semibold mb-2 text-blue-300 font-monaspace">
-                Haaris Usman Saeed
+                Shayan Akbar
               </h2>
               <h3 className="text-sm mb-3 text-cyan-300 font-open-sans font-medium">
                 Event Head
@@ -51,14 +51,14 @@ function Contact() {
                 <span className="mr-2 text-red-500">
                   <FontAwesomeIcon icon={faPhone} size="lg" />
                 </span>
-                +92 316 4699448
+                +92 309 9333096
               </p>
               <p className="text-sm break-words flex items-center font-open-sans">
                 {/* <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span> */}
                 <span className="mr-2 text-red-500">
                   <FontAwesomeIcon icon={faEnvelope} size="lg" />
                 </span>
-                haarisusman20@gmail.com
+                email?
               </p>
             </div>
           </div>
@@ -68,7 +68,7 @@ function Contact() {
             <div className="relative bg-black/70 backdrop-blur-sm border border-cyan-400/25 p-6 rounded-lg text-slate-300 shadow-2xl shadow-cyan-500/10 hover:shadow-cyan-500/30 transition-all duration-300 hover:transform hover:scale-105 hover:bg-black/80">
               <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
               <h2 className="text-xl font-semibold mb-2 text-cyan-300 font-monaspace">
-                Adil Ali Azfar
+                M Anas Salman
               </h2>
               <h3 className="text-sm mb-3 text-blue-300 font-open-sans font-medium">
                 Event Head
@@ -78,14 +78,14 @@ function Contact() {
                 <span className="mr-2 text-red-500">
                   <FontAwesomeIcon icon={faPhone} size="lg" />
                 </span>
-                +92 310 0853171
+                +92 317 0222290
               </p>
               <p className="text-sm break-words flex items-center font-open-sans">
                 {/* <span className="w-1 h-1 bg-cyan-400 rounded-full mr-2"></span> */}
                 <span className="mr-2 text-red-500">
                   <FontAwesomeIcon icon={faEnvelope} size="lg" />
                 </span>
-                adilaliazfar@gmail.com
+                email@gmail.com
               </p>
             </div>
           </div>
