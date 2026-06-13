@@ -50,7 +50,7 @@ function Navbar() {
             >
               JT Innoventions{" "}
               <span className="text-[#66b3ff] font-mono text-xs ml-1 opacity-90">
-                ’25
+                ’26
               </span>
             </h2>
 
