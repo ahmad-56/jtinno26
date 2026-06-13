@@ -40,10 +40,10 @@ function Contact() {
             <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-blue-600/20 via-cyan-500/20 to-blue-600/20 blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
             <div className="relative bg-black/70 backdrop-blur-sm border border-blue-400/25 p-6 rounded-lg text-slate-300 shadow-2xl shadow-blue-500/10 hover:shadow-blue-500/30 transition-all duration-300 hover:transform hover:scale-105 hover:bg-black/80">
               <div className="absolute top-2 right-2 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
-              <h2 className="text-xl font-semibold mb-2 text-blue-300 font-monaspace">
+              <h2 className="text-xl font-semibold mb-2 text-cyan-300 font-monaspace">
                 Shayan Akbar
               </h2>
-              <h3 className="text-sm mb-3 text-cyan-300 font-open-sans font-medium">
+              <h3 className="text-sm mb-3 text-blue-300 font-open-sans font-medium">
                 Event Head
               </h3>
               <p className="text-sm mb-1 flex items-center font-open-sans">
