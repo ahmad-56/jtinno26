@@ -8,17 +8,17 @@ import Contact from "../components/Contact";
 
 export const meta = () => {
   return [
-    { title: "JT Innoventions'25" },
+    { title: "JT Innoventions'26" },
     { 
       name: "description", 
-      content: "Innoventions'25 is a 3-day Science Olympiad organized by LGS JT, showcasing categories spanning Science, Mathematics, IT, Robotics, Astronomy and more. The event is designed to engage students from all over Pakistan, nurturing their skills in creativity, innovation, and critical thinking. Building on a legacy of excellence in successful competitive science events, Innoventions '25 provides a platform for fostering scientific curiosity and creative problem-solving.", 
+      content: "Innoventions'26 is a 3-day Science Olympiad organized by LGS JT, showcasing categories spanning Science, Mathematics, IT, Robotics, Astronomy and more. The event is designed to engage students from all over Pakistan, nurturing their skills in creativity, innovation, and critical thinking. Building on a legacy of excellence in successful competitive science events, Innoventions '26 provides a platform for fostering scientific curiosity and creative problem-solving.", 
     },
-    { name: "keywords", content: "Innoventions 2025, Science Olympiad, LGS, JT, Lahore Grammar School,mathematics,JT Innoventions 25" },
+    { name: "keywords", content: "Innoventions 2026, Science Olympiad, LGS, JT, Lahore Grammar School,mathematics,JT Innoventions 26" },
     { name: "author", content: "LGS JT" },
     { name: "robots", content: "index, follow" },
 
     { property: "og:type", content: "event" },
-    { property: "og:title", content: "Innoventions'25 - 3-Day Science Olympiad by LGS JT" },
+    { property: "og:title", content: "Innoventions'26 - 3-Day Science Olympiad by LGS JT" },
     { 
       property: "og:description", 
       content: "Join Pakistan's premier Science Olympiad! 3 days of Science, Mathematics, IT, Robotics & Astronomy competitions. Open to students nationwide. Fostering creativity, innovation & critical thinking." 
