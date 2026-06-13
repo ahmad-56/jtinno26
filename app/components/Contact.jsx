@@ -58,7 +58,7 @@ function Contact() {
                 <span className="mr-2 text-red-500">
                   <FontAwesomeIcon icon={faEnvelope} size="lg" />
                 </span>
-                email?
+                shaayanakbar@gmail.com
               </p>
             </div>
           </div>
