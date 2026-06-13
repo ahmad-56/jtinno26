@@ -129,12 +129,12 @@ function About({ id }) {
           WHAT IS INNOVENTIONS?
         </h1>
         <p className="my-7 sm:my-8 font-open-sans font-semibold md:font-medium tracking-wide text-sm/relaxed md:text-base lg:text-[17px]">
-          Innoventions'25 is a 3-day Science Olympiad organized by LGS JT,
+          Innoventions'26 is a 3-day Science Olympiad organized by LGS JT,
           showcasing categories spanning Science, Mathematics, IT, Robotics,
           Astronomy and more. The event is designed to engage students from all
           over Pakistan, nurturing their skills in creativity, innovation, and
           critical thinking. Building on a legacy of excellence in successful
-          competitive science events, Innoventions '25 provides a platform for
+          competitive science events, Innoventions '26 provides a platform for
           fostering scientific curiosity and creative problem-solving.
         </p>
         <div>
