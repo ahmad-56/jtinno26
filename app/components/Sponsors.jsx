@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import "../app.css";
 
+// temporarily change the images of the sponsors
 const sponsors = [
-  "/sponsors/awaisinternational.png",
-  "/sponsors/happymums.jpg",
-  "/sponsors/lenovo.webp",
-  "/sponsors/tetrapak.png",
-  "/sponsors/wewear.gif",
-  "/sponsors/cb.png",
-];
+  "/sponsors/sponsorslogo replacement.png",
+  "/sponsors/sponsorslogo replacement.png",  
+  "/sponsors/sponsorslogo replacement.png",  
+  "/sponsors/sponsorslogo replacement.png",  
+  "/sponsors/sponsorslogo replacement.png",];
 
 const Sponsors = () => {
   const scrollRef = useRef(null);
