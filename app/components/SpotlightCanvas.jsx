@@ -29,14 +29,17 @@ const SpotlightCanvas = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       // cursor changes
       const gradient = ctx.createRadialGradient(
-      x, adjustedY, 0,
-      x, adjustedY, 400
+        x, adjustedY, 0,
+        x, adjustedY, 200
       );
       
-      gradient.addColorStop(0, "rgba(0, 170, 255, 0.6)");
-      gradient.addColorStop(0.15, "rgba(0, 140, 255, 0.4)");
-      gradient.addColorStop(0.4, "rgba(0, 100, 255, 0.15)");
-      gradient.addColorStop(1, "rgba(0, 100, 255, 0)");
+      gradient.addColorStop(0, "rgba(0, 123, 255, 0.4)");
+      gradient.addColorStop(0.2, "rgba(0, 123, 255, 0.25)");
+      gradient.addColorStop(0.5, "rgba(0, 123, 255, 0.1)");
+      gradient.addColorStop(1, "rgba(0, 123, 255, 0)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
     
     window.addEventListener("mousemove", handleMouseMove);
     
