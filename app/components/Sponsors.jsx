@@ -7,7 +7,8 @@ const sponsors = [
   "/sponsors/sponsorslogoreplacement.png",  
   "/sponsors/sponsorslogoreplacement.png",  
   "/sponsors/sponsorslogoreplacement.png",  
-  "/sponsors/sponsorslogoreplacement.png",];
+  "/sponsors/sponsorslogoreplacement.png",
+  ];
 
 const Sponsors = () => {
   const scrollRef = useRef(null);
