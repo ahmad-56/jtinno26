@@ -3,11 +3,11 @@ import "../app.css";
 
 // temporarily change the images of the sponsors
 const sponsors = [
-  "/sponsors/sponsorslogo replacement.png",
-  "/sponsors/sponsorslogo replacement.png",  
-  "/sponsors/sponsorslogo replacement.png",  
-  "/sponsors/sponsorslogo replacement.png",  
-  "/sponsors/sponsorslogo replacement.png",];
+  "/sponsors/sponsorslogoreplacement.png",
+  "/sponsors/sponsorslogoreplacement.png",  
+  "/sponsors/sponsorslogoreplacement.png",  
+  "/sponsors/sponsorslogoreplacement.png",  
+  "/sponsors/sponsorslogoreplacement.png",];
 
 const Sponsors = () => {
   const scrollRef = useRef(null);
