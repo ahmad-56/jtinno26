@@ -3,11 +3,11 @@ import "../app.css";
 
 // temporarily change the images of the sponsors
 const sponsors = [
-  "/sponsors/sponsorslogoreplacement.png",
-  "/sponsors/sponsorslogoreplacement.png",  
-  "/sponsors/sponsorslogoreplacement.png",  
-  "/sponsors/sponsorslogoreplacement.png",  
-  "/sponsors/sponsorslogoreplacement.png",
+  "/sponsors/Sponsors-RL.png", 
+  "/sponsors/Sponsors-RL.png", 
+  "/sponsors/Sponsors-RL.png", 
+  "/sponsors/Sponsors-RL.png",  
+  "/sponsors/Sponsors-RL.png",
   ];
 
 const Sponsors = () => {
