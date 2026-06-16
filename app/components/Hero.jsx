@@ -318,7 +318,7 @@ const Hero = () => {
           </h1>
 
           <div className="mt-4">
-            <CountdownTimer targetDate="2025-09-12T00:00:00" />
+            <CountdownTimer targetDate="2026-09-11T00:00:00" />
           </div>
         </div>
       </div>
