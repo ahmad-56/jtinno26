@@ -54,6 +54,6 @@ const SpotlightCanvas = () => {
       style={{ height: '100%' }}
     />
   );
-}
-  )
-export default SpotlightCanvas;}
+  }
+    )
+  export default SpotlightCanvas;}
