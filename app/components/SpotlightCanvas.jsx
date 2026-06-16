@@ -45,7 +45,7 @@ const SpotlightCanvas = () => {
       window.removeEventListener("mousemove", handleMouseMove);
       resizeObserver.disconnect();
     };
-  }, []);
+  };
 
   return (
     <canvas
@@ -54,6 +54,6 @@ const SpotlightCanvas = () => {
       style={{ height: '100%' }}
     />
   );
-};
-
-export default SpotlightCanvas;
+}
+  )
+export default SpotlightCanvas;}
