@@ -1,6 +1,6 @@
 function Footer() {
   const items = [
-    "Copyright © 2025 LGS JT",
+    "Copyright © 2026 LGS JT",
     "⚬",
     "All rights Reserved",
     "⚬",
