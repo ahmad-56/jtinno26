@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router";
-import Logo from "../assets/New logo.png";
+import Logo from "../assets/New logo no bg.png";
 import Button from "../components/Button";
 import CountdownTimer from "../components/Timer"; // Adjust path as needed
 import "../app.css";
