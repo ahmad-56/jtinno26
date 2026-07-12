@@ -9,7 +9,7 @@ function Register() {
     <div className="min-h-[95vh] w-full bg-[#111827] flex justify-center items-center">
       <div className="h-[100vh] w-[100vw] pt-15">
         <FilloutStandardEmbed
-          filloutId="8xvLjcSirPus"
+          filloutId="9Uh3MNjXVrus" 
           data-fillout-inherit-parameters
           data-fillout-dynamic-resize
         />
