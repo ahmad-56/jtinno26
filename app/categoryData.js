@@ -177,24 +177,6 @@ const categoryData = [
     },
   },
   {
-    title: "Feynman's Final Project",
-    fullTitle: "Feynman's Final Project",
-    slug: "feynmans-final-project",
-    subject: "Applied General Science",
-    compulsory: false,
-    img: Feynmans,
-    pdfLink: "/StudyGuides/Feynman.pdf",
-    description:
-      "Named after one of the greatest scientific minds, Feynman's Final Project calls for urgent scientific inquiry and curiosity. Delegates are expected to apply their knowledge of general sciences to real-world problems.",
-    gradient: "from-yellow-400/20 via-orange-300/20 to-yellow-500/20",
-    theme: {
-      primary: "#fde047",
-      secondary: "#fb923c",
-      surface: "#422006",
-      glow: "rgba(253, 224, 71, 0.24)",
-    },
-  },
-  {
     title: "Cygnus Veil",
     fullTitle: "Cygnus Veil",
     slug: "cygnus-veil",
