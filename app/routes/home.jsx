@@ -11,7 +11,7 @@ export const meta = () => {
     { title: "JT Innoventions'26" },
     { 
       name: "description", 
-      content: "Innoventions'26 is a 3-day Science Olympiad organized by LGS JT, showcasing categories spanning Science, Mathematics, IT, Robotics, Astronomy and more. The event is designed to engage students from all over Pakistan, nurturing their skills in creativity, innovation, and critical thinking. Building on a legacy of excellence in successful competitive science events, Innoventions '26 provides a platform for fostering scientific curiosity and creative problem-solving.", 
+      content: "Innoventions '26 is LGS Johar Town's three-day national science olympiad, bringing together students from across Pakistan across 14 categories in science, mathematics, computing, engineering, robotics, astronomy and creative problem-solving.", 
     },
     { name: "keywords", content: "Innoventions 2026, Science Olympiad, LGS, JT, Lahore Grammar School,mathematics,JT Innoventions 26" },
     { name: "author", content: "LGS JT" },
@@ -24,18 +24,18 @@ export const meta = () => {
       content: "Join Pakistan's premier Science Olympiad! 3 days of Science, Mathematics, IT, Robotics & Astronomy competitions. Open to students nationwide. Fostering creativity, innovation & critical thinking." 
     },
     { property: "og:url", content: "https://jt-innoventions25.vercel.app" },
-    { property: "og:site_name", content: "Innoventions'25 - LGS JT Science Olympiad" },
+    { property: "og:site_name", content: "Innoventions'26 - LGS JT Science Olympiad" },
     { property: "og:image", content: "https://jt-innoventions25.vercel.app/og.png" },
 
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "Innoventions'25 - Pakistan's Premier Science Olympiad" },
+    { name: "twitter:title", content: "Innoventions'26 - Pakistan's Premier Science Olympiad" },
     { 
       name: "twitter:description", 
       content: "3-day Science Olympiad by LGS JT. Science, Math, IT, Robotics & Astronomy competitions for students across Pakistan. Register now!" 
     },
 
-    { name: "theme-color", content: "#ffffff" },
-    { name: "msapplication-TileColor", content: "#ffffff" },
+    { name: "theme-color", content: "#020817" },
+    { name: "msapplication-TileColor", content: "#020817" },
     { name: "language", content: "English" },
     { name: "revisit-after", content: "7 days" },
     { name: "distribution", content: "global" },
