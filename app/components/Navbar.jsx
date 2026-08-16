@@ -1,122 +1,230 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import categoryData from "../categoryData";
 import "../app.css";
+
+function Chevron({ open = false }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className={`h-3.5 w-3.5 transition-transform duration-300 ${
+        open ? "rotate-180" : ""
+      }`}
+      aria-hidden="true"
+    >
+      <path d="m5 7.5 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleClick = () => setIsOpen((prev) => !prev);
-  const handleLinkClick = () => setIsOpen(false);
+  const closeMenus = () => {
+    setIsOpen(false);
+    setIsCategoriesOpen(false);
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className={`relative ${
-        isScrolled ? "bg-black/60" : "bg-black/30"
-      } backdrop-blur-md w-full px-3 xs:px-6 md:px-10 mb-2 fixed top-0 left-0 right-0 z-50 font-[Vermin] tracking-wider shadow-md shadow-[#3399ff]/50 transition-all duration-300 border-4 border-[#3399ff]/40 ${
-        isScrolled ? "pt-2 pb-1" : "pt-3 pb-2"
+      className={`fixed inset-x-0 top-0 z-50 w-full border-4 border-[#3399ff]/40 px-3 font-[Vermin] tracking-wider shadow-md shadow-[#3399ff]/50 backdrop-blur-md transition-all duration-300 xs:px-6 md:px-10 ${
+        isScrolled ? "bg-black/70 pb-1 pt-2" : "bg-black/40 pb-2 pt-3"
       }`}
+      aria-label="Primary navigation"
     >
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle,_#1a3d8f_1px,_transparent_1px)] bg-[length:20px_20px] opacity-30 pointer-events-none"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,_#1a3d8f_1px,_transparent_1px)] bg-[length:20px_20px] opacity-30"
         aria-hidden="true"
       />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3399ff] to-transparent opacity-60" />
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3399ff] to-transparent opacity-60"></div>
-
-      <div className="relative flex flex-col sm:flex-row sm:justify-between mx-auto w-full px-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-[#3399ff] rounded-full animate-pulse"></div>
-              <div className="w-1 h-1 bg-[#0073e6] rounded-full"></div>
-            </div>
-
-            <h2
-              className={`transition-all duration-300 text-[#ffffff] drop-shadow-[0_0_10px_#3399ff] ${
+      <div className="relative mx-auto flex w-full flex-col px-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center justify-between">
+          <Link
+            to="/"
+            onClick={closeMenus}
+            className="flex items-center space-x-3"
+            aria-label="JT Innoventions home"
+          >
+            <span className="flex items-center space-x-1" aria-hidden="true">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[#3399ff]" />
+              <span className="h-1 w-1 rounded-full bg-[#0073e6]" />
+            </span>
+            <span
+              className={`text-white drop-shadow-[0_0_10px_#3399ff] transition-all duration-300 ${
                 isScrolled
                   ? "text-base md:text-lg lg:text-xl"
                   : "text-lg md:text-xl lg:text-2xl"
               }`}
               id="headerText"
             >
-              JT Innoventions{" "}
-              <span className="text-[#66b3ff] font-mono text-xs ml-1 opacity-90">
+              JT Innoventions
+              <span className="ml-1 font-mono text-xs text-[#66b3ff] opacity-90">
                 ’26
               </span>
-            </h2>
-
-            <div className="hidden sm:block w-16 h-px bg-gradient-to-r from-[#3399ff] to-transparent"></div>
-          </div>
+            </span>
+            <span className="hidden h-px w-16 bg-gradient-to-r from-[#3399ff] to-transparent sm:block" />
+          </Link>
 
           <button
-            onClick={handleClick}
-            className="cursor-pointer text-[#33bbff] drop-shadow-[0_0_8px_#3399ff] hover:drop-shadow-[0_0_12px_#66ccff] transition-all sm:hidden relative z-10 p-2"
+            type="button"
+            onClick={() => setIsOpen((open) => !open)}
+            className="relative z-10 cursor-pointer p-2 text-[#33bbff] drop-shadow-[0_0_8px_#3399ff] transition-all hover:drop-shadow-[0_0_12px_#66ccff] sm:hidden"
             aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
               viewBox="0 0 24 24"
-              strokeWidth="1.5"
+              fill="none"
               stroke="currentColor"
+              strokeWidth="1.5"
               className="size-6"
+              aria-hidden="true"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  d="M6 6l12 12M18 6 6 18"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              )}
             </svg>
           </button>
         </div>
 
         <ul
-          className={`overflow-hidden flex flex-col sm:flex-row justify-center items-center text-[#ffffff] drop-shadow-[0_0_8px_#3399ff] sm:opacity-100 sm:max-h-none uppercase transition-all duration-500 ease-in-out w-full sm:w-auto text-center tracking-wide ${
+          className={`flex w-full flex-col items-center justify-center overflow-y-auto text-center uppercase tracking-wide text-white drop-shadow-[0_0_8px_#3399ff] transition-all duration-500 ease-in-out sm:w-auto sm:flex-row sm:overflow-visible sm:opacity-100 ${
             isScrolled ? "text-xs md:text-sm" : "text-sm md:text-base"
           } ${
             isOpen
-              ? "max-h-[300px] opacity-100 mt-4 sm:mt-0"
-              : "max-h-0 opacity-0 sm:opacity-100 sm:max-h-none mt-0"
+              ? "mt-4 max-h-[78vh] opacity-100 sm:mt-0 sm:max-h-none"
+              : "mt-0 max-h-0 opacity-0 sm:max-h-none sm:opacity-100"
           }`}
           id="headerText"
         >
-          {[
-            { to: "/#hero", text: "Home" },
-            { to: "/#about", text: "About" },
-            { to: "/categories", text: "Categories" },
-            { to: "/register", text: "Register", special: true },
-            { to: "/#sponsors", text: "Sponsors"},
-            { to: "/#contact", text: "Contact" },
-          ].map((link, idx) => (
-            <li key={idx} className="w-full sm:w-auto relative group">
+          <li className="relative w-full sm:w-auto">
+            <Link
+              className="nav-link block px-2 py-2 md:px-3"
+              to="/#hero"
+              onClick={closeMenus}
+            >
+              Home
+            </Link>
+          </li>
+          <li className="relative w-full sm:w-auto">
+            <Link
+              className="nav-link block px-2 py-2 md:px-3"
+              to="/#about"
+              onClick={closeMenus}
+            >
+              About
+            </Link>
+          </li>
+
+          <li className="group/categories relative w-full sm:w-auto">
+            <div className="flex items-center justify-center">
               <Link
-                className="block py-2 px-2 md:px-3 relative hover:drop-shadow-[0_0_14px_#66ccff] transition-all"
-                to={link.to}
-                onClick={handleLinkClick}
+                className="nav-link block px-2 py-2 md:px-3"
+                to="/categories"
+                onClick={closeMenus}
               >
-                {link.special && (
-                  <div className="absolute inset-0 bg-[#3399ff]/20 backdrop-blur-sm group-hover:bg-[#66ccff]/30 transition-all duration-300"></div>
-                )}
-                <span className="relative">{link.text}</span>
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-[#66ccff] group-hover:w-full transition-all duration-500"></div>
+                Categories
               </Link>
-            </li>
-          ))}
+              <button
+                type="button"
+                className="mr-2 rounded p-2 text-[#66ccff] sm:hidden"
+                onClick={() => setIsCategoriesOpen((open) => !open)}
+                aria-label="Toggle category links"
+                aria-expanded={isCategoriesOpen}
+              >
+                <Chevron open={isCategoriesOpen} />
+              </button>
+              <span className="pointer-events-none -ml-2 mr-1 hidden text-[#66ccff] sm:inline-flex">
+                <Chevron />
+              </span>
+            </div>
+
+            <div
+              className={`z-[70] overflow-hidden transition-all duration-300 sm:invisible sm:absolute sm:left-1/2 sm:top-full sm:max-h-none sm:w-[34rem] sm:-translate-x-1/2 sm:translate-y-2 sm:rounded-xl sm:border sm:border-[#3399ff]/35 sm:bg-[#020b1d]/95 sm:p-3 sm:opacity-0 sm:shadow-2xl sm:shadow-blue-900/50 sm:backdrop-blur-xl sm:group-focus-within/categories:visible sm:group-focus-within/categories:translate-y-0 sm:group-focus-within/categories:opacity-100 sm:group-hover/categories:visible sm:group-hover/categories:translate-y-0 sm:group-hover/categories:opacity-100 ${
+                isCategoriesOpen
+                  ? "visible max-h-[70vh] opacity-100"
+                  : "invisible max-h-0 opacity-0 sm:max-h-none"
+              }`}
+            >
+              <div className="grid gap-1 py-2 sm:grid-cols-2 sm:py-0">
+                <Link
+                  to="/categories"
+                  onClick={closeMenus}
+                  className="rounded-lg border border-[#3399ff]/20 bg-[#3399ff]/10 px-3 py-2.5 text-left text-xs text-[#8fd3ff] transition hover:border-[#66ccff]/50 hover:bg-[#3399ff]/20 sm:col-span-2"
+                >
+                  View all categories
+                </Link>
+                {categoryData.map((category) => (
+                  <Link
+                    key={category.slug}
+                    to={`/categories/${category.slug}`}
+                    onClick={closeMenus}
+                    className="rounded-lg px-3 py-2.5 text-left text-xs text-slate-200 transition hover:bg-[#3399ff]/15 hover:text-white"
+                  >
+                    <span
+                      className="mr-2 inline-block h-1.5 w-1.5 rounded-full"
+                      style={{ backgroundColor: category.theme.primary }}
+                      aria-hidden="true"
+                    />
+                    {category.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </li>
+
+          <li className="group relative w-full sm:w-auto">
+            <Link
+              className="nav-link relative block px-2 py-2 md:px-3"
+              to="/register"
+              onClick={closeMenus}
+            >
+              <span className="absolute inset-0 bg-[#3399ff]/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-[#66ccff]/30" />
+              <span className="relative">Register</span>
+            </Link>
+          </li>
+          <li className="relative w-full sm:w-auto">
+            <Link
+              className="nav-link block px-2 py-2 md:px-3"
+              to="/#sponsors"
+              onClick={closeMenus}
+            >
+              Sponsors
+            </Link>
+          </li>
+          <li className="relative w-full sm:w-auto">
+            <Link
+              className="nav-link block px-2 py-2 md:px-3"
+              to="/#contact"
+              onClick={closeMenus}
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-        <div className="h-px bg-gradient-to-r from-transparent via-[#3399ff]/70 to-transparent"></div>
-      </div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#3399ff]/70 to-transparent" />
     </nav>
   );
 }

@@ -25,10 +25,11 @@ export default function Categories() {
         <div className="flex flex-wrap gap-y-8 gap-x-6 md:gap-x-14 xl:gap-x-20 md:gap-y-16 lg:gap-y-20 justify-evenly max-w-[1600px] mx-auto cards">
           {categoryData.map((c) => (
             <Card
-              key={c.pdfLink || c.title} // replaced UUID with this cause it didn't work in some older browsers (like my phones)
+              key={c.slug}
+              title={c.title}
+              slug={c.slug}
               description={c.description}
               img={c.img}
-              pdfLink={c.pdfLink}
               compulsory={c.compulsory}
               gradient={c.gradient}
             />

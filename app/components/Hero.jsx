@@ -5,7 +5,7 @@ import Button from "../components/Button";
 import CountdownTimer from "../components/Timer"; // Adjust path as needed
 import "../app.css";
 
-const Hero = () => {
+const Hero = ({ id = "hero" }) => {
   const navigate = useNavigate();
   const [textAnimationComplete, setTextAnimationComplete] = useState(false);
   const [allContentLoaded, setAllContentLoaded] = useState(false);
@@ -254,7 +254,7 @@ const Hero = () => {
     <section
       ref={heroRef}
       className="relative h-[100vh] w-full flex flex-col items-center justify-start overflow-hidden pb-5 md:pb-8"
-      id="Hero"
+      id={id}
     >
       {allContentLoaded && particles.length > 0 && (
         <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
