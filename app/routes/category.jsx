@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router";
 import categoryData from "../categoryData";
+import schoolBackground from "../assets/school.jpg";
 
 export function meta({ params }) {
   const category = categoryData.find(
@@ -67,10 +68,10 @@ export default function Category() {
           ),
           linear-gradient(
             180deg,
-            rgba(2, 18, 24, 0.90),
+            rgba(2, 18, 24, 0.76),
             rgba(2, 12, 18, 0.94)
           ),
-          url("/app/assets/school.jpg")
+          url("${schoolBackground}")
         `,
         backgroundSize: "cover",
         backgroundPosition: "center",
