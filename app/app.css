@@ -86,6 +86,23 @@ nav li a:active {
   color: #fff;
 }
 
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #66ccff;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: calc(100% - 1rem);
+}
+
 nav li:not(:last-child) {
   border-bottom: 1px solid #10346e;
   width: 100%;
@@ -379,7 +396,7 @@ body::after {
   z-index: -1;
 }
 
-@keyframes scroll {
+@keyframes sponsor-marquee {
   0% {
     transform: translateX(0);
   }
@@ -388,8 +405,47 @@ body::after {
   }
 }
 
-.animate-scroll {
-  display: flex;
-  animation: scroll 15s linear infinite;
-  -webkit-animation: scroll 15s linear infinite;
+.sponsor-marquee {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.sponsor-marquee-track {
+  animation: sponsor-marquee 26s linear infinite;
+  will-change: transform;
+}
+
+.sponsor-marquee:hover .sponsor-marquee-track,
+.sponsor-marquee:focus-within .sponsor-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .sponsor-marquee-track {
+    animation-duration: 20s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-page {
+    background-attachment: scroll !important;
+  }
 }
