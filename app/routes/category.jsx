@@ -204,14 +204,9 @@ export default function Category() {
         <section className="mt-16 lg:mt-20">
           <div className="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
-              <p
-                className="mb-2 text-xs uppercase tracking-[0.3em]"
-                style={{ color: theme.secondary }}
-              >
-                Official preparation resource
-              </p>
-              <h2 className="text-3xl font-semibold sm:text-4xl">
-                Study guide
+              <h2 className="text-3xl font-semibold sm:text-4xl"
+                  style={{ color: theme.secondary }}>
+                Study Guide
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-slate-400">
