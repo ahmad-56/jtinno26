@@ -1,7 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLocation,
+  faLocationArrow,
+  faLocationDot,
+  faLocationPin,
+  faLocationPinLock,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+
+const contacts = [
+  {
+    name: "Shayan Akbar",
+    initials: "SA",
+    role: "Event Head",
+    phoneLabel: "+92 309 9333096",
+    phoneHref: "+923099333096",
+    email: "shaayanakbar@gmail.com",
+    accent: "#0c6177",
+  },
+  {
+    name: "M Anas Salman",
+    initials: "AS",
+    role: "Event Head",
+    phoneLabel: "+92 317 0222290",
+    phoneHref: "+923170222290",
+    email: "muhammad.anas.salman@gmail.com",
+    accent: "#0d766f",
+  },
+];
 
 function Contact() {
   const ref = useRef(null);
@@ -10,7 +39,7 @@ function Contact() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: [0, 0.4] }
+      { threshold: [0, 0.2] }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -18,98 +47,149 @@ function Contact() {
   }, []);
 
   return (
-    <div
+    <section
       id="contact"
       ref={ref}
-      className={`relative w-full px-4 xs:px-8 md:px-15 py-8 sm:py-10 md:py-12 lg:py-14 overflow-hidden transition-all duration-1000 ease-out text-center ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      className={`relative w-full overflow-hidden px-4 py-12 text-center transition-all duration-1000 ease-out xs:px-8 md:px-15 md:py-16 ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
       }`}
+      aria-labelledby="contact-heading"
     >
-      <div className="relative z-10 max-w-320 mx-auto">
-        <div className="text-center mb-8 md:mb-10 animate-[fadeIn_1s_ease-in-out]">
+      <div className="pointer-events-none absolute left-1/2 top-1/4 h-80 w-80 -translate-x-1/2 rounded-full bg-[var(--site-secondary)]/10 blur-[110px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="mb-10 text-center">
           <h1
-            className="font-monaspace text-3xl xs:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-wide font-semibold capitalize text-slate-50 mb-6"
-            id="headerText"
+            className="text-3xl font-normal uppercase tracking-wider text-[var(--site-heading)] xs:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+            id="contact-heading"
+            style={{ fontFamily: '"Vermin", sans-serif' }}
           >
             Contact
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 animate-[fadeIn_1.5s_ease-in-out]">
-          <div className="relative group">
-            <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-blue-600/20 via-cyan-500/20 to-blue-600/20 blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-            <div className="relative bg-black/70 backdrop-blur-sm border border-blue-400/25 p-6 rounded-lg text-slate-300 shadow-2xl shadow-blue-500/10 hover:shadow-blue-500/30 transition-all duration-300 hover:transform hover:scale-105 hover:bg-black/80">
-              <div className="absolute top-2 right-2 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
-              <h2 className="text-xl font-semibold mb-2 text-cyan-300 font-monaspace">
-                  Shayan Akbar
-              </h2>
-              <h3 className="text-sm mb-3 text-blue-300 font-open-sans font-medium">
-                Event Head
-              </h3>
-              <p className="text-sm mb-1 flex items-center font-open-sans">
-                {/* <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span> */}
-                <span className="mr-2 text-red-500">
-                  <FontAwesomeIcon icon={faPhone} size="lg" />
-                </span>
-                +92 309 9333096
-              </p>
-              <p className="text-sm break-words flex items-center font-open-sans">
-                {/* <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span> */}
-                <span className="mr-2 text-red-500">
-                  <FontAwesomeIcon icon={faEnvelope} size="lg" />
-                </span>
-                shaayanakbar@gmail.com
-              </p>
-            </div>
-          </div>
+        <div className="mb-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {contacts.map((contact) => (
+            <article
+              key={contact.email}
+              className="group relative overflow-hidden rounded-xl border-2 bg-black p-6 transition duration-300 hover:-translate-y-1 sm:p-8"
+              style={{
+                borderColor: `${contact.accent}99`,
+                boxShadow: `
+                  0 0 16px ${contact.accent}30,
+                  0 16px 45px ${contact.accent}18
+                `,
+              }}
+            >
+              {/* Animated glowing circle */}
+              <div
+                className="pointer-events-none absolute right-4 top-4 z-20 flex h-5 w-5 items-center justify-center"
+                aria-hidden="true"
+              >
+                <span
+                  className="absolute h-4 w-4 animate-ping rounded-full opacity-70"
+                  style={{
+                    backgroundColor: contact.accent,
+                  }}
+                />
 
-          <div className="relative group">
-            <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-cyan-600/20 via-blue-500/20 to-cyan-600/20 blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-            <div className="relative bg-black/70 backdrop-blur-sm border border-cyan-400/25 p-6 rounded-lg text-slate-300 shadow-2xl shadow-cyan-500/10 hover:shadow-cyan-500/30 transition-all duration-300 hover:transform hover:scale-105 hover:bg-black/80">
-              <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
-              <h2 className="text-xl font-semibold mb-2 text-cyan-300 font-monaspace">
-                M Anas Salman
-              </h2>
-              <h3 className="text-sm mb-3 text-blue-300 font-open-sans font-medium">
-                Event Head
-              </h3>
-              <p className="text-sm mb-1 flex items-center font-open-sans">
-                {/* <span className="w-1 h-1 bg-cyan-400 rounded-full mr-2"></span> */}
-                <span className="mr-2 text-red-500">
-                  <FontAwesomeIcon icon={faPhone} size="lg" />
-                </span>
-                +92 317 0222290
-              </p>
-              <p className="text-sm break-words flex items-center font-open-sans">
-                {/* <span className="w-1 h-1 bg-cyan-400 rounded-full mr-2"></span> */}
-                <span className="mr-2 text-red-500">
-                  <FontAwesomeIcon icon={faEnvelope} size="lg" />
-                </span>
-                muhammad.anas.salman@gmail.com
-              </p>
-            </div>
-          </div>
+                <span
+                  className="relative h-3 w-3 rounded-full"
+                  style={{
+                    backgroundColor: contact.accent,
+                    boxShadow: `0 0 10px ${contact.accent}`,
+                  }}
+                />
+              </div>
+              {/* Glow behind the heading */}
+              <div
+                className="pointer-events-none absolute left-1/2 top-0 h-40 w-72 -translate-x-1/2 -translate-y-1/3 rounded-full opacity-25 blur-3xl transition-opacity duration-300 group-hover:opacity-40"
+                style={{
+                  backgroundColor: contact.accent,
+                }}
+                aria-hidden="true"
+              />
+
+              {/* Subtle inner border glow */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-[10px]"
+                style={{
+                  boxShadow: `inset 0 0 14px ${contact.accent}18`,
+                }}
+                aria-hidden="true"
+              />
+
+              <div className="relative z-10 min-w-0">
+                <div className="mb-6 text-center">
+                  <h2
+                    className="mb-2 font-monaspace text-2xl font-semibold"
+                    style={{
+                      color: contact.accent,
+                      textShadow: `0 0 18px ${contact.accent}55`,
+                    }}
+                  >
+                    {contact.name}
+                  </h2>
+
+                  <p
+                    className="text-sm font-semibold uppercase tracking-[0.18em] text-white"
+                    style={{
+                      textShadow: `0 0 12px ${contact.accent}55`,
+                    }}
+                  >
+                    {contact.role}
+                  </p>
+                </div>
+
+                <div className="mx-auto max-w-sm space-y-1">
+                  <a
+                    href={`tel:${contact.phoneHref}`}
+                    className="flex items-center gap-3 rounded-md px-1 py-2 text-sm text-slate-300 transition hover:text-[var(--site-heading)]"
+                  >
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      className="w-4 shrink-0"
+                      style={{ color: contact.accent }}
+                    />
+
+                    <span>{contact.phoneLabel}</span>
+                  </a>
+
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="flex items-center gap-3 rounded-md px-1 py-2 text-sm text-slate-300 transition hover:text-[var(--site-heading)]"
+                  >
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      className="w-4 shrink-0"
+                      style={{ color: contact.accent }}
+                    />
+
+                    <span className="min-w-0 break-all">
+                      {contact.email}
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
 
-        <div className="flex justify-center mb-6 animate-[fadeIn_2s_ease-in-out]">
-          <div className="relative group w-full">
-            <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-blue-600/20 via-cyan-500/20 to-blue-600/20 blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-            <div className="relative rounded-xl overflow-hidden border border-blue-400/25 backdrop-blur-sm bg-black/30">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12602.049475408632!2d74.27454330050205!3d31.46684539008887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903e0fc887323%3A0xab96115d544c1796!2sLahore%20Grammar%20School%20for%20Boys%20(LGS%20JT)!5e1!3m2!1sen!2s!4v1725424124783!5m2!1sen!2s"
-                width="100%"
-                height="400"
-                className="rounded-xl filter brightness-90 hover:brightness-100 transition duration-300"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
+        <div className="mb-8 overflow-hidden rounded-2xl border border-[var(--site-border)] bg-black/30 p-2 shadow-2xl shadow-[var(--site-glow)] backdrop-blur-sm sm:p-3">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12602.049475408632!2d74.27454330050205!3d31.46684539008887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903e0fc887323%3A0xab96115d544c1796!2sLahore%20Grammar%20School%20for%20Boys%20(LGS%20JT)!5e1!3m2!1sen!2s!4v1725424124783!5m2!1sen!2s"
+            width="100%"
+            height="400"
+            className="rounded-xl brightness-90 transition duration-300 hover:brightness-100"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Lahore Grammar School Johar Town location"
+          />
         </div>
 
         <div className="text-center mb-8 animate-[fadeIn_2.5s_ease-in-out]">
-          <h2 className="text-lg font-semibold text-blue-300 mb-2 font-monaspace">
+          <h2 className="text-lg font-semibold text-teal-600 mb-2 font-monaspace">
             Location
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto font-open-sans font-medium tracking-wide text-sm md:text-base">
@@ -136,7 +216,7 @@ function Contact() {
             aria-label="Email"
           >
             <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-            <div className="relative text-4xl sm:text-5xl text-slate-300 hover:text-blue-400 transition duration-300 transform group-hover:scale-110">
+            <div className="relative text-4xl sm:text-5xl text-slate-300 hover:text-teal-400 transition duration-300 transform group-hover:scale-110">
               <FontAwesomeIcon icon={faEnvelope} />
             </div>
           </a>
@@ -154,7 +234,7 @@ function Contact() {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
