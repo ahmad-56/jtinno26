@@ -15,7 +15,11 @@ function Chevron({ open = false }) {
       }`}
       aria-hidden="true"
     >
-      <path d="m5 7.5 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="m5 7.5 5 5 5-5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -32,8 +36,14 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -47,6 +57,7 @@ function Navbar() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,_#0c6177_1px,_transparent_1px)] bg-[length:20px_20px] opacity-30"
         aria-hidden="true"
       />
+
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--site-primary)] to-transparent opacity-60" />
 
       <div className="relative mx-auto flex w-full flex-col px-4 sm:flex-row sm:items-center sm:justify-between">
@@ -57,10 +68,14 @@ function Navbar() {
             className="flex items-center space-x-3"
             aria-label="JT Innoventions home"
           >
-            <span className="flex items-center space-x-1" aria-hidden="true">
+            <span
+              className="flex items-center space-x-1"
+              aria-hidden="true"
+            >
               <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--site-accent)]" />
               <span className="h-1 w-1 rounded-full bg-[var(--site-primary)]" />
             </span>
+
             <span
               className={`text-white drop-shadow-[0_0_10px_var(--site-glow-strong)] transition-all duration-300 ${
                 isScrolled
@@ -70,10 +85,12 @@ function Navbar() {
               id="headerText"
             >
               JT Innoventions
+
               <span className="ml-1 font-mono text-xs text-[var(--site-heading)] opacity-90">
                 ’26
               </span>
             </span>
+
             <span className="hidden h-px w-16 bg-gradient-to-r from-[var(--site-primary)] to-transparent sm:block" />
           </Link>
 
@@ -126,6 +143,7 @@ function Navbar() {
               Home
             </Link>
           </li>
+
           <li className="relative w-full sm:w-auto">
             <Link
               className="nav-link block px-2 py-2 md:px-3"
@@ -136,7 +154,11 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="group/categories relative w-full sm:w-auto">
+          <li
+            className="relative w-full sm:w-auto"
+            onMouseEnter={() => setIsCategoriesOpen(true)}
+            onMouseLeave={() => setIsCategoriesOpen(false)}
+          >
             <div className="flex items-center justify-center">
               <Link
                 className="nav-link block px-2 py-2 md:px-3"
@@ -145,48 +167,75 @@ function Navbar() {
               >
                 Categories
               </Link>
+
               <button
                 type="button"
                 className="mr-2 rounded p-2 text-[var(--site-accent)] sm:hidden"
-                onClick={() => setIsCategoriesOpen((open) => !open)}
+                onClick={() =>
+                  setIsCategoriesOpen((open) => !open)
+                }
                 aria-label="Toggle category links"
                 aria-expanded={isCategoriesOpen}
               >
                 <Chevron open={isCategoriesOpen} />
               </button>
-              <span className="pointer-events-none -ml-2 mr-1 hidden text-[var(--site-accent)] sm:inline-flex">
+
+              <span
+                className={`pointer-events-none -ml-2 mr-1 hidden origin-center text-[var(--site-accent)] transition-all duration-300 ease-out sm:inline-flex ${
+                  isCategoriesOpen
+                    ? "translate-y-0.5 rotate-180 drop-shadow-[0_0_6px_var(--site-glow-strong)]"
+                    : ""
+                }`}
+              >
                 <Chevron />
               </span>
             </div>
 
             <div
-              className={`z-[70] overflow-hidden transition-all duration-300 sm:invisible sm:absolute sm:left-1/2 sm:top-full sm:max-h-none sm:w-[34rem] sm:-translate-x-1/2 sm:translate-y-2 sm:rounded-xl sm:border sm:border-[var(--site-border)] sm:bg-[var(--site-background-secondary)]/95 sm:p-3 sm:opacity-0 sm:shadow-2xl sm:shadow-[var(--site-glow)] sm:backdrop-blur-xl sm:group-focus-within/categories:visible sm:group-focus-within/categories:translate-y-0 sm:group-focus-within/categories:opacity-100 sm:group-hover/categories:visible sm:group-hover/categories:translate-y-0 sm:group-hover/categories:opacity-100 ${
+              className={`z-[70] overflow-hidden transition-all duration-300 sm:absolute sm:left-1/2 sm:top-full sm:max-h-none sm:w-[34rem] sm:-translate-x-1/2 sm:rounded-xl sm:border sm:border-[var(--site-border)] sm:bg-[var(--site-background-secondary)]/95 sm:p-3 sm:shadow-2xl sm:shadow-[var(--site-glow)] sm:backdrop-blur-xl ${
                 isCategoriesOpen
-                  ? "visible max-h-[70vh] opacity-100"
-                  : "invisible max-h-0 opacity-0 sm:max-h-none"
+                  ? "visible max-h-[70vh] translate-y-0 opacity-100 sm:visible sm:opacity-100"
+                  : "invisible max-h-0 translate-y-2 opacity-0 sm:invisible sm:max-h-none sm:opacity-0"
               }`}
             >
               <div className="grid gap-1 py-2 sm:grid-cols-2 sm:py-0">
                 <Link
                   to="/categories"
                   onClick={closeMenus}
-                  className="rounded-lg border border-[var(--site-border)] bg-[var(--site-primary)]/10 px-3 py-2.5 text-left text-xs text-[var(--site-heading)] transition hover:border-[var(--site-border-hover)] hover:bg-[var(--site-primary)]/20 sm:col-span-2"
+                  className="rounded-lg border border-[var(--site-border)] bg-[var(--site-primary)]/10 px-3 py-2.5 text-left text-xs text-[var(--site-heading)] transition-all duration-200 hover:border-[var(--site-border-hover)] hover:bg-[var(--site-primary)]/20 active:translate-y-0.5 active:scale-[0.98] active:bg-[var(--site-accent)]/20 sm:col-span-2"
                 >
                   View all categories
                 </Link>
+
                 {categoryData.map((category) => (
                   <Link
                     key={category.slug}
                     to={`/categories/${category.slug}`}
                     onClick={closeMenus}
-                    className="rounded-lg px-3 py-2.5 text-left text-xs text-slate-200 transition hover:bg-[var(--site-primary)]/15 hover:text-white"
+                    className="!flex min-h-10 w-full flex-row items-center justify-between rounded-lg px-3 py-2.5 text-left text-xs text-slate-200 transition-all duration-200 hover:bg-[var(--site-primary)]/15 hover:text-white active:translate-y-0.5 active:scale-[0.97] active:bg-[var(--site-accent)]/20"
                   >
-                    <span
-                      className="mr-2 inline-block h-1.5 w-1.5 rounded-full"
-                      style={{ backgroundColor: category.theme.primary }}
-                      aria-hidden="true"
-                    />
-                    {category.title}
+                    <span className="flex min-w-0 items-center">
+                      <span
+                        className="mr-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full transition-transform duration-200"
+                        style={{
+                          backgroundColor: category.theme.primary,
+                          boxShadow: `0 0 7px ${category.theme.glow}`,
+                        }}
+                        aria-hidden="true"
+                      />
+
+                      <span className="truncate">
+                        {category.title}
+                      </span>
+                    </span>
+
+                    {category.compulsory && (
+                      <span className="pointer-events-none ml-auto inline-flex shrink-0 items-center rounded-sm bg-[#111] px-2 py-1">
+                        <span className="bg-linear-65 from-purple-500 from-5% via-pink-500 to-orange-500 to-90% bg-clip-text text-[10px] font-bold uppercase tracking-wider text-transparent">
+                          Compulsory
+                        </span>
+                      </span>
+                    )}
                   </Link>
                 ))}
               </div>
@@ -203,6 +252,7 @@ function Navbar() {
               <span className="relative">Register</span>
             </Link>
           </li>
+
           <li className="relative w-full sm:w-auto">
             <Link
               className="nav-link block px-2 py-2 md:px-3"
@@ -212,6 +262,7 @@ function Navbar() {
               Sponsors
             </Link>
           </li>
+
           <li className="relative w-full sm:w-auto">
             <Link
               className="nav-link block px-2 py-2 md:px-3"

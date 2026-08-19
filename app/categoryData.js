@@ -37,7 +37,7 @@ const categoryData = [
     fullTitle: "Fraudiye Files",
     slug: "fraudiye-files",
     subject: "Forensics & Investigation",
-    compulsory: true,
+    compulsory: false,
     img: Fraudiye,
     pdfLink: "/StudyGuides/FraudiyeFiles.pdf",
     description:
