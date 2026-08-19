@@ -67,7 +67,7 @@ function About({ id }) {
                 dx="0"
                 dy="0"
                 stdDeviation="8"
-                floodColor="#1e3a8a"
+                floodColor="#0c6177"
                 floodOpacity="0.4"
               />
             </filter>
@@ -82,7 +82,7 @@ function About({ id }) {
           <path
             d="M0,160L80,165.3C160,171,320,181,480,176C640,171,800,149,960,138.7C1120,128,1280,128,1360,128L1440,128"
             fill="none"
-            stroke="#1e3a8a"
+            stroke="#0c6177"
             strokeWidth="5"
             filter="url(#glow2)"
           />
@@ -99,7 +99,7 @@ function About({ id }) {
                 dx="0"
                 dy="0"
                 stdDeviation="8"
-                floodColor="#1e3a8a"
+                floodColor="#0c6177"
                 floodOpacity="0.4"
               />
             </filter>
@@ -113,7 +113,7 @@ function About({ id }) {
           <path
             d="M0,240L80,250C160,260,320,280,480,270C640,260,800,220,960,200C1120,180,1280,180,1440,200"
             fill="none"
-            stroke="#1e3a8a"
+            stroke="#0c6177"
             strokeWidth="8"
             filter="url(#glow)"
           />
@@ -129,17 +129,20 @@ function About({ id }) {
           WHAT IS INNOVENTIONS?
         </h1>
         <p className="my-7 sm:my-8 font-open-sans font-semibold md:font-medium tracking-wide text-sm/relaxed md:text-base lg:text-[17px]">
-          Innoventions'26 is a 3-day Science Olympiad organized by LGS JT,
-          showcasing categories spanning Science, Mathematics, IT, Robotics,
-          Astronomy and more. The event is designed to engage students from all
-          over Pakistan, nurturing their skills in creativity, innovation, and
-          critical thinking. Building on a legacy of excellence in successful
-          competitive science events, Innoventions '26 provides a platform for
-          fostering scientific curiosity and creative problem-solving.
+          Innoventions ’26 is LGS Johar Town’s three-day national science
+          olympiad, bringing together students from across Pakistan for an
+          immersive celebration of curiosity, creativity and competition.
+          Across 14 diverse categories—including pure sciences, mathematics,
+          computing, engineering, robotics, astronomy, environmental science
+          and creative problem-solving—delegates will investigate, design,
+          decode, build and present under pressure. Guided by the spirit of
+          “Indulge. Invent. Innovate.”, Innoventions ’26 gives young thinkers a
+          platform to challenge convention, transform knowledge into action and
+          bring their boldest ideas to life.
         </p>
         <div>
           <div className="relative group inline-block p-1">
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-r blur-xs from-blue-800/20 via-cyan-700/20 to-blue-800/20 opacity-30 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-r blur-xs from-[var(--site-primary)]/20 via-[var(--site-accent)]/20 to-[var(--site-primary)]/20 opacity-30 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
             <div className="backdrop-blur-xl">
               <Link to="/categories">
                 <Button

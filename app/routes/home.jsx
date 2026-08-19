@@ -34,8 +34,8 @@ export const meta = () => {
       content: "3-day Science Olympiad by LGS JT. Science, Math, IT, Robotics & Astronomy competitions for students across Pakistan. Register now!" 
     },
 
-    { name: "theme-color", content: "#020817" },
-    { name: "msapplication-TileColor", content: "#020817" },
+    { name: "theme-color", content: "#020812" },
+    { name: "msapplication-TileColor", content: "#020812" },
     { name: "language", content: "English" },
     { name: "revisit-after", content: "7 days" },
     { name: "distribution", content: "global" },
@@ -54,7 +54,7 @@ export default function Home() {
     <main className="relative w-full h-full flex flex-col items-center justify-center overflow-visible">
       <SpotlightCanvas />
       <Hero id="hero" />
-      <div className="border-4 border-blue-900/30 w-full">
+      <div className="w-full border-4 border-[var(--site-border)]">
         <About id="about" />
         <Sponsors id="sponsors" />
         <Contact id="contact" />

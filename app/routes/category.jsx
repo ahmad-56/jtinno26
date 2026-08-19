@@ -27,7 +27,7 @@ export default function Category() {
   if (!category) {
     return (
       <main className="min-h-screen px-6 pb-24 pt-32 text-center text-slate-100">
-        <p className="mb-4 font-mono text-sm uppercase tracking-[0.3em] text-teal-300">
+        <p className="mb-4 font-mono text-sm uppercase tracking-[0.3em] text-[var(--site-primary-hover)]">
           Error 404
         </p>
         <h1 className="mb-5 text-4xl font-semibold">Category not found</h1>
@@ -36,7 +36,7 @@ export default function Category() {
         </p>
         <Link
           to="/categories"
-          className="inline-flex rounded-lg border border-teal-400/40 bg-teal-400/10 px-5 py-3 text-teal-200 transition hover:bg-teal-400/20"
+          className="inline-flex rounded-lg border border-[var(--site-border)] bg-[var(--site-primary)]/10 px-5 py-3 text-[var(--site-heading)] transition hover:bg-[var(--site-primary)]/20"
         >
           View all categories
         </Link>
@@ -68,8 +68,8 @@ export default function Category() {
           ),
           linear-gradient(
             180deg,
-            rgba(2, 18, 24, 0.90),
-            rgba(2, 12, 18, 0.94)
+            rgba(2, 8, 18, 0.90),
+            rgba(4, 18, 28, 0.95)
           ),
           url("${schoolBackground}")
         `,

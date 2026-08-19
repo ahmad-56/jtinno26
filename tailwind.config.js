@@ -10,10 +10,10 @@ export default {
         vermin: ['Vermin', 'sans-serif'],
       },
       colors: {
-        electric: '#1b76ff',
+        electric: '#0c6177',
       },
       textShadow: {
-        glow: '0 0 10px rgba(27, 118, 255, 0.5)',
+        glow: '0 0 10px rgba(20, 148, 136, 0.35)',
       }
     },
   },

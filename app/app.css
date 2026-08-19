@@ -12,10 +12,28 @@
 
 @theme {
   --color-primary: #111;
-  --color-secondary: #1b76ff;
+  --color-secondary: #0c6177;
   --font-space: "Monaspace Neon", monospace;
   --font-monaspace: "Monaspace Neon", monospace;
   --breakpoint-xs: 30rem; /* 480px*/
+}
+
+:root {
+  --site-background: #020812;
+  --site-background-secondary: #04121c;
+  --site-surface: #071b26;
+  --site-surface-raised: #0a2631;
+  --site-primary: #0c6177;
+  --site-primary-hover: #10778a;
+  --site-secondary: #0d766f;
+  --site-accent: #149488;
+  --site-heading: #c3e5e5;
+  --site-text: #a4b8bd;
+  --site-text-muted: #627b84;
+  --site-border: rgba(20, 116, 132, 0.3);
+  --site-border-hover: rgba(35, 150, 152, 0.5);
+  --site-glow: rgba(13, 118, 111, 0.22);
+  --site-glow-strong: rgba(20, 148, 136, 0.32);
 }
 
 html {
@@ -33,7 +51,7 @@ html {
   color: #f0f0f0;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5),
   0 0 4px rgba(0, 0, 0, 0.7),
-  0 0 7px rgba(0, 102, 255, 0.9); 
+  0 0 7px rgba(20, 148, 136, 0.72);
 }
 
 #Timer {
@@ -93,7 +111,7 @@ nav li a:active {
   bottom: 0;
   width: 0;
   height: 1px;
-  background: #66ccff;
+  background: var(--site-accent);
   transform: translateX(-50%);
   transition: width 0.3s ease;
 }
@@ -104,7 +122,7 @@ nav li a:active {
 }
 
 nav li:not(:last-child) {
-  border-bottom: 1px solid #10346e;
+  border-bottom: 1px solid var(--site-border);
   width: 100%;
   text-align: center;
 }
@@ -141,25 +159,25 @@ nav li:not(:last-child) {
 
 @keyframes logoGlow {
   0% {
-    filter: drop-shadow(0 0 10px #1b76ff88);
+    filter: drop-shadow(0 0 10px rgba(12, 97, 119, 0.5));
   }
   50% {
-    filter: drop-shadow(0 0 25px #1b76ffcc);
+    filter: drop-shadow(0 0 25px rgba(20, 148, 136, 0.65));
   }
   100% {
-    filter: drop-shadow(0 0 10px #1b76ff88);
+    filter: drop-shadow(0 0 10px rgba(12, 97, 119, 0.5));
   }
 }
 
 @keyframes hero-glow {
   0% {
-    box-shadow: 0 0 20px #1b76ff40;
+    box-shadow: 0 0 20px var(--site-glow);
   }
   50% {
-    box-shadow: 0 0 60px #1b76ffcc;
+    box-shadow: 0 0 60px var(--site-glow-strong);
   }
   100% {
-    box-shadow: 0 0 20px #1b76ff40;
+    box-shadow: 0 0 20px var(--site-glow);
   }
 }
 
@@ -392,7 +410,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 7, 24, 0.94);
+  background: rgba(2, 8, 18, 0.95);
   z-index: -1;
 }
 

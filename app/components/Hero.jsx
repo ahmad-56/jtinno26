@@ -234,7 +234,7 @@ const Hero = ({ id = "hero" }) => {
     return particles.map((particle) => (
       <div
         key={particle.id}
-        className="absolute rounded-full bg-blue-400"
+        className="absolute rounded-full bg-[var(--site-primary-hover)]"
         style={{
           width: `${particle.size}px`,
           height: `${particle.size}px`,
@@ -243,7 +243,7 @@ const Hero = ({ id = "hero" }) => {
           opacity: particle.opacity ?? 0.6,
           transform: particle.scattered ? "scale(1.3)" : "scale(1)",
           transition: "transform 0.2s ease-out",
-          boxShadow: "0 0 8px rgba(96, 165, 250, 0.4)",
+          boxShadow: "0 0 8px var(--site-glow-strong)",
           willChange: "transform, opacity",
         }}
       />
@@ -264,36 +264,36 @@ const Hero = ({ id = "hero" }) => {
 
       <div className="absolute inset-0 overflow-hidden z-5 pointer-events-none">
         <div className="absolute top-20 right-4 animate-[fadeIn_2s_ease-in-out]">
-          <div className="bg-black/30 backdrop-blur-sm border border-blue-400/20 rounded-md p-2 animate-pulse">
+          <div className="bg-black/30 backdrop-blur-sm border border-[var(--site-border)] rounded-md p-2 animate-pulse">
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
-              <span className="text-blue-400 font-mono text-[10px]">Indulge</span>
+              <div className="w-2 h-2 bg-[var(--site-primary-hover)] rounded-full animate-ping"></div>
+              <span className="text-[var(--site-primary-hover)] font-mono text-[10px]">Indulge</span>
             </div>
           </div>
         </div>
         <div className="absolute top-40 left-4 animate-[fadeIn_2.5s_ease-in-out]">
-          <div className="bg-black/30 backdrop-blur-sm border border-cyan-400/20 rounded-md p-2 animate-pulse">
+          <div className="bg-black/30 backdrop-blur-sm border border-[var(--site-border)] rounded-md p-2 animate-pulse">
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
-              <span className="text-cyan-400 font-mono text-[10px]">Invent</span>
+              <div className="w-2 h-2 bg-[var(--site-accent)] rounded-full animate-ping"></div>
+              <span className="text-[var(--site-accent)] font-mono text-[10px]">Invent</span>
             </div>
           </div>
         </div>
         <div className="absolute bottom-32 right-8 animate-[fadeIn_3s_ease-in-out]">
-          <div className="bg-black/30 backdrop-blur-sm border border-blue-300/20 rounded-md p-2 animate-pulse">
+          <div className="bg-black/30 backdrop-blur-sm border border-[var(--site-border)] rounded-md p-2 animate-pulse">
             <div className="flex flex-col items-center space-y-1">
-              <div className="w-2 h-2 bg-blue-300 rounded-full animate-ping"></div>
-              <span className="text-blue-300 font-mono text-[10px]">Innovate</span>
+              <div className="w-2 h-2 bg-[var(--site-heading)] rounded-full animate-ping"></div>
+              <span className="text-[var(--site-heading)] font-mono text-[10px]">Innovate</span>
             </div>
           </div>
         </div>
       </div>
 
       <div className="absolute inset-0 z-5 opacity-10 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse"></div>
-        <div className="absolute top-1/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse delay-700"></div>
-        <div className="absolute top-2/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-300 to-transparent animate-pulse delay-1400"></div>
-        <div className="absolute top-3/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-pulse delay-300"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--site-primary)] to-transparent animate-pulse"></div>
+        <div className="absolute top-1/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[var(--site-accent)] to-transparent animate-pulse delay-700"></div>
+        <div className="absolute top-2/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[var(--site-heading)] to-transparent animate-pulse delay-1400"></div>
+        <div className="absolute top-3/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[var(--site-primary-hover)] to-transparent animate-pulse delay-300"></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-7xl mx-auto w-full pt-20 pb-10">
@@ -306,9 +306,9 @@ const Hero = ({ id = "hero" }) => {
               loading="eager"
             />
 
-            <div className="absolute inset-1 h-full w-full bg-blue-400/20 blur-2xl rounded-full animate-pulse"></div>
-            <div className="absolute inset-0 rounded-full border border-blue-400/30 animate-pulse"></div>
-            <div className="absolute -inset-2 rounded-full border border-cyan-400/20 animate-pulse delay-500"></div>
+            <div className="absolute inset-1 h-full w-full bg-[var(--site-primary)]/20 blur-2xl rounded-full animate-pulse"></div>
+            <div className="absolute inset-0 rounded-full border border-[var(--site-border)] animate-pulse"></div>
+            <div className="absolute -inset-2 rounded-full border border-[var(--site-glow)] animate-pulse delay-500"></div>
           </div>
         </div>
 
@@ -325,13 +325,13 @@ const Hero = ({ id = "hero" }) => {
 
       <div className="relative mb-2 animate-[fadeIn_2.5s_ease-in-out] mt-[-1rem]">
         <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-60 animate-pulse"></div>
-        <div className="absolute -top-1 left-0 w-4 h-3 bg-blue-400 opacity-60 animate-pulse"></div>
-        <div className="absolute -top-1 right-0 w-4 h-3 bg-blue-400 opacity-60 animate-pulse delay-500"></div>
+        <div className="absolute -top-1 left-0 w-4 h-3 bg-[var(--site-primary-hover)] opacity-60 animate-pulse"></div>
+        <div className="absolute -top-1 right-0 w-4 h-3 bg-[var(--site-primary-hover)] opacity-60 animate-pulse delay-500"></div>
       </div>
 
       <div className="w-full flex justify-center z-20 mb-6 animate-[fadeIn_3s_ease-in-out]">
         <div className="relative group">
-          <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-blue-600/20 via-cyan-500/20 to-blue-600/20 blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+          <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-[var(--site-primary)]/20 via-[var(--site-accent)]/20 to-[var(--site-primary)]/20 blur-lg opacity-60 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
           <div className="relative rounded-lg p-1">
             <div className="backdrop-blur-sm rounded-lg transition duration-300">
               <div onClick={handleRegisterClick}>
@@ -344,17 +344,17 @@ const Hero = ({ id = "hero" }) => {
 
       <div className="relative mb-1 animate-[fadeIn_2.5s_ease-in-out] mt-[-0.7em]">
         <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-60 animate-pulse"></div>
-        <div className="absolute -top-1 left-0 w-4 h-3 bg-blue-400 opacity-60 animate-pulse"></div>
-        <div className="absolute -top-1 right-0 w-4 h-3 bg-blue-400 opacity-60 animate-pulse delay-500"></div>
+        <div className="absolute -top-1 left-0 w-4 h-3 bg-[var(--site-primary-hover)] opacity-60 animate-pulse"></div>
+        <div className="absolute -top-1 right-0 w-4 h-3 bg-[var(--site-primary-hover)] opacity-60 animate-pulse delay-500"></div>
       </div>
 
       <div className="relative z-20 mt-2 animate-[fadeIn_3.5s_ease-in-out] px-4">
         <div className="mx-auto max-w-xs sm:max-w-sm md:max-w-md">
           <div className="relative group cursor-pointer mx-auto w-fit">
-            <div className="absolute inset-0 bg-blue-400/30 blur-xl rounded-full animate-pulse group-hover:bg-blue-400/50 transition duration-300"></div>
+            <div className="absolute inset-0 bg-[var(--site-primary)]/30 blur-xl rounded-full animate-pulse group-hover:bg-[var(--site-accent)]/35 transition duration-300"></div>
             <div className="relative bg-black/40 backdrop-blur-sm rounded-full p-5 group-hover:bg-black/60 transition duration-300">
               <svg
-                className="w-10 h-10 text-blue-400 animate-bounce drop-shadow-lg group-hover:scale-110 group-hover:text-blue-300 transition duration-300"
+                className="w-10 h-10 text-[var(--site-primary-hover)] animate-bounce drop-shadow-lg group-hover:scale-110 group-hover:text-[var(--site-heading)] transition duration-300"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2.5"

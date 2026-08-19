@@ -7,13 +7,13 @@ function Card({
   slug,
   description,
   compulsory,
-  gradient = "from-blue-600/20 via-cyan-500/20 to-blue-600/20",
+  gradient = "from-[#0c6177]/20 via-[#149488]/20 to-[#0c6177]/20",
 }) {
   return (
     <Link
       to={`/categories/${slug}`}
       aria-label={`Open the ${title} category page`}
-      className="group relative block max-w-40 cursor-pointer transition-transform duration-300 ease-out hover:z-20 hover:scale-105 hover:drop-shadow-xl hover:drop-shadow-cyan-900 sm:max-w-50 md:max-w-60 xl:max-w-65 2xl:max-w-75"
+      className="group relative block max-w-40 cursor-pointer transition-transform duration-300 ease-out hover:z-20 hover:scale-105 hover:drop-shadow-xl hover:drop-shadow-[var(--site-glow)] sm:max-w-50 md:max-w-60 xl:max-w-65 2xl:max-w-75"
     >
       <article className="relative">
         <div

@@ -28,8 +28,8 @@ const SpotlightCanvas = () => {
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const gradient = ctx.createRadialGradient(x, adjustedY, 0, x, adjustedY, 200);
-      gradient.addColorStop(0, "rgba(0, 123, 255, 0.25)");
-      gradient.addColorStop(1, "rgba(0, 123, 255, 0)");
+      gradient.addColorStop(0, "rgba(13, 118, 111, 0.22)");
+      gradient.addColorStop(1, "rgba(12, 97, 119, 0)");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
