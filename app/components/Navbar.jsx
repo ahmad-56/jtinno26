@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import categoryData from "../categoryData";
 import "../app.css";
 
@@ -34,6 +34,22 @@ function Navbar() {
     setIsCategoriesOpen(false);
   };
 
+  const [activeSection, setActiveSection] = useState("hero");
+  const location = useLocation();
+
+  const isHomeActive =
+    location.pathname === "/" && activeSection === "hero";
+  const isAboutActive =
+    location.pathname === "/" && activeSection === "about";
+  const isCategoriesActive =
+    location.pathname.startsWith("/categories");
+  const isRegisterActive =
+    location.pathname === "/register";
+  const isSponsorsActive =
+    location.pathname === "/" && activeSection === "sponsors";
+  const isContactActive =
+    location.pathname === "/" && activeSection === "contact";
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
 
@@ -45,6 +61,48 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      return;
+    }
+
+    const sectionIds = ["hero", "about", "sponsors", "contact"];
+
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (first, second) =>
+              second.intersectionRatio - first.intersectionRatio
+          );
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-25% 0px -55% 0px",
+        threshold: [0, 0.1, 0.25, 0.5],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [location.pathname]);
 
   return (
     <nav
@@ -136,7 +194,11 @@ function Navbar() {
         >
           <li className="relative w-full sm:w-auto">
             <Link
-              className="nav-link block px-2 py-2 md:px-3"
+              className={`nav-link relative block px-2 py-2 md:px-3 ${
+                isHomeActive
+                  ? "nav-link-active text-[var(--site-heading)]"
+                  : ""
+              }`}
               to="/#hero"
               onClick={closeMenus}
             >
@@ -146,9 +208,16 @@ function Navbar() {
 
           <li className="relative w-full sm:w-auto">
             <Link
-              className="nav-link block px-2 py-2 md:px-3"
+              className={`nav-link relative block px-2 py-2 md:px-3 ${
+                isAboutActive
+                  ? "nav-link-active text-[var(--site-heading)]"
+                  : ""
+              }`}
               to="/#about"
-              onClick={closeMenus}
+              onClick={() => {
+                setActiveSection("hero");
+                closeMenus();
+              }}
             >
               About
             </Link>
@@ -161,13 +230,19 @@ function Navbar() {
           >
             <div className="flex items-center justify-center">
               <Link
-                className="nav-link block px-2 py-2 md:px-3"
+                className={`nav-link relative block px-2 py-2 md:px-3 ${
+                  isCategoriesActive
+                    ? "nav-link-active text-[var(--site-heading)]"
+                    : ""
+                }`}
                 to="/categories"
-                onClick={closeMenus}
+                onClick={() => {
+                  setActiveSection("sponsors");
+                  closeMenus();
+                }}
               >
                 Categories
               </Link>
-
               <button
                 type="button"
                 className="mr-2 rounded p-2 text-[var(--site-accent)] sm:hidden"
@@ -244,20 +319,32 @@ function Navbar() {
 
           <li className="group relative w-full sm:w-auto">
             <Link
-              className="nav-link relative block px-2 py-2 md:px-3"
+              className={`nav-link relative block px-2 py-2 md:px-3 ${
+                isRegisterActive
+                  ? "nav-link-active text-[var(--site-heading)]"
+                  : ""
+              }`}
               to="/register"
               onClick={closeMenus}
             >
               <span className="absolute inset-0 bg-[var(--site-primary)]/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-[var(--site-accent)]/25" />
+
               <span className="relative">Register</span>
             </Link>
           </li>
 
           <li className="relative w-full sm:w-auto">
             <Link
-              className="nav-link block px-2 py-2 md:px-3"
+              className={`nav-link relative block px-2 py-2 md:px-3 ${
+                isSponsorsActive
+                  ? "nav-link-active text-[var(--site-heading)]"
+                  : ""
+              }`}
               to="/#sponsors"
-              onClick={closeMenus}
+              onClick={() => {
+                setActiveSection("sponsors");
+                closeMenus();
+              }}
             >
               Sponsors
             </Link>
@@ -265,9 +352,16 @@ function Navbar() {
 
           <li className="relative w-full sm:w-auto">
             <Link
-              className="nav-link block px-2 py-2 md:px-3"
+              className={`nav-link relative block px-2 py-2 md:px-3 ${
+                isContactActive
+                  ? "nav-link-active text-[var(--site-heading)]"
+                  : ""
+              }`}
               to="/#contact"
-              onClick={closeMenus}
+              onClick={() => {
+                setActiveSection("contact");
+                closeMenus();
+              }}
             >
               Contact
             </Link>
