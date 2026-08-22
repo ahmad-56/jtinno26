@@ -4,7 +4,7 @@ import "../app.css";
 const sponsors = [
   {
     name: "JT Innoventions Sponsor",
-    logo: "/sponsors/Sponsors-RL.png",
+    logo: "/sponsors/tetrapak.png",
   },
 ];
 
