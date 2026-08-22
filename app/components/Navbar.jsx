@@ -224,7 +224,7 @@ function Navbar() {
                         aria-hidden="true"
                       />
 
-                      <span className="truncate">
+                      <span className="truncate" style={{ fontFamily: '"Vermin", sans-serif' }}>
                         {category.title}
                       </span>
                     </span>
