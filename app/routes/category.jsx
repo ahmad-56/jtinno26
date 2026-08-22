@@ -93,7 +93,7 @@ export default function Category() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <Link
           to="/categories"
-          className="mb-8 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] transition hover:opacity-75"
+          className="mb-8 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] transition hover:opacity-75 transition-transform duration-100 hover:-translate-y-0.25"
           style={{ color: theme.primary }}
         >
           <span aria-hidden="true">←</span>
@@ -122,23 +122,35 @@ export default function Category() {
           </div>
 
           <div>
-          {/*
-            <div className="mb-5 flex flex-wrap items-center gap-3">
-              <span
-                className="rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em]"
-                style={{
-                  borderColor: `${theme.primary}66`,
-                  backgroundColor: `${theme.primary}18`,
-                  color: theme.primary,
-                }}
-              >
-                {category.subject}
-              </span>
-              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300">
-                {category.compulsory ? "Compulsory" : "Elective"}
-              </span>
-            </div>
-        */}
+            {category.compulsory && (
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                {category.subject && (
+                  <span
+                    className="rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em]"
+                    style={{
+                      borderColor: `${theme.primary}66`,
+                      backgroundColor: `${theme.primary}18`,
+                      color: theme.primary,
+                      boxShadow: `0 0 12px ${theme.glow}`,
+                    }}
+                  >
+                    {category.subject}
+                  </span>
+                )}
+
+                <span
+                  className="rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]"
+                  style={{
+                    borderColor: `${theme.secondary}66`,
+                    backgroundColor: `${theme.secondary}18`,
+                    color: theme.secondary,
+                    boxShadow: `0 0 12px ${theme.glow}`,
+                  }}
+                >
+                  Compulsory
+                </span>
+              </div>
+            )}
             <p
               className="mb-3 text-xs uppercase tracking-[0.3em]"
               style={{ color: theme.secondary }}
