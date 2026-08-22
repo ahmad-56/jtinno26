@@ -81,7 +81,6 @@ function Contact() {
                 `,
               }}
             >
-              {/* Animated glowing circle */}
               <div
                 className="pointer-events-none absolute right-4 top-4 z-20 flex h-5 w-5 items-center justify-center"
                 aria-hidden="true"
@@ -101,7 +100,6 @@ function Contact() {
                   }}
                 />
               </div>
-              {/* Glow behind the heading */}
               <div
                 className="pointer-events-none absolute left-1/2 top-0 h-40 w-72 -translate-x-1/2 -translate-y-1/3 rounded-full opacity-25 blur-3xl transition-opacity duration-300 group-hover:opacity-40"
                 style={{
@@ -109,8 +107,6 @@ function Contact() {
                 }}
                 aria-hidden="true"
               />
-
-              {/* Subtle inner border glow */}
               <div
                 className="pointer-events-none absolute inset-0 rounded-[10px]"
                 style={{
@@ -126,6 +122,7 @@ function Contact() {
                     style={{
                       color: contact.accent,
                       textShadow: `0 0 18px ${contact.accent}55`,
+                      fontFamily: '"Vermin", sans-serif',
                     }}
                   >
                     {contact.name}
