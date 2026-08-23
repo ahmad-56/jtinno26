@@ -6,6 +6,7 @@ const routes = [
     route("/categories", "routes/categories.jsx"),
     route("/categories/:categorySlug", "routes/coming-soon.jsx"),
     route("/register", "routes/register.jsx"),
+    route("/regitest", "routes/reginewpage.jsx"),
   ]),
 ];
 
