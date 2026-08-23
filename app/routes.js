@@ -5,8 +5,8 @@ const routes = [
     index("routes/home.jsx"),
     route("/categories", "routes/categories.jsx"),
     route("/categories/:categorySlug", "routes/coming-soon.jsx"),
-    route("/register", "routes/register.jsx"),
-    route("/regitest", "routes/reginewpage.jsx"),
+    route("/register", "routes/regicountdown.jsx"),
+    route("/preview", "routes/preview.jsx"),
   ]),
 ];
 

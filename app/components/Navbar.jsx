@@ -44,7 +44,7 @@ function Navbar() {
   const isCategoriesActive =
     location.pathname.startsWith("/categories");
   const isRegisterActive =
-    location.pathname === "/register";
+    location.pathname === "/preview";
   const isSponsorsActive =
     location.pathname === "/" && activeSection === "sponsors";
   const isContactActive =
@@ -324,7 +324,7 @@ function Navbar() {
                   ? "nav-link-active text-[var(--site-heading)]"
                   : ""
               }`}
-              to="/register"
+              to="/preview"
               onClick={closeMenus}
             >
               <span className="absolute inset-0 bg-[var(--site-primary)]/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-[var(--site-accent)]/25" />
