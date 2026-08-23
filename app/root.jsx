@@ -36,11 +36,6 @@ export function Layout({ children }) {
           content="width=device-width, initial-scale=1"
         />
 
-        <meta
-          name="google-site-verification"
-          content="Gea7yC6X5XPs53TWI4ss7y6pDV98nTTxUZ6YouJDkps"
-        />
-
         <Meta />
         <Links />
       </head>
