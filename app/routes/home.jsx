@@ -4,8 +4,6 @@ import About from "../components/About";
 import Sponsors from "../components/Sponsors";
 import Contact from "../components/Contact";
 
-// transferred metadata here cause it wasn't working in root.jsx
-
 export const meta = () => {
   return [
     { title: "JT Innoventions'26" },
@@ -23,9 +21,9 @@ export const meta = () => {
       property: "og:description", 
       content: "Join Pakistan's premier Science Olympiad! 3 days of Science, Mathematics, IT, Robotics & Astronomy competitions. Open to students nationwide. Fostering creativity, innovation & critical thinking." 
     },
-    { property: "og:url", content: "https://jt-innoventions25.vercel.app" },
+    { property: "og:url", content: "https://lgsjtinnoventions.com" },
     { property: "og:site_name", content: "Innoventions'26 - LGS JT Science Olympiad" },
-    { property: "og:image", content: "https://jt-innoventions25.vercel.app/og.png" },
+    { property: "og:image", content: "https://lgsjtinnoventions.com/og.png" },
 
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: "Innoventions'26 - Pakistan's Premier Science Olympiad" },
@@ -44,8 +42,7 @@ export const meta = () => {
     { name: "geo.region", content: "PK-PB" },
     { name: "geo.placename", content: "Lahore, Punjab, Pakistan" },
     { name: "geo.position", content: "31.5204;74.3587" },
-    { name: "ICBM", content: "31.5204, 74.3587" },
-    {name: "google-site-verification", content: "kU86qvaNYBivvaBfptQkGRatQU9nN7ifNL8LZyfKXFI"}
+    { name: "ICBM", content: "31.5204, 74.3587" }
   ];
 };
 
