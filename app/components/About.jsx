@@ -129,16 +129,13 @@ function About({ id }) {
           WHAT IS INNOVENTIONS?
         </h1>
         <p className="my-7 sm:my-8 font-open-sans font-semibold md:font-medium tracking-wide text-sm/relaxed md:text-base lg:text-[17px]">
-          Innoventions ’26 is LGS Johar Town’s three-day national science
-          olympiad, bringing together students from across Pakistan for an
-          immersive celebration of curiosity, creativity and competition.
-          Across 14 diverse categories—including pure sciences, mathematics,
-          computing, engineering, robotics, astronomy, environmental science
-          and creative problem-solving—delegates will investigate, design,
-          decode, build and present under pressure. Guided by the spirit of
-          “Indulge. Invent. Innovate.”, Innoventions ’26 gives young thinkers a
-          platform to challenge convention, transform knowledge into action and
-          bring their boldest ideas to life.
+          Innoventions ’26 is LGS Johar Town’s three-day national science olympiad. 
+          For three days, students from all over Pakistan will come together to learn, 
+          compete, and create. With 13 categories covering everything from physics and 
+          math to coding, engineering, robotics, astronomy, sustainability, and innovation 
+          challenges, participants will investigate, prototype, and showcase their work.
+          Driven by “Indulge. Invent. Innovate.” Innoventions ’26 is where curiosity meets 
+          action and ideas become real.
         </p>
         <div>
           <div className="relative group inline-block p-1">
