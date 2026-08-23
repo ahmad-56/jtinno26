@@ -5,7 +5,6 @@ import Daedalus from "./assets/CategoriesImg/daedalus.webp";
 import Dassp from "./assets/CategoriesImg/dassp.webp";
 import Envirothon from "./assets/CategoriesImg/envirothon.webp";
 import Fantasm from "./assets/CategoriesImg/fantasm.webp";
-import Feynmans from "./assets/CategoriesImg/feynmans.webp";
 import Infinitesima from "./assets/CategoriesImg/infinitesima.webp";
 import MindsInMotion from "./assets/CategoriesImg/mindsInMotion.webp";
 import Panacea from "./assets/CategoriesImg/panacea.webp";
@@ -23,8 +22,9 @@ const categoryData = [
     img: Dassp,
     pdfLink: "/StudyGuides/DASSP.pdf",
     description:
-      "As our first compulsory category, Dr. Abdus Salam Science Project combines pure sciences to produce a category that amalgamates chemical reactions, theoretical physics and anatomical biology. So delegates, are you ready to overcome the curveball in our indispensable category?",
-    gradient: "from-blue-600/20 via-cyan-400/20 to-blue-500/20",
+      "One spark, one chain, one shot at glory. DASSP fuses the precision of chemistry, the logic of physics, and the wonder of biology into our pure sciences category—daring delegates to chain together every answer, push their luck, and test their limits in a relentless pursuit of scientific glory.",
+    gradient:
+      "from-blue-600/20 via-cyan-400/20 to-blue-500/20",
     theme: {
       primary: "#38bdf8",
       secondary: "#22d3ee",
@@ -41,8 +41,9 @@ const categoryData = [
     img: Fraudiye,
     pdfLink: "/StudyGuides/FraudiyeFiles.pdf",
     description:
-      "Did the butler do it? Did you do it? Unveil the mystery in our second compulsory category. Trust no statistic or, as we at Fraudiye Files like to say, nothing is more deceptive than a simple fact.",
-    gradient: "from-orange-600/20 via-red-500/20 to-orange-500/20",
+      "Did you see what happened, or only what you were meant to see? Which evidence survives scrutiny, and which was planted to mislead you? When every clue points somewhere, who decides which direction is the truth? Follow the trail. Question everything. Trust no one.",
+    gradient:
+      "from-orange-600/20 via-red-500/20 to-orange-500/20",
     theme: {
       primary: "#fb7185",
       secondary: "#f97316",
@@ -59,8 +60,9 @@ const categoryData = [
     img: Fantasm,
     pdfLink: "/StudyGuides/Fantasm.pdf",
     description:
-      "The plot thickens in our pop culture category. Fantasm amalgamates the thrill of comic-book storytelling with world-building in recognisable scenes.",
-    gradient: "from-red-700/20 via-red-500/20 to-orange-600/20",
+      "The plot thickens in our pop culture category. Fantasm amalgamates storytelling and fandom culture through each round.",
+    gradient:
+      "from-red-700/20 via-red-500/20 to-orange-600/20",
     theme: {
       primary: "#f87171",
       secondary: "#fb923c",
@@ -77,8 +79,9 @@ const categoryData = [
     img: Decodum,
     pdfLink: "/StudyGuides/Decodum.pdf",
     description:
-      "Decipher cryptography, different languages and codes to assess pattern recognition in Decodum. In fact, why wait? Here is a code to get ahead: ... . . / -.-- --- ..- / --- -. / .---- ..---",
-    gradient: "from-purple-600/20 via-blue-500/20 to-cyan-400/20",
+      "Solve cryptic codes and concealed messages within an immersive alternate reality game that fuses narrative storytelling with problem-solving. The division evaluates critical thinking, pattern recognition, originality, and decoding ability as participants step into the shoes of codebreakers, uncovering layers of mystery through an engaging and intellectually stimulating experience.",
+    gradient:
+      "from-purple-600/20 via-blue-500/20 to-cyan-400/20",
     theme: {
       primary: "#a78bfa",
       secondary: "#22d3ee",
@@ -95,8 +98,9 @@ const categoryData = [
     img: MindsInMotion,
     pdfLink: "/StudyGuides/MindsInMotion.pdf",
     description:
-      "Achieve a fully functional frontal lobe before your mid-twenties with Minds in Motion. Side effects may include a crippling addiction to self-diagnosing psychological illness.",
-    gradient: "from-pink-500/20 via-purple-400/20 to-blue-500/20",
+      "Mind over matter starts here in our psychology category. Minds in Motion explores the inner workings of human behaviour, blending the depth of cognitive science with the intriguing patterns of the everyday mind.",
+    gradient:
+      "from-pink-500/20 via-purple-400/20 to-blue-500/20",
     theme: {
       primary: "#e879f9",
       secondary: "#a78bfa",
@@ -113,8 +117,9 @@ const categoryData = [
     img: Panacea,
     pdfLink: "/StudyGuides/Panacea.pdf",
     description:
-      "Practise life sciences and prescribe medicines to your own patients at Panacea, because who needs a residency when lives are on the line?",
-    gradient: "from-yellow-500/20 via-orange-400/20 to-yellow-600/20",
+      "A stethoscope pressed to Panacea's chest would pick up nothing but the frantic thumping of buzzers and the occasional flatline of a wrong guess. Ask it for a diagnosis, though, and it'll tell you the patient just needs more extra credit.",
+    gradient:
+      "from-yellow-500/20 via-orange-400/20 to-yellow-600/20",
     theme: {
       primary: "#facc15",
       secondary: "#fb923c",
@@ -131,8 +136,9 @@ const categoryData = [
     img: Infinitesima,
     pdfLink: "/StudyGuides/Infinitesima.pdf",
     description:
-      "A graphing calculator to show the imaginary solution to the square root of a negative number would surely come in handy at Infinitesima. Maybe the practical application of mathematical concepts is the friends we made along the way.",
-    gradient: "from-blue-500/20 via-cyan-400/20 to-blue-600/20",
+      "An abacus that counts how many times you second-guess yourself would surely come in handy at Infinitesima. By round two, it would probably just give up and count backwards.",
+    gradient:
+      "from-blue-500/20 via-cyan-400/20 to-blue-600/20",
     theme: {
       primary: "#60a5fa",
       secondary: "#22d3ee",
@@ -149,8 +155,9 @@ const categoryData = [
     img: Steam,
     pdfLink: "/StudyGuides/steAm.pdf",
     description:
-      "Reveal the art and conceal the artist in steAm. Showcase your artistic impression in our fusion of arts and science. After all, all art is quite meaningless.",
-    gradient: "from-purple-500/20 via-pink-400/20 to-purple-600/20",
+      "Science meets imagination in our creative art category. steAm amalgamates the rigour of ecological world-building with the boundless expression of original design.",
+    gradient:
+      "from-purple-500/20 via-pink-400/20 to-purple-600/20",
     theme: {
       primary: "#c084fc",
       secondary: "#f472b6",
@@ -167,8 +174,9 @@ const categoryData = [
     img: Daedalus,
     pdfLink: "/StudyGuides/Daedalus_s.pdf",
     description:
-      "Put your engineering prowess to the test. Daedalus Apprenticeship can simultaneously ask you to build a car chassis and a motor engine.",
-    gradient: "from-blue-400/20 via-cyan-300/20 to-blue-500/20",
+      "Build. Innovate. Optimize. Turn engineering principles into real-world solutions. Design prototypes, tackle challenges, and optimize your creations through creativity, critical thinking, and applied science.",
+    gradient:
+      "from-blue-400/20 via-cyan-300/20 to-blue-500/20",
     theme: {
       primary: "#67e8f9",
       secondary: "#38bdf8",
@@ -185,8 +193,9 @@ const categoryData = [
     img: CygnusVeil,
     pdfLink: "/StudyGuides/Cygnus_Veil.pdf",
     description:
-      "Identify hidden constellations and celestial bodies in Cygnus Veil, our astronomy category. You might even explore the origins of the world on your lookout.",
-    gradient: "from-yellow-500/20 via-orange-400/20 to-yellow-600/20",
+      "Explore the mysteries of astronomy through challenges that test knowledge and problem-solving while uncovering the wonders of the universe.",
+    gradient:
+      "from-yellow-500/20 via-orange-400/20 to-yellow-600/20",
     theme: {
       primary: "#fcd34d",
       secondary: "#818cf8",
@@ -203,8 +212,9 @@ const categoryData = [
     img: BitByBit,
     pdfLink: "/StudyGuides/BitByBit.pdf",
     description:
-      "Test your coding skills with Bit by Bit, our Information Technology and Computer Science category. The stronger the code, the higher the chances of winning.",
-    gradient: "from-green-500/20 via-cyan-400/20 to-green-600/20",
+      "Bit by Bit investigates the intersection of technology within the sphere of digital innovation. Participants test their skills in data analysis, cybersecurity, programming, and related computing disciplines. This track empowers competitors to leverage information technology to forge functional solutions, moving from network-troubleshooting simulations to coding battles.",
+    gradient:
+      "from-green-500/20 via-cyan-400/20 to-green-600/20",
     theme: {
       primary: "#34d399",
       secondary: "#22d3ee",
@@ -221,8 +231,9 @@ const categoryData = [
     img: Projectx,
     pdfLink: "/StudyGuides/ProjectX.pdf",
     description:
-      "Building Mindstorm Legos pays off in Project X. Program robots to perform autonomous functions and integrate coding with real-world applications in our robotics category.",
-    gradient: "from-red-600/20 via-orange-500/20 to-red-500/20",
+      "A multimeter pressed to Project X would pick up nothing but the frantic hum of a 90-minute Nano build, the silent panic of a line-follower losing its track, and the violent crunch of Bluetooth magnet duels on the narrow bridge. Ask it for a winning strategy, though, and it'll tell you the bot just needs a faster sketch, a lucky flag steal, and a whole lot of extra credit.",
+    gradient:
+      "from-red-600/20 via-orange-500/20 to-red-500/20",
     theme: {
       primary: "#fb7185",
       secondary: "#fb923c",
@@ -239,8 +250,9 @@ const categoryData = [
     img: Envirothon,
     pdfLink: "/StudyGuides/Envirothon.pdf",
     description:
-      "Global temperatures are rising. Investigate climate change and help devise ecological solutions to overcome a global catastrophe in our environmental science category.",
-    gradient: "from-green-600/20 via-emerald-500/20 to-green-700/20",
+      "This season's Envirothon category focuses on pressing environmental and climate challenges facing Pakistan and the world. Participants will explore these crises from multiple perspectives through tasks that challenge them to develop creative, practical, and meaningful solutions for a more sustainable future.",
+    gradient:
+      "from-green-600/20 via-emerald-500/20 to-green-700/20",
     theme: {
       primary: "#4ade80",
       secondary: "#2dd4bf",
