@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import schoolBackground from "../assets/school.jpg";
 
-const REGISTRATION_OPENING_DATE = "2026-08-24T12:00:00+05:00";
+const REGISTRATION_OPENING_DATE = "2026-08-25T10:00:00+05:00";
 
 export function meta() {
   return [
