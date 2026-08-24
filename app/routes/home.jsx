@@ -22,8 +22,9 @@ export const meta = () => {
       content: "Join Pakistan's premier Science Olympiad! 3 days of Science, Mathematics, IT, Robotics & Astronomy competitions. Open to students nationwide. Fostering creativity, innovation & critical thinking." 
     },
     { property: "og:url", content: "https://lgsjtinnoventions.com" },
-    { property: "og:site_name", content: "Innoventions'26 - LGS JT Science Olympiad" },
+    { property: "og:site_name", content: "JT Innoventions'26 - LGS JT Science Olympiad" },
     { property: "og:image", content: "https://lgsjtinnoventions.com/og.png" },
+    { property: "og:image:alt", content: "JT Innoventions '26", },
 
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: "Innoventions'26 - Pakistan's Premier Science Olympiad" },
