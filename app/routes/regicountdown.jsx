@@ -1,52 +1,71 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import schoolBackground from "../assets/school.jpg";
+import CountdownTimer from "../components/Timer";
 
-const REGISTRATION_OPENING_DATE = "2026-08-25T10:00:00+05:00";
+const REGISTRATION_OPENING_DATE =
+  "2026-08-25T10:00:00+05:00";
 
 export function meta() {
   return [
     {
-      title: "Registrations | JT Innoventions '26",
+      title:
+        "Registration Coming Soon | JT Innoventions '26",
+    },
+    {
+      name: "description",
+      content:
+        "Registration for JT Innoventions '26 will open soon.",
     },
   ];
 }
 
-function calculateTimeLeft() {
-  const difference =
-    new Date(REGISTRATION_OPENING_DATE).getTime() - Date.now();
+function GlowingLink({
+  to,
+  children,
+  theme,
+}) {
+  return (
+    <div className="group relative inline-flex">
+      <div
+        className="pointer-events-none absolute -inset-3 rounded-xl opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
+        style={{
+          background: `linear-gradient(
+            90deg,
+            ${theme.primary}33,
+            ${theme.secondary}33,
+            ${theme.primary}33
+          )`,
+        }}
+        aria-hidden="true"
+      />
 
-  if (difference <= 0) {
-    return null;
-  }
+      <Link
+        to={to}
+        className="relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-md border border-white/20 px-6 py-2 text-sm font-medium uppercase tracking-widest text-white backdrop-blur-md transition duration-300 hover:-translate-y-1 active:scale-95"
+        style={{
+          backgroundColor:
+            "rgba(17, 17, 17, 0.65)",
+          boxShadow: `0 0 12px ${theme.glow}`,
+        }}
+      >
+        <span
+          className="pointer-events-none absolute inset-0 rounded-md border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            borderColor: theme.primary,
+            boxShadow: `inset 0 0 10px ${theme.glow}`,
+          }}
+          aria-hidden="true"
+        />
 
-  return {
-    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    hours: Math.floor(
-      (difference / (1000 * 60 * 60)) % 24
-    ),
-    minutes: Math.floor((difference / (1000 * 60)) % 60),
-    seconds: Math.floor((difference / 1000) % 60),
-  };
+        <span className="relative z-10 inline-flex items-center gap-2">
+          {children}
+        </span>
+      </Link>
+    </div>
+  );
 }
 
-export default function Register() {
-  const [timeLeft, setTimeLeft] = useState(null);
-  const [hasLoaded, setHasLoaded] = useState(false);
-
-  useEffect(() => {
-    const updateCountdown = () => {
-      setTimeLeft(calculateTimeLeft());
-      setHasLoaded(true);
-    };
-
-    updateCountdown();
-
-    const timer = window.setInterval(updateCountdown, 1000);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
+export default function RegistrationComingSoon() {
   const theme = {
     primary: "#149488",
     secondary: "#0d766f",
@@ -80,6 +99,7 @@ export default function Register() {
         backgroundRepeat: "no-repeat",
       }}
     >
+      {/* Background grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
@@ -99,6 +119,7 @@ export default function Register() {
         aria-hidden="true"
       />
 
+      {/* Top-left glowing dot */}
       <div
         className="pointer-events-none absolute left-[10%] top-[20%] h-3 w-3 animate-pulse rounded-full"
         style={{
@@ -108,6 +129,7 @@ export default function Register() {
         aria-hidden="true"
       />
 
+      {/* Bottom-right glowing dot */}
       <div
         className="pointer-events-none absolute bottom-[20%] right-[12%] h-2 w-2 animate-pulse rounded-full"
         style={{
@@ -128,6 +150,7 @@ export default function Register() {
           `,
         }}
       >
+        {/* Top glowing line */}
         <div
           className="absolute inset-x-0 top-0 h-1"
           style={{
@@ -175,69 +198,25 @@ export default function Register() {
         />
 
         <p className="mx-auto mb-8 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-          Registration for JT Innoventions ’26 will open soon.
+          Registration for JT Innoventions ’26
+          will open soon.
         </p>
 
-        {/* Countdown */}
-        {hasLoaded && timeLeft ? (
-          <div
-            className="mx-auto mb-9 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
-            aria-label="Time remaining until registration opens"
-          >
-            {Object.entries(timeLeft).map(([unit, value]) => (
-              <div
-                key={unit}
-                className="rounded-xl border bg-black/50 px-3 py-4"
-                style={{
-                  borderColor: `${theme.primary}55`,
-                  boxShadow: `inset 0 0 18px ${theme.glow}`,
-                }}
-              >
-                <span
-                  className="block font-mono text-3xl font-bold sm:text-4xl"
-                  style={{
-                    color: theme.primary,
-                    textShadow: `0 0 14px ${theme.glow}`,
-                  }}
-                >
-                  {String(value).padStart(2, "0")}
-                </span>
+        <div className="mb-9 flex justify-center">
+          <CountdownTimer
+            targetDate={
+              REGISTRATION_OPENING_DATE
+            }
+            expiredText="Registration is now open"
+          />
+        </div>
 
-                <span className="mt-2 block text-[10px] uppercase tracking-[0.2em] text-slate-400 sm:text-xs">
-                  {unit}
-                </span>
-              </div>
-            ))}
-          </div>
-        ) : hasLoaded ? (
-          <div className="mb-9">
-            <p
-              className="text-xl font-semibold uppercase tracking-[0.15em]"
-              style={{
-                color: theme.primary,
-                textShadow: `0 0 16px ${theme.glow}`,
-              }}
-            >
-              Registration is now open
-            </p>
-          </div>
-        ) : (
-          <div className="mb-9 h-24" aria-hidden="true" />
-        )}
-
-        <Link
+        <GlowingLink
           to="/"
-          className="inline-flex items-center justify-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-y-1"
-          style={{
-            borderColor: theme.primary,
-            backgroundColor: `${theme.primary}20`,
-            color: theme.primary,
-            boxShadow: `0 0 20px ${theme.glow}`,
-          }}
+          theme={theme}
         >
-          <span aria-hidden="true">←</span>
-          Return home
-        </Link>
+          <span>Return Home</span>
+        </GlowingLink>
       </section>
     </main>
   );
