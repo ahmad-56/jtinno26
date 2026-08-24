@@ -4,7 +4,7 @@ const routes = [
   layout("routes/layout.jsx", [
     index("routes/home.jsx"),
     route("/categories", "routes/categories.jsx"),
-    route("/categories/:categorySlug", "routes/coming-soon.jsx"),
+    route("/categories/:categorySlug", "routes/category.jsx"),
     route("/register", "routes/regicountdown.jsx"),
     route("/preview", "routes/preview.jsx"),
   ]),
