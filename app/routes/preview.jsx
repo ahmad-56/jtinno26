@@ -249,8 +249,7 @@ export default function RegistrationDocuments() {
           </h1>
 
           <p className="mx-auto max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-            Please fill the following
-            documents before starting your registration.
+            Adherence to the Code of Conduct and a signed Liability Waiver are mandatory for all delegates.
           </p>
         </header>
 
