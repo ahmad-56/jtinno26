@@ -86,3 +86,5 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 
 Built with ❤️ using React Router.
 # JTInnoventions26
+lgsjtinnoventions.com
+jtinno26.vercel.app
