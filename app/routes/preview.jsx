@@ -1,7 +1,10 @@
-import { Link } from "react-router";
+import { useCallback } from "react";
+import { useNavigate } from "react-router";
+import Button from "../components/Button";
 import schoolBackground from "../assets/school.jpg";
 
-const head_delegate = "/rules/headdelegate.pdf";
+const head_delegate =
+  "/rules/headdelegate.pdf";
 
 const codeofconduct =
   "/rules/codeofconduct.pdf";
@@ -14,7 +17,7 @@ export function meta() {
     {
       name: "description",
       content:
-        "Register for JT Innoventions '26.",
+        "Review the required documents and register for JT Innoventions '26.",
     },
   ];
 }
@@ -59,22 +62,23 @@ function ExternalLinkIcon() {
   );
 }
 
-function RegisterButton({ theme }) {
+function RegisterButton({ onClick }) {
   return (
-    <Link
-      to={"/register"}
-      target="_blank"
-      rel="noreferrer"
-      className="inline-flex items-center justify-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-y-1"
-      style={{
-        borderColor: theme.primary,
-        backgroundColor: `${theme.primary}20`,
-        color: theme.primary,
-        boxShadow: `0 0 20px ${theme.glow}`,
-      }}
-    >
-      Start Registeration
-    </Link>
+    <div className="group relative inline-flex animate-[fadeIn_3s_ease-in-out]">
+      <div
+        className="pointer-events-none absolute -inset-3 rounded-xl bg-gradient-to-r from-[var(--site-primary)]/20 via-[var(--site-accent)]/20 to-[var(--site-primary)]/20 opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
+        aria-hidden="true"
+      />
+
+      <div className="relative rounded-lg p-1">
+        <Button
+          text="START REGISTRATION"
+          color="rgba(17, 17, 17, 0.65)"
+          glowColor="#149488"
+          onClick={onClick}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -87,6 +91,19 @@ function PDFCard({ document }) {
         boxShadow: `0 0 30px ${document.glow}`,
       }}
     >
+      <div
+        className="absolute inset-x-0 top-0 h-1"
+        style={{
+          background: `linear-gradient(
+            90deg,
+            transparent,
+            ${document.accent},
+            transparent
+          )`,
+          boxShadow: `0 0 14px ${document.glow}`,
+        }}
+        aria-hidden="true"
+      />
 
       <div className="px-2 pb-4 pt-3">
         <h2
@@ -111,7 +128,13 @@ function PDFCard({ document }) {
   );
 }
 
-export default function Register() {
+export default function RegistrationDocuments() {
+  const navigate = useNavigate();
+
+  const handleRegisterClick = useCallback(() => {
+    navigate("/register");
+  }, [navigate]);
+
   const theme = {
     primary: "#149488",
     secondary: "#0d766f",
@@ -199,8 +222,11 @@ export default function Register() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
+
         <div className="mb-10 flex justify-start">
-          <RegisterButton theme={theme} />
+          <RegisterButton
+            onClick={handleRegisterClick}
+          />
         </div>
 
         <header className="mb-12 text-center">
@@ -223,7 +249,8 @@ export default function Register() {
           </h1>
 
           <p className="mx-auto max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-            Please fill out the following documents.
+            Please fill the following
+            documents before starting your registration.
           </p>
         </header>
 
