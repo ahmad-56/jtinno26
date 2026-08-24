@@ -9,7 +9,7 @@ export const meta = () => {
     { title: "JT Innoventions'26" },
     { 
       name: "description", 
-      content: "Innoventions '26 is LGS Johar Town's three-day national science olympiad, bringing together students from across Pakistan across 14 categories in science, mathematics, computing, engineering, robotics, astronomy and creative problem-solving.", 
+      content: "Innoventions '26 is LGS Johar Town's three-day national science olympiad, bringing together students from across Pakistan across 13 categories in science, mathematics, computing, engineering, robotics, astronomy and creative problem-solving.", 
     },
     { name: "keywords", content: "Innoventions 2026, Science Olympiad, LGS, JT, Lahore Grammar School,mathematics,JT Innoventions 26" },
     { name: "author", content: "LGS JT" },
