@@ -35,6 +35,46 @@ export default function ComingSoon() {
     glow: "rgba(20, 148, 136, 0.35)",
   };
 
+function GlowingLink({ to, children, theme }) {
+  return (
+    <div className="group relative inline-flex">
+      <div
+        className="pointer-events-none absolute -inset-3 rounded-xl opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
+        style={{
+          background: `linear-gradient(
+            90deg,
+            ${theme.primary}33,
+            ${theme.secondary}33,
+            ${theme.primary}33
+          )`,
+        }}
+        aria-hidden="true"
+      />
+
+      <Link
+        to={to}
+        className="relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-md border border-white/20 px-6 py-2 text-sm font-medium uppercase tracking-widest text-white backdrop-blur-md active:scale-95"
+        style={{
+          backgroundColor: "rgba(17, 17, 17, 0.65)",
+          boxShadow: `0 0 12px ${theme.glow}`,
+        }}
+      >
+        <span
+          className="pointer-events-none absolute inset-0 rounded-md border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            borderColor: theme.primary,
+            boxShadow: `inset 0 0 10px ${theme.glow}`,
+          }}
+          aria-hidden="true"
+        />
+
+        <span className="relative z-10 inline-flex items-center gap-2">
+          {children}
+        </span>
+      </Link>
+    </div>
+  );
+}
   return (
     <main
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pb-20 pt-28 text-slate-100"
@@ -62,24 +102,7 @@ export default function ComingSoon() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Grid background */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage: `
-            linear-gradient(${theme.primary} 1px, transparent 1px),
-            linear-gradient(
-              90deg,
-              ${theme.primary} 1px,
-              transparent 1px
-            )
-          `,
-          backgroundSize: "48px 48px",
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Decorative glows */}
+  
       <div
         className="pointer-events-none absolute left-[10%] top-[20%] h-3 w-3 animate-pulse rounded-full"
         style={{
@@ -109,7 +132,7 @@ export default function ComingSoon() {
           `,
         }}
       >
-        {/* Top glowing line */}
+
         <div
           className="absolute inset-x-0 top-0 h-1"
           style={{
@@ -165,19 +188,12 @@ export default function ComingSoon() {
           aria-hidden="true"
         />
 
-        <Link
-          to="/categories"
-          className="inline-flex items-center justify-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-y-1"
-          style={{
-            borderColor: theme.primary,
-            backgroundColor: `${theme.primary}20`,
-            color: theme.primary,
-            boxShadow: `0 0 20px ${theme.glow}`,
-          }}
-        >
-          <span aria-hidden="true">←</span>
-          All categories
-        </Link>
+      <GlowingLink
+        to="/categories"
+        theme={theme}
+      >
+        <span>All Categories</span>
+      </GlowingLink>
       </section>
     </main>
   );
