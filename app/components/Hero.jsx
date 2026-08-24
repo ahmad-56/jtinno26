@@ -18,7 +18,7 @@ const Hero = ({ id = "hero" }) => {
   const ANIMATION_INTERVAL = 1000 / 60;
 
   const handleRegisterClick = useCallback(() => {
-    navigate("/register");
+    navigate("/preview");
   }, [navigate]);
 
   // Detect if device is mobile
