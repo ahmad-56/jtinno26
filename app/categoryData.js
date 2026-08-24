@@ -250,7 +250,7 @@ const categoryData = [
     img: Envirothon,
     pdfLink: "/StudyGuides/Envirothon.pdf",
     description:
-      "This season's Envirothon category focuses on pressing environmental and climate challenges facing Pakistan and the world. Participants will explore these crises from multiple perspectives through tasks that challenge them to develop creative, practical, and meaningful solutions for a more sustainable future.",
+      "Are you ready to take on the challenges our planet faces? This season’s Envirothon is your chance to Explore, Innovate, and Sustain! Tackle urgent environmental and climate issues, think creatively, and develop bold solutions for a greener, more sustainable future.",
     gradient:
       "from-green-600/20 via-emerald-500/20 to-green-700/20",
     theme: {
