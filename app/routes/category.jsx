@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router";
 import categoryData from "../categoryData";
 import schoolBackground from "../assets/school.jpg";
+import Button from "../components/Button";
 
 export function meta({ params }) {
   const category = categoryData.find(
@@ -43,8 +44,47 @@ export default function Category() {
       </main>
     );
   }
+const handleOpenStudyGuide = () => {
+  window.open(
+    category.pdfLink,
+    "_blank",
+    "noopener,noreferrer"
+  );
+};
+
+  const handleDownloadStudyGuide = () => {
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = category.pdfLink;
+    downloadLink.download =
+      `${category.title}-Study-Guide.pdf`;
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  };
 
   const { theme } = category;
+
+function DownloadIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4"
+    >
+      <path d="M12 3v12" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M5 21h14" />
+    </svg>
+  );
+}
 
   return (
     <main
@@ -122,22 +162,20 @@ export default function Category() {
           </div>
 
           <div>
-            {category.compulsory && (
-              <div className="mb-5 flex flex-wrap items-center gap-3">
-                {category.subject && (
-                  <span
-                    className="rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em]"
-                    style={{
-                      borderColor: `${theme.primary}66`,
-                      backgroundColor: `${theme.primary}18`,
-                      color: theme.primary,
-                      boxShadow: `0 0 12px ${theme.glow}`,
-                    }}
-                  >
-                    {category.subject}
-                  </span>
-                )}
+            <div className="mb-5 flex flex-wrap items-center gap-3">
+              <span
+                className="rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em]"
+                style={{
+                  borderColor: `${theme.primary}66`,
+                  backgroundColor: `${theme.primary}18`,
+                  color: theme.primary,
+                  boxShadow: `0 0 12px ${theme.glow}`,
+                }}
+              >
+                {category.subject}
+              </span>
 
+              {category.compulsory && (
                 <span
                   className="rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]"
                   style={{
@@ -149,8 +187,9 @@ export default function Category() {
                 >
                   Compulsory
                 </span>
-              </div>
-            )}
+              )}
+            </div>
+
             <p
               className="mb-3 text-xs uppercase tracking-[0.3em]"
               style={{ color: theme.secondary }}
@@ -171,45 +210,59 @@ export default function Category() {
               {category.description}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href={category.pdfLink}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-lg border px-5 py-3 text-sm font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  borderColor: theme.primary,
-                  backgroundColor: `${theme.primary}20`,
-                  color: theme.primary,
-                  boxShadow: `0 0 20px ${theme.glow}`,
-                }}
-              >
-                Open study guide
-              </a>
-
-              <a
-                href={category.pdfLink}
-                download
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/10"
-              >
-                <svg
+            <div className="mt-8 flex flex-wrap gap-5">
+              <div className="group relative inline-flex">
+                <div
+                  className="pointer-events-none absolute -inset-3 rounded-xl opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
+                  style={{
+                    background: `linear-gradient(
+                      90deg,
+                      ${theme.primary}33,
+                      ${theme.secondary}33,
+                      ${theme.primary}33
+                    )`,
+                  }}
                   aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-4 w-4"
-                >
-                  <path d="M12 3v12" />
-                  <path d="m7 10 5 5 5-5" />
-                  <path d="M5 21h14" />
-                </svg>
+                />
 
-                <span>Download PDF</span>
-              </a>
+                <div className="relative rounded-lg p-1">
+                  <Button
+                    text="OPEN STUDY GUIDE"
+                    color="rgba(17, 17, 17, 0.65)"
+                    glowColor={theme.primary}
+                    onClick={handleOpenStudyGuide}
+                  />
+                </div>
+              </div>
+
+              <div className="group relative inline-flex">
+                <div
+                  className="pointer-events-none absolute -inset-3 rounded-xl opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
+                  style={{
+                    background: `linear-gradient(
+                      90deg,
+                      ${theme.primary}33,
+                      ${theme.secondary}33,
+                      ${theme.primary}33
+                    )`,
+                  }}
+                  aria-hidden="true"
+                />
+
+                <div className="relative rounded-lg p-1">
+                  <Button
+                    text={
+                      <span className="inline-flex items-center gap-2">
+                        <DownloadIcon />
+                        <span>Download PDF</span>
+                      </span>
+                    }
+                    color="rgba(17, 17, 17, 0.65)"
+                    glowColor={theme.primary}
+                    onClick={handleDownloadStudyGuide}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
