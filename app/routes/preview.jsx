@@ -64,7 +64,7 @@ function ExternalLinkIcon() {
 
 function RegisterButton({ onClick }) {
   return (
-    <div className="group relative inline-flex animate-[fadeIn_3s_ease-in-out]">
+    <div className="group relative inline-flex animate-[fadeIn_1s_ease-in-out]">
       <div
         className="pointer-events-none absolute -inset-3 rounded-xl bg-gradient-to-r from-[var(--site-primary)]/20 via-[var(--site-accent)]/20 to-[var(--site-primary)]/20 opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
         aria-hidden="true"
