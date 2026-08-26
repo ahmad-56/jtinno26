@@ -223,12 +223,6 @@ export default function RegistrationDocuments() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
 
-        <div className="mb-10 flex justify-start">
-          <RegisterButton
-            onClick={handleRegisterClick}
-          />
-        </div>
-
         <header className="mb-12 text-center">
           <p
             className="mb-4 font-mono text-xs uppercase tracking-[0.35em]"
@@ -252,6 +246,12 @@ export default function RegistrationDocuments() {
             Adherence to the Code of Conduct and a signed Liability Waiver are mandatory for all delegates.
           </p>
         </header>
+
+        <div className="mb-10 flex justify-center">
+          <RegisterButton
+            onClick={handleRegisterClick}
+          />
+        </div>
 
         <section className="grid gap-7 lg:grid-cols-2">
           {documents.map((document) => (
