@@ -7,7 +7,7 @@ function Footer() {
     <section className="bottom-0">
       Made By :{" "}
       <a
-        href="https://www.linkedin.com/in/syed-muhammad-ahmad-hassan-13552641b/"
+        href="https://github.com/ahmad-56"
         target="_blank"
         rel="noopener noreferrer"
         className="relative text-[var(--site-primary-hover)] hover:text-[var(--site-heading)] font-mono transition-all duration-300 hover:shadow-[0_0_8px_var(--site-glow-strong)] hover:scale-105 border-b border-transparent hover:border-[var(--site-accent)] group"
