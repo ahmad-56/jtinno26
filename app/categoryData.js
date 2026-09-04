@@ -20,7 +20,7 @@ const categoryData = [
     subject: "Pure Sciences",
     compulsory: true,
     img: Dassp,
-    pdfLink: "/StudyGuides/DASSP.pdf",
+    pdfLink: "/StudyGuides/dassp.pdf",
     description:
       "One spark, one chain, one shot at glory. DASSP fuses the precision of chemistry, the logic of physics, and the wonder of biology into our pure sciences category—daring delegates to chain together every answer, push their luck, and test their limits in a relentless pursuit of scientific glory.",
     gradient:
@@ -39,7 +39,7 @@ const categoryData = [
     subject: "Fiction",
     compulsory: true,
     img: Fantasm,
-    pdfLink: "/StudyGuides/Fantasm.pdf",
+    pdfLink: "/StudyGuides/fantasm.pdf",
     description:
       "The plot thickens in our pop culture category. Fantasm amalgamates storytelling and fandom culture through each round.",
     gradient:
@@ -172,7 +172,7 @@ const categoryData = [
     subject: "Engineering",
     compulsory: false,
     img: Daedalus,
-    pdfLink: "/StudyGuides/daedalus's apprentice.pdf",
+    pdfLink: "/StudyGuides/daedalus_s apprentice.pdf",
     description:
       "Build. Innovate. Optimize. Turn engineering principles into real-world solutions. Design prototypes, tackle challenges, and optimize your creations through creativity, critical thinking, and applied science.",
     gradient:
@@ -229,7 +229,7 @@ const categoryData = [
     subject: "Robotics",
     compulsory: false,
     img: Projectx,
-    pdfLink: "/StudyGuides/ProjectX.pdf",
+    pdfLink: "/StudyGuides/projectX.pdf",
     description:
       "A multimeter pressed to Project X would pick up nothing but the frantic hum of a 90-minute Nano build, the silent panic of a line-follower losing its track, and the violent crunch of Bluetooth magnet duels on the narrow bridge. Ask it for a winning strategy, though, and it'll tell you the bot just needs a faster sketch, a lucky flag steal, and a whole lot of extra credit.",
     gradient:
