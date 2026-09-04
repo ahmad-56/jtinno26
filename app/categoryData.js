@@ -58,7 +58,7 @@ const categoryData = [
     subject: "Law",
     compulsory: false,
     img: Fraudiye,
-    pdfLink: "/StudyGuides/FraudiyeFiles.pdf",
+    pdfLink: "/StudyGuides/fraudiyefiles.pdf",
     description:
       "Did you see what happened, or only what you were meant to see? Which evidence survives scrutiny, and which was planted to mislead you? When every clue points somewhere, who decides which direction is the truth? Follow the trail. Question everything. Trust no one.",
     gradient:
@@ -77,7 +77,7 @@ const categoryData = [
     subject: "Cryptography",
     compulsory: false,
     img: Decodum,
-    pdfLink: "/StudyGuides/Decodum.pdf",
+    pdfLink: "/StudyGuides/decodum.pdf",
     description:
       "Solve cryptic codes and concealed messages within an immersive alternate reality game that fuses narrative storytelling with problem-solving. The division evaluates critical thinking, pattern recognition, originality, and decoding ability as participants step into the shoes of codebreakers, uncovering layers of mystery through an engaging and intellectually stimulating experience.",
     gradient:
@@ -96,7 +96,7 @@ const categoryData = [
     subject: "Psychology",
     compulsory: false,
     img: MindsInMotion,
-    pdfLink: "/StudyGuides/MindsInMotion.pdf",
+    pdfLink: "/StudyGuides/mindsinmotion.pdf",
     description:
       "Mind over matter starts here in our psychology category. Minds in Motion explores the inner workings of human behaviour, blending the depth of cognitive science with the intriguing patterns of the everyday mind.",
     gradient:
@@ -115,7 +115,7 @@ const categoryData = [
     subject: "Bio-Medical",
     compulsory: false,
     img: Panacea,
-    pdfLink: "/StudyGuides/Panacea.pdf",
+    pdfLink: "/StudyGuides/panacea.pdf",
     description:
       "A stethoscope pressed to Panacea's chest would pick up nothing but the frantic thumping of buzzers and the occasional flatline of a wrong guess. Ask it for a diagnosis, though, and it'll tell you the patient just needs more extra credit.",
     gradient:
@@ -134,7 +134,7 @@ const categoryData = [
     subject: "Mathematics",
     compulsory: false,
     img: Infinitesima,
-    pdfLink: "/StudyGuides/Infinitesima.pdf",
+    pdfLink: "/StudyGuides/infinitesima.pdf",
     description:
       "An abacus that counts how many times you second-guess yourself would surely come in handy at Infinitesima. By round two, it would probably just give up and count backwards.",
     gradient:
@@ -172,7 +172,7 @@ const categoryData = [
     subject: "Engineering",
     compulsory: false,
     img: Daedalus,
-    pdfLink: "/StudyGuides/Daedalus_s.pdf",
+    pdfLink: "/StudyGuides/daedalus's apprentice.pdf",
     description:
       "Build. Innovate. Optimize. Turn engineering principles into real-world solutions. Design prototypes, tackle challenges, and optimize your creations through creativity, critical thinking, and applied science.",
     gradient:
@@ -191,7 +191,7 @@ const categoryData = [
     subject: "Space & Astronomy",
     compulsory: false,
     img: CygnusVeil,
-    pdfLink: "/StudyGuides/Cygnus_Veil.pdf",
+    pdfLink: "/StudyGuides/cygnusveil.pdf",
     description:
       "Explore the mysteries of astronomy through challenges that test knowledge and problem-solving while uncovering the wonders of the universe.",
     gradient:
@@ -210,7 +210,7 @@ const categoryData = [
     subject: "IT & Computer Science",
     compulsory: false,
     img: BitByBit,
-    pdfLink: "/StudyGuides/BitByBit.pdf",
+    pdfLink: "/StudyGuides/bitbybit.pdf",
     description:
       "Bit by Bit investigates the intersection of technology within the sphere of digital innovation. Participants test their skills in data analysis, cybersecurity, programming, and related computing disciplines. This track empowers competitors to leverage information technology to forge functional solutions, moving from network-troubleshooting simulations to coding battles.",
     gradient:
@@ -248,7 +248,7 @@ const categoryData = [
     subject: "Environment",
     compulsory: false,
     img: Envirothon,
-    pdfLink: "/StudyGuides/Envirothon.pdf",
+    pdfLink: "/StudyGuides/envirothon.pdf",
     description:
       "Are you ready to take on the challenges our planet faces? This season’s Envirothon is your chance to Explore, Innovate, and Sustain! Tackle urgent environmental and climate issues, think creatively, and develop bold solutions for a greener, more sustainable future.",
     gradient:
