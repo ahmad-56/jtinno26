@@ -33,28 +33,6 @@ const categoryData = [
     },
   },
   {
-<<<<<<< Updated upstream
-=======
-    title: "Fantasm",
-    fullTitle: "Fantasm",
-    slug: "fantasm",
-    subject: "Fiction",
-    compulsory: true,
-    img: Fantasm,
-    pdfLink: "/StudyGuides/fantasm.pdf",
-    description:
-      "The plot thickens in our pop culture category. Fantasm amalgamates storytelling and fandom culture through each round.",
-    gradient:
-      "from-red-700/20 via-red-500/20 to-orange-600/20",
-    theme: {
-      primary: "#f87171",
-      secondary: "#fb923c",
-      surface: "#450a0a",
-      glow: "rgba(248, 113, 113, 0.27)",
-    },
-  },
-  {
->>>>>>> Stashed changes
     title: "Fraudiye Files",
     fullTitle: "Fraudiye Files",
     slug: "fraudiye-files",
