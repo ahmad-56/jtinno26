@@ -23,13 +23,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/dassp.pdf",
     description:
       "One spark, one chain, one shot at glory. DASSP fuses the precision of chemistry, the logic of physics, and the wonder of biology into our pure sciences category—daring delegates to chain together every answer, push their luck, and test their limits in a relentless pursuit of scientific glory.",
-    gradient:
-      "from-blue-600/20 via-cyan-400/20 to-blue-500/20",
+    gradient: "from-emerald-600/20 via-teal-400/20 to-green-500/20",
     theme: {
-      primary: "#38bdf8",
-      secondary: "#22d3ee",
-      surface: "#082f49",
-      glow: "rgba(56, 189, 248, 0.28)",
+      primary: "#5eead4",
+      secondary: "#22c55e",
+      surface: "#052e24",
+      glow: "rgba(94, 234, 212, 0.28)",
     },
   },
   {
@@ -42,13 +41,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/fantasm.pdf",
     description:
       "The plot thickens in our pop culture category. Fantasm amalgamates storytelling and fandom culture through each round.",
-    gradient:
-      "from-red-700/20 via-red-500/20 to-orange-600/20",
+    gradient: "from-red-700/25 via-rose-600/20 to-red-500/20",
     theme: {
-      primary: "#f87171",
-      secondary: "#fb923c",
-      surface: "#450a0a",
-      glow: "rgba(248, 113, 113, 0.27)",
+      primary: "#ef4444",
+      secondary: "#be123c",
+      surface: "#2f1015",
+      glow: "rgba(239, 68, 68, 0.27)",
     },
   },
   {
@@ -61,13 +59,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/fraudiyefiles.pdf",
     description:
       "Did you see what happened, or only what you were meant to see? Which evidence survives scrutiny, and which was planted to mislead you? When every clue points somewhere, who decides which direction is the truth? Follow the trail. Question everything. Trust no one.",
-    gradient:
-      "from-orange-600/20 via-red-500/20 to-orange-500/20",
+    gradient: "from-rose-700/25 via-red-600/20 to-orange-500/20",
     theme: {
-      primary: "#fb7185",
+      primary: "#f43f5e",
       secondary: "#f97316",
-      surface: "#451a03",
-      glow: "rgba(251, 113, 133, 0.26)",
+      surface: "#3b0a16",
+      glow: "rgba(244, 63, 94, 0.26)",
     },
   },
   {
@@ -80,13 +77,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/decodum.pdf",
     description:
       "Solve cryptic codes and concealed messages within an immersive alternate reality game that fuses narrative storytelling with problem-solving. The division evaluates critical thinking, pattern recognition, originality, and decoding ability as participants step into the shoes of codebreakers, uncovering layers of mystery through an engaging and intellectually stimulating experience.",
-    gradient:
-      "from-purple-600/20 via-blue-500/20 to-cyan-400/20",
+    gradient: "from-indigo-800/30 via-blue-700/25 to-violet-600/20",
     theme: {
-      primary: "#a78bfa",
-      secondary: "#22d3ee",
-      surface: "#2e1065",
-      glow: "rgba(167, 139, 250, 0.27)",
+      primary: "#6366f1",
+      secondary: "#3b82f6",
+      surface: "#090b3a",
+      glow: "rgba(99, 102, 241, 0.27)",
     },
   },
   {
@@ -99,13 +95,13 @@ const categoryData = [
     pdfLink: "/StudyGuides/mindsinmotion.pdf",
     description:
       "Mind over matter starts here in our psychology category. Minds in Motion explores the inner workings of human behaviour, blending the depth of cognitive science with the intriguing patterns of the everyday mind.",
-    gradient:
-      "from-pink-500/20 via-purple-400/20 to-blue-500/20",
+    gradient: "from-teal-600/25 via-cyan-500/20 to-pink-500/20",
+    gradient: "from-emerald-700/25 via-teal-500/20 to-cyan-500/20",
     theme: {
-      primary: "#e879f9",
-      secondary: "#a78bfa",
-      surface: "#3b0764",
-      glow: "rgba(232, 121, 249, 0.25)",
+      primary: "#34d399",
+      secondary: "#22d3ee",
+      surface: "#0b3a35",
+      glow: "rgba(52, 211, 153, 0.25)",
     },
   },
   {
@@ -118,13 +114,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/panacea.pdf",
     description:
       "A stethoscope pressed to Panacea's chest would pick up nothing but the frantic thumping of buzzers and the occasional flatline of a wrong guess. Ask it for a diagnosis, though, and it'll tell you the patient just needs more extra credit.",
-    gradient:
-      "from-yellow-500/20 via-orange-400/20 to-yellow-600/20",
+    gradient: "from-amber-600/25 via-yellow-400/20 to-emerald-500/20",
     theme: {
-      primary: "#facc15",
-      secondary: "#fb923c",
-      surface: "#422006",
-      glow: "rgba(250, 204, 21, 0.24)",
+      primary: "#f6c453",
+      secondary: "#d39e34",
+      surface: "#16382c",
+      glow: "rgba(246, 196, 83, 0.27)",
     },
   },
   {
@@ -137,13 +132,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/infinitesima.pdf",
     description:
       "An abacus that counts how many times you second-guess yourself would surely come in handy at Infinitesima. By round two, it would probably just give up and count backwards.",
-    gradient:
-      "from-blue-500/20 via-cyan-400/20 to-blue-600/20",
+    gradient: "from-amber-700/25 via-yellow-500/20 to-teal-600/20",
     theme: {
-      primary: "#60a5fa",
-      secondary: "#22d3ee",
-      surface: "#172554",
-      glow: "rgba(96, 165, 250, 0.27)",
+      primary: "#d4af37",
+      secondary: "#5f8f8b",
+      surface: "#27362f",
+      glow: "rgba(212, 175, 55, 0.25)",
     },
   },
   {
@@ -156,13 +150,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/steAm.pdf",
     description:
       "Science meets imagination in our creative art category. steAm amalgamates the rigour of ecological world-building with the boundless expression of original design.",
-    gradient:
-      "from-purple-500/20 via-pink-400/20 to-purple-600/20",
+    gradient: "from-violet-600/25 via-purple-500/20 to-fuchsia-500/20",
     theme: {
-      primary: "#c084fc",
-      secondary: "#f472b6",
-      surface: "#3b0764",
-      glow: "rgba(192, 132, 252, 0.27)",
+      primary: "#a855f7",
+      secondary: "#d946ef",
+      surface: "#24054a",
+      glow: "rgba(168, 85, 247, 0.27)",
     },
   },
   {
@@ -175,13 +168,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/daedalus_s apprentice.pdf",
     description:
       "Build. Innovate. Optimize. Turn engineering principles into real-world solutions. Design prototypes, tackle challenges, and optimize your creations through creativity, critical thinking, and applied science.",
-    gradient:
-      "from-blue-400/20 via-cyan-300/20 to-blue-500/20",
+    gradient: "from-blue-700/25 via-indigo-500/20 to-violet-500/20",
     theme: {
-      primary: "#67e8f9",
-      secondary: "#38bdf8",
-      surface: "#083344",
-      glow: "rgba(103, 232, 249, 0.25)",
+      primary: "#60a5fa",
+      secondary: "#2563eb",
+      surface: "#101b4f",
+      glow: "rgba(96, 165, 250, 0.26)",
     },
   },
   {
@@ -194,13 +186,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/cygnusveil.pdf",
     description:
       "Explore the mysteries of astronomy through challenges that test knowledge and problem-solving while uncovering the wonders of the universe.",
-    gradient:
-      "from-yellow-500/20 via-orange-400/20 to-yellow-600/20",
+    gradient: "from-slate-800/25 via-amber-600/20 to-yellow-500/20",
     theme: {
-      primary: "#fcd34d",
-      secondary: "#feab67",
-      surface: "#422006",
-      glow: "rgba(250, 204, 21, 0.24)",
+      primary: "#f59e0b",
+      secondary: "#3b82f6",
+      surface: "#1f2f3a",
+      glow: "rgba(245, 158, 11, 0.25)",
     },
   },
   {
@@ -213,13 +204,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/bitbybit.pdf",
     description:
       "Bit by Bit investigates the intersection of technology within the sphere of digital innovation. Participants test their skills in data analysis, cybersecurity, programming, and related computing disciplines. This track empowers competitors to leverage information technology to forge functional solutions, moving from network-troubleshooting simulations to coding battles.",
-    gradient:
-      "from-green-500/20 via-cyan-400/20 to-green-600/20",
+    gradient: "from-sky-700/25 via-cyan-500/20 to-teal-500/20",
     theme: {
-      primary: "#34d399",
-      secondary: "#22d3ee",
-      surface: "#022c22",
-      glow: "rgba(52, 211, 153, 0.27)",
+      primary: "#67e8f9",
+      secondary: "#38bdf8",
+      surface: "#082f49",
+      glow: "rgba(103, 232, 249, 0.27)",
     },
   },
   {
@@ -232,8 +222,7 @@ const categoryData = [
     pdfLink: "/StudyGuides/projectX.pdf",
     description:
       "A multimeter pressed to Project X would pick up nothing but the frantic hum of a 90-minute Nano build, the silent panic of a line-follower losing its track, and the violent crunch of Bluetooth magnet duels on the narrow bridge. Ask it for a winning strategy, though, and it'll tell you the bot just needs a faster sketch, a lucky flag steal, and a whole lot of extra credit.",
-    gradient:
-      "from-red-600/20 via-orange-500/20 to-red-500/20",
+    gradient: "from-red-600/20 via-orange-500/20 to-red-500/20",
     theme: {
       primary: "#fb7185",
       secondary: "#fb923c",
@@ -251,13 +240,12 @@ const categoryData = [
     pdfLink: "/StudyGuides/envirothon.pdf",
     description:
       "Are you ready to take on the challenges our planet faces? This season’s Envirothon is your chance to Explore, Innovate, and Sustain! Tackle urgent environmental and climate issues, think creatively, and develop bold solutions for a greener, more sustainable future.",
-    gradient:
-      "from-green-600/20 via-emerald-500/20 to-green-700/20",
+    gradient: "from-green-700/25 via-lime-500/20 to-emerald-500/20",
     theme: {
-      primary: "#4ade80",
-      secondary: "#2dd4bf",
-      surface: "#052e16",
-      glow: "rgba(74, 222, 128, 0.26)",
+      primary: "#84cc16",
+      secondary: "#22c55e",
+      surface: "#11351f",
+      glow: "rgba(132, 204, 22, 0.26)",
     },
   },
 ];
