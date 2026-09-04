@@ -120,7 +120,7 @@ function DownloadIcon() {
       }}
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage: `
             linear-gradient(${theme.primary} 1px, transparent 1px),
