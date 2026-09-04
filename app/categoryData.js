@@ -159,9 +159,9 @@ const categoryData = [
     },
   },
   {
-    title: "Daedalus's Apprenticeship",
-    fullTitle: "Daedalus Apprenticeship",
-    slug: "daedalus-apprenticeship",
+    title: "Daedalus's Apprentice",
+    fullTitle: "Daedalus Apprentice",
+    slug: "daedalus-apprentice",
     subject: "Engineering",
     compulsory: false,
     img: Daedalus,
