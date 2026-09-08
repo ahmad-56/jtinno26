@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import Button from "../components/Button";
-import schoolBackground from "../assets/school.jpg";
+import { assetUrl } from "../assetUrl";
 
 const head_delegate =
-  "/rules/headdelegate.pdf";
+  assetUrl("/rules/headdelegate.pdf");
 
 const codeofconduct =
-  "/rules/codeofconduct.pdf";
+  assetUrl("/rules/codeofconduct.pdf");
 
 export function meta() {
   return [
@@ -116,13 +116,26 @@ function PDFCard({ document }) {
         </h2>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-white/10 bg-white">
-        <iframe
-          src={`${document.file}#toolbar=1&navpanes=0&view=FitH`}
-          title={`${document.title} PDF preview`}
-          className="h-[58vh] min-h-[500px] w-full bg-white"
-          loading="lazy"
-        />
+      <div className="flex flex-wrap gap-3 px-2 pb-3">
+        <a
+          href={document.file}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${document.title} PDF in a new tab`}
+          className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        >
+          <ExternalLinkIcon />
+          Open PDF
+        </a>
+        <a
+          href={document.file}
+          download={`${document.title}.pdf`}
+          aria-label={`Download ${document.title} PDF`}
+          className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        >
+          <DownloadIcon />
+          Download PDF
+        </a>
       </div>
     </article>
   );
@@ -175,8 +188,7 @@ export default function RegistrationDocuments() {
             180deg,
             rgba(2, 8, 18, 0.92),
             rgba(4, 18, 28, 0.97)
-          ),
-          url("${schoolBackground}")
+          )
         `,
         backgroundSize: "cover",
         backgroundPosition: "center",

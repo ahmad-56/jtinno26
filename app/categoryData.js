@@ -11,6 +11,7 @@ import Panacea from "./assets/CategoriesImg/panacea.webp";
 import Projectx from "./assets/CategoriesImg/projectx.webp";
 import Steam from "./assets/CategoriesImg/steam.webp";
 import Decodum from "./assets/CategoriesImg/decodum.webp";
+import { assetUrl } from "./assetUrl";
 
 const categoryData = [
   {
@@ -250,4 +251,7 @@ const categoryData = [
   },
 ];
 
-export default categoryData;
+export default categoryData.map((category) => ({
+  ...category,
+  pdfLink: assetUrl(category.pdfLink),
+}));

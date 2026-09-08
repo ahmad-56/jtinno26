@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router";
 import categoryData from "../categoryData";
-import schoolBackground from "../assets/school.jpg";
 
 export function meta({ params }) {
   const category = categoryData.find(
@@ -94,8 +93,7 @@ function GlowingLink({ to, children, theme }) {
             180deg,
             rgba(2, 8, 18, 0.92),
             rgba(4, 18, 28, 0.97)
-          ),
-          url("${schoolBackground}")
+          )
         `,
         backgroundSize: "cover",
         backgroundPosition: "center",

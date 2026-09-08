@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router";
 import categoryData from "../categoryData";
-import schoolBackground from "../assets/school.jpg";
 import Button from "../components/Button";
 
 export function meta({ params }) {
@@ -110,8 +109,7 @@ function DownloadIcon() {
             180deg,
             rgba(2, 8, 18, 0.90),
             rgba(4, 18, 28, 0.95)
-          ),
-          url("${schoolBackground}")
+          )
         `,
         backgroundSize: "cover",
         backgroundPosition: "center",

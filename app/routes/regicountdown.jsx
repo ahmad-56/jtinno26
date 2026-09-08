@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import schoolBackground from "../assets/school.jpg";
 import CountdownTimer from "../components/Timer";
 
 const REGISTRATION_OPENING_DATE =
@@ -91,8 +90,7 @@ export default function RegistrationComingSoon() {
             180deg,
             rgba(2, 8, 18, 0.92),
             rgba(4, 18, 28, 0.97)
-          ),
-          url("${schoolBackground}")
+          )
         `,
         backgroundSize: "cover",
         backgroundPosition: "center",

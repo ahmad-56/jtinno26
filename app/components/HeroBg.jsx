@@ -1,33 +1,43 @@
+import { useLocation } from "react-router";
+import school480Avif from "../assets/backgrounds/school-480.avif";
+import school960Avif from "../assets/backgrounds/school-960.avif";
+import school1440Avif from "../assets/backgrounds/school-1440.avif";
+import school480 from "../assets/backgrounds/school-480.webp";
+import school960 from "../assets/backgrounds/school-960.webp";
+import school1440 from "../assets/backgrounds/school-1440.webp";
+
 function HeroBg() {
+  const { pathname } = useLocation();
+  // Category and document pages draw their own gradients over this same photo.
+  const hasPageOverlay = pathname.startsWith("/categories/") || pathname === "/preview";
+
   return (
-    <picture>
-      <source
-        srcSet="/heroImg/hero@500w.jpg 1x, /heroImg/hero@914w.jpg 2x"
-        media="(max-width: 500px)"
-      />
-      <source
-        srcSet="/heroImg/hero@914w.jpg 1x, /heroImg/hero@2000w.jpg 2x"
-        media="(max-width: 914px)"
-      />
-      <source
-        srcSet="/heroImg/hero@1313w.jpg 1x, /heroImg/hero@2000w.jpg 2x"
-        media="(max-width: 1313px)"
-      />
-      <source
-        srcSet="/heroImg/hero@1500w.jpg 1x, /heroImg/hero.jpg 2x"
-        media="(max-width: 1500px)"
-      />
-      <source
-        srcSet="/heroImg/hero@2000w.jpg 1x, /heroImg/hero.jpg 2x"
-        media="(max-width: 2000px)"
-      />
-      <source srcSet="/heroImg/hero.jpg" media="(min-width: 2001px)" />
-      <img
-        src="/heroImg/hero.jpg"
-        alt="Hero background"
-        className="fixed inset-0 w-full h-full object-cover object-center z-[-2]"
-      />
-    </picture>
+    <>
+      <picture>
+        <source
+          type="image/avif"
+          srcSet={`${school480Avif} 480w, ${school960Avif} 960w, ${school1440Avif} 1440w`}
+          sizes="100vw"
+        />
+        <img
+          src={school960}
+          srcSet={`${school480} 480w, ${school960} 960w, ${school1440} 1440w`}
+          sizes="100vw"
+          alt=""
+          aria-hidden="true"
+          width="2592"
+          height="4608"
+          decoding="async"
+          className="fixed inset-0 w-full h-full object-cover object-center z-[-2]"
+        />
+      </picture>
+      {!hasPageOverlay && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 z-[-1] bg-[rgba(2,8,18,0.95)]"
+        />
+      )}
+    </>
   );
 }
 

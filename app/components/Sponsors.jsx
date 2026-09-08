@@ -1,10 +1,11 @@
 import "../app.css";
+import { assetUrl } from "../assetUrl";
 
 // Add sponsor logos here
 const sponsors = [
   {
     name: "JT Innoventions Sponsor",
-    logo: "/sponsors/tetrapak.png",
+    logo: assetUrl("/sponsors/tetrapak.png"),
   },
 ];
 

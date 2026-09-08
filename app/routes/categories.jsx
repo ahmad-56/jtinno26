@@ -23,7 +23,7 @@ export default function Categories() {
         </h2> */}
 
         <div className="flex flex-wrap gap-y-8 gap-x-6 md:gap-x-14 xl:gap-x-20 md:gap-y-16 lg:gap-y-20 justify-evenly max-w-[1600px] mx-auto cards">
-          {categoryData.map((c) => (
+          {categoryData.map((c, index) => (
             <Card
               key={c.slug}
               title={c.title}
@@ -32,6 +32,7 @@ export default function Categories() {
               img={c.img}
               compulsory={c.compulsory}
               gradient={c.gradient}
+              loading={index < 4 ? "eager" : "lazy"}
             />
           ))}
         </div>

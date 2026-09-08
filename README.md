@@ -42,6 +42,50 @@ Create a production build:
 npm run build
 ```
 
+## Keeping data transfer low
+
+- `HeroBg` serves one shared responsive AVIF background with a WebP fallback.
+  Page gradients stay in the route components; avoid adding another background
+  image there. Vite gives imported images content-hashed filenames.
+- Category cards below the first four use native lazy loading. Keep the first
+  visible cards eager and preserve the image dimensions to avoid layout shifts.
+- PDFs load only when someone opens or downloads them. Keep document links
+  behind these actions instead of embedding PDFs in iframes.
+- `npm run build` and `npm run dev` regenerate `app/assetVersions.json` before
+  starting. `assetUrl()` adds a content version to public PDF and sponsor URLs.
+  After replacing a file while the dev server is running, run
+  `node scripts/generate-asset-versions.mjs` to refresh the version.
+- `vercel.json` caches Vite's hashed `/assets/` files in the browser for a year.
+  Public guides, registration documents, and sponsor images use a one-day
+  browser cache; new site links get a new version when the file changes.
+  Existing unversioned links remain available. HTML is not given a long cache.
+
+To regenerate the photo and logo variants, install Pillow with AVIF support and
+run `python scripts/optimize-site-images.py`. Original images remain in
+`app/assets/` as inputs and are not imported by the running site.
+
+For future study guides, use Python with `pypdf>=6.10` and Pillow:
+
+```bash
+python scripts/optimize-study-guides.py --backup-dir /path/outside/public/originals
+```
+
+The script keeps an original backup and verifies text, page dimensions, and
+link annotations after recompressing embedded images. It does not flatten text,
+resize PDF images, or prune the PDF resource graph. To rebuild using the same
+originals, add `--from-backups`; avoid recompressing already optimized PDFs.
+Use `--source-dir` to process a directory containing only new guides.
+
+For visual validation, install `pypdfium2` and run:
+
+```bash
+python scripts/check-study-guide-rendering.py --backup-dir /path/outside/public/originals --output-dir /path/outside/public/pdf-qa
+```
+
+Review the generated comparisons before deploying. The script renders every
+page and rejects large pixel differences. Keep backups and QA images outside
+`public/` so they are not deployed as downloadable assets.
+
 ## Deployment
 
 ### Docker Deployment

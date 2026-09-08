@@ -7,6 +7,7 @@ function Card({
   slug,
   description,
   compulsory,
+  loading = "lazy",
   gradient = "from-[#0c6177]/20 via-[#149488]/20 to-[#0c6177]/20",
 }) {
   return (
@@ -33,6 +34,10 @@ function Card({
             <img
               src={img}
               alt={`${title} category artwork`}
+              loading={loading}
+              decoding="async"
+              width="500"
+              height="500"
               className="block w-full"
             />
           </div>
