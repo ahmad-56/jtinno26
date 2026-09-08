@@ -266,36 +266,6 @@ function DownloadIcon() {
             </div>
           </div>
         </section>
-
-        <section className="mt-16 lg:mt-20">
-          <div className="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-            <div>
-              <h2 className="text-3xl font-semibold sm:text-4xl"
-                  style={{ color: theme.secondary }}>
-                Study Guide
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm leading-6 text-slate-400">
-              If the preview isnt available, use the Open Study
-              Guide button above to view the PDF directly.
-            </p>
-          </div>
-
-          <div
-            className="overflow-hidden rounded-2xl border bg-slate-950/80 p-2 sm:p-3"
-            style={{
-              borderColor: `${theme.primary}55`,
-              boxShadow: `0 0 36px ${theme.glow}`,
-            }}
-          >
-            <iframe
-              src={`${category.pdfLink}#toolbar=1&navpanes=0&view=FitH`}
-              title={`${category.title} study guide`}
-              className="h-[70vh] min-h-[560px] w-full rounded-xl bg-white"
-              loading="lazy"
-            />
-          </div>
-        </section>
       </div>
     </main>
   );
