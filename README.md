@@ -1,134 +1,101 @@
-# Welcome to React Router!
+# JT Innoventions '26
 
-A modern, production-ready template for building full-stack React applications using React Router.
+The website for JT Innoventions '26, LGS Johar Town's three-day science olympiad. Delegates can browse the categories, download study guides, and find registration and contact details here.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+The site is built with React, React Router, Vite, and Tailwind CSS.
 
-## Features
+[Visit the website](https://lgsjtinnoventions.com/) · [Vercel URL](https://jtinno26.vercel.app/)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Running locally
 
-## Getting Started
-
-### Installation
-
-Install the dependencies:
+You'll need Node.js and npm installed. From the project folder, run:
 
 ```bash
 npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Open [localhost:5173](http://localhost:5173/) to see the site. Changes you save will show up in the browser while the development server is running.
 
-## Building for Production
+## Finding your way around
 
-Create a production build:
+| What you want to change | Where to look |
+| --- | --- |
+| Page layouts and content | `app/routes/` |
+| Shared elements, such as the navigation and category cards | `app/components/` |
+| Category descriptions, artwork, and study-guide links | `app/categoryData.js` |
+| Colours, fonts, and shared styles | `app/app.css` |
+| Study-guide PDFs | `public/StudyGuides/` |
+| Registration documents | `public/rules/` |
+| Image and PDF compression helpers | `scripts/` |
+
+## Building and deploying
+
+To build the site and run the production server locally:
 
 ```bash
 npm run build
+npm start
 ```
 
-## Keeping data transfer low
+The build puts browser assets in `build/client/` and server code in `build/server/`. If you're hosting it on a Node server, include both folders along with `package.json` and `package-lock.json`, then install the production dependencies.
 
-- `HeroBg` serves one shared responsive AVIF background with a WebP fallback.
-  Page gradients stay in the route components; avoid adding another background
-  image there. Vite gives imported images content-hashed filenames.
-- Category cards below the first four use native lazy loading. Keep the first
-  visible cards eager and preserve the image dimensions to avoid layout shifts.
-- PDFs load only when someone opens or downloads them. Keep document links
-  behind these actions instead of embedding PDFs in iframes.
-- `npm run build` and `npm run dev` regenerate `app/assetVersions.json` before
-  starting. `assetUrl()` adds a content version to public PDF and sponsor URLs.
-  After replacing a file while the dev server is running, run
-  `node scripts/generate-asset-versions.mjs` to refresh the version.
-- `vercel.json` caches Vite's hashed `/assets/` files in the browser for a year.
-  Public guides, registration documents, and sponsor images use a one-day
-  browser cache; new site links get a new version when the file changes.
-  Existing unversioned links remain available. HTML is not given a long cache.
+For Vercel, use `npm run build` as the build command. Include new images, PDFs, scripts, and `vercel.json` when committing changes. Before publishing, check the homepage, category pages, and document downloads in a preview deployment.
 
-To regenerate the photo and logo variants, install Pillow with AVIF support and
-run `python scripts/optimize-site-images.py`. Original images remain in
-`app/assets/` as inputs and are not imported by the running site.
-
-For future study guides, use Python with `pypdf>=6.10` and Pillow:
+There's also a Dockerfile if you'd rather run the site in a container:
 
 ```bash
-python scripts/optimize-study-guides.py --backup-dir /path/outside/public/originals
+docker build -t jtinno26 .
+docker run -p 3000:3000 jtinno26
 ```
 
-The script keeps an original backup and verifies text, page dimensions, and
-link annotations after recompressing embedded images. It does not flatten text,
-resize PDF images, or prune the PDF resource graph. To rebuild using the same
-originals, add `--from-backups`; avoid recompressing already optimized PDFs.
-Use `--source-dir` to process a directory containing only new guides.
+## Keeping downloads small
 
-For visual validation, install `pypdfium2` and run:
+Large backgrounds and study guides can use a lot of bandwidth. A few choices in the site help keep that down:
+
+- `HeroBg` loads one shared background, using AVIF where supported and WebP as a fallback. Individual pages add their own gradients over it.
+- The first four category cards load straight away. The rest load as visitors get closer to them. Keep image dimensions in place so cards don't jump around while loading.
+- PDFs load when someone clicks Open or Download, so browsing a category doesn't also download its guide.
+- Browser caching lets returning visitors reuse files they've already downloaded. In `vercel.json`, Vite's files with content hashes in their names are cached for a year; public PDFs and sponsor images are cached for a day. Pages don't get that long cache.
+
+PDF and sponsor links include a version based on the file's contents. When a file changes, its link changes too, so visitors can get the update without clearing their browser cache. Previously shared links still work.
+
+Both `npm run dev` and `npm run build` refresh these versions in `app/assetVersions.json`. If you replace a file while the development server is already running, refresh them yourself:
 
 ```bash
-python scripts/check-study-guide-rendering.py --backup-dir /path/outside/public/originals --output-dir /path/outside/public/pdf-qa
+node scripts/generate-asset-versions.mjs
 ```
 
-Review the generated comparisons before deploying. The script renders every
-page and rejects large pixel differences. Keep backups and QA images outside
-`public/` so they are not deployed as downloadable assets.
+### Updating the background or logo
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+The original photo and logo are kept in `app/assets/`. After replacing them, regenerate the smaller versions with Python and Pillow with AVIF support:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+python scripts/optimize-site-images.py
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+The site uses the generated images, so remember to include those in your commit too.
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+### Compressing study guides
 
-### DIY Deployment
+The PDF helper needs Python, Pillow, and `pypdf>=6.10`. It compresses images inside each PDF while preserving text and page layout, and saves a backup before making changes.
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+For a folder of new, uncompressed guides:
 
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```bash
+python scripts/optimize-study-guides.py --source-dir ../new-guides --backup-dir ../guide-originals
 ```
 
-## Styling
+Replace those paths with your own folders. The script updates the PDFs in the source folder; copy the checked results into `public/StudyGuides/` afterwards. Without `--source-dir`, it processes every PDF in `public/StudyGuides/`.
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Start from the original PDF each time rather than repeatedly compressing an already optimized copy. To retry with the originals you've backed up, use `--from-backups` and the same source and backup folders.
 
----
+To compare the site's guides with their originals, install `pypdfium2` and run:
 
-Built with ❤️ using React Router.
-# JTInnoventions26
-- [https://lgsjtinnoventions.com/](https://lgsjtinnoventions.com/)
-- [jtinno26.vercel.app](jtinno26.vercel.app)
+```bash
+python scripts/check-study-guide-rendering.py --backup-dir ../guide-originals --output-dir ../guide-checks
+```
+
+This checks every PDF in `public/StudyGuides/`, so the backup folder needs a matching original for each one. It creates page comparisons and flags large visual differences. Look through the comparisons before deploying, especially pages with small text or diagrams.
+
+Keep originals and comparison images outside `public/` so they don't get published with the site. Once the checked PDFs are in place, refresh the file versions before building.
