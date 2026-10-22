@@ -1,10 +1,21 @@
 # JT Innoventions '26
 
-The website for JT Innoventions '26, LGS Johar Town's three-day science olympiad. Delegates can browse the categories, download study guides, and find registration and contact details here.
+The website for LGS JT Innoventions '26, LGS JT's three-day science olympiad. For Delegates to browse categories, review study guides, and to register for the event.
 
-The site is built with React, React Router, Vite, and Tailwind CSS.
+![Hero ScreenShot](screenshots/image.png)
 
-[Visit the website](https://lgsjtinnoventions.com/) · [Vercel URL](https://jtinno26.vercel.app/)
+## Visit the Webiste
+Click to Open Website: [Visit the Website](https://lgsjtinnoventions.com/) 
+
+```bash
+https://www.lgsjtinnoventions.com/
+```
+
+Alternate Domain for Developments: [Vercel URL](https://jtinno26.vercel.app/)
+
+```bash
+https://jtinno26.vercel.app/
+```
 
 ## Running locally
 
@@ -17,85 +28,49 @@ npm run dev
 
 Open [localhost:5173](http://localhost:5173/) to see the site. Changes you save will show up in the browser while the development server is running.
 
-## Finding your way around
+## Features
 
-| What you want to change | Where to look |
-| --- | --- |
-| Page layouts and content | `app/routes/` |
-| Shared elements, such as the navigation and category cards | `app/components/` |
-| Category descriptions, artwork, and study-guide links | `app/categoryData.js` |
-| Colours, fonts, and shared styles | `app/app.css` |
-| Study-guide PDFs | `public/StudyGuides/` |
-| Registration documents | `public/rules/` |
-| Image and PDF compression helpers | `scripts/` |
+- Website is used by delegates to get a know-how of the event and their specific categories
+    - In the background we have the school's picture followed up by a black overlay to create tech vibes.
+    - The cursor has a `Hover Glow Effect` 
 
-## Building and deploying
+- The Header
+    - The Header or the navigation bar had some unique features such as `Scroll Response`. Wehnever the user scrolls to a new section the header is updated accordingly.
+    - For categories a `Drop Down Menu` was added for even easier navigation.
+    ![Header](screenshots/image-8.png)
 
-To build the site and run the production server locally:
+- Hero
+    - Tried to keep it simple, user is met by:
+        - logo 
+        - date 
+        - timer *(now that the event is over, the countdown timer has automatically switched to a text message)*
+        - registration button *(most imp as this is what they are here for)*
+        
+        ![Hero ScreenShot](screenshots/image.png)
 
-```bash
-npm run build
-npm start
-```
+- The Category Page displays the logos of each category and allows users to download the study guides for each one of them.
+    - On hover a small decription is shown.
+    ![Category Page](screenshots/image-1.png)
+    - When clicked users are redirected to specific category pages where they can download the studyguide or it in browser is given.
+    ![Specific Category Pages](screenshots/image-2.png)
 
-The build puts browser assets in `build/client/` and server code in `build/server/`. If you're hosting it on a Node server, include both folders along with `package.json` and `package-lock.json`, then install the production dependencies.
+- The registrations section.
+    - The form was made in `Fillout Forms` which was integerated with `Google Sheets` so that the Event Management team could easily configure who has registered for the event.
+    ![Registration Page](screenshots/image-3.png)
+    *Note: Registration form is closed now.*
 
-For Vercel, use `npm run build` as the build command. Include new images, PDFs, scripts, and `vercel.json` when committing changes. Before publishing, check the homepage, category pages, and document downloads in a preview deployment.
+- About Section
+    - Simple description about the event and its history.
+    ![About Section](screenshots/image-4.png)
 
-There's also a Dockerfile if you'd rather run the site in a container:
+- Sponsor(s) + Contact Section
+    ![Sponors + Contact](screenshots/image-5.png)
 
-```bash
-docker build -t jtinno26 .
-docker run -p 3000:3000 jtinno26
-```
+- Location + Links
+    ![Location + Links](screenshots/image-6.png)
 
-## Keeping downloads small
+- Footer
+    - For credits and rights reservation
+    ![Footer](screenshots/image-7.png)
 
-Large backgrounds and study guides can use a lot of bandwidth. A few choices in the site help keep that down:
-
-- `HeroBg` loads one shared background, using AVIF where supported and WebP as a fallback. Individual pages add their own gradients over it.
-- The first four category cards load straight away. The rest load as visitors get closer to them. Keep image dimensions in place so cards don't jump around while loading.
-- PDFs load when someone clicks Open or Download, so browsing a category doesn't also download its guide.
-- Browser caching lets returning visitors reuse files they've already downloaded. In `vercel.json`, Vite's files with content hashes in their names are cached for a year; public PDFs and sponsor images are cached for a day. Pages don't get that long cache.
-
-PDF and sponsor links include a version based on the file's contents. When a file changes, its link changes too, so visitors can get the update without clearing their browser cache. Previously shared links still work.
-
-Both `npm run dev` and `npm run build` refresh these versions in `app/assetVersions.json`. If you replace a file while the development server is already running, refresh them yourself:
-
-```bash
-node scripts/generate-asset-versions.mjs
-```
-
-### Updating the background or logo
-
-The original photo and logo are kept in `app/assets/`. After replacing them, regenerate the smaller versions with Python and Pillow with AVIF support:
-
-```bash
-python scripts/optimize-site-images.py
-```
-
-The site uses the generated images, so remember to include those in your commit too.
-
-### Compressing study guides
-
-The PDF helper needs Python, Pillow, and `pypdf>=6.10`. It compresses images inside each PDF while preserving text and page layout, and saves a backup before making changes.
-
-For a folder of new, uncompressed guides:
-
-```bash
-python scripts/optimize-study-guides.py --source-dir ../new-guides --backup-dir ../guide-originals
-```
-
-Replace those paths with your own folders. The script updates the PDFs in the source folder; copy the checked results into `public/StudyGuides/` afterwards. Without `--source-dir`, it processes every PDF in `public/StudyGuides/`.
-
-Start from the original PDF each time rather than repeatedly compressing an already optimized copy. To retry with the originals you've backed up, use `--from-backups` and the same source and backup folders.
-
-To compare the site's guides with their originals, install `pypdfium2` and run:
-
-```bash
-python scripts/check-study-guide-rendering.py --backup-dir ../guide-originals --output-dir ../guide-checks
-```
-
-This checks every PDF in `public/StudyGuides/`, so the backup folder needs a matching original for each one. It creates page comparisons and flags large visual differences. Look through the comparisons before deploying, especially pages with small text or diagrams.
-
-Keep originals and comparison images outside `public/` so they don't get published with the site. Once the checked PDFs are in place, refresh the file versions before building.
+***Made by: Ahmad Hassan***
