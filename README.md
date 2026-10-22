@@ -73,4 +73,7 @@ Open [localhost:5173](http://localhost:5173/) to see the site. Changes you save 
     - For credits and rights reservation
     ![Footer](screenshots/image-7.png)
 
+## Google Search Console & SEO
+- Added meta descriptions for search results
+- Connected it to Google Search Console to monitor its visibility in Google Search
 ***Made by: Ahmad Hassan***
