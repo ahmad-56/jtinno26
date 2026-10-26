@@ -96,7 +96,6 @@ const categoryData = [
     pdfLink: "/StudyGuides/mindsinmotion.pdf",
     description:
       "Mind over matter starts here in our psychology category. Minds in Motion explores the inner workings of human behaviour, blending the depth of cognitive science with the intriguing patterns of the everyday mind.",
-    gradient: "from-teal-600/25 via-cyan-500/20 to-pink-500/20",
     gradient: "from-emerald-700/25 via-teal-500/20 to-cyan-500/20",
     theme: {
       primary: "#34d399",

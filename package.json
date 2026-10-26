@@ -3,9 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/generate-asset-versions.mjs",
     "build": "react-router build",
-    "predev": "node scripts/generate-asset-versions.mjs",
     "dev": "react-router dev --host",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"

@@ -1,4 +1,4 @@
-import versions from "./assetVersions.json";
+const versions = import.meta.env.ASSET_VERSIONS;
 
 export function assetUrl(path) {
   const version = versions[path];

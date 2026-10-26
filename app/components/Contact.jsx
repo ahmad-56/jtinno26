@@ -2,11 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
-  faLocation,
-  faLocationArrow,
-  faLocationDot,
-  faLocationPin,
-  faLocationPinLock,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";

@@ -9,16 +9,13 @@ const SpotlightCanvas = () => {
     
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = document.documentElement.scrollHeight; // Full document height so that it works on the entire page
+      canvas.height = document.documentElement.scrollHeight;
     };
     
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
     
-    // Also listen for content changes that might affect document height
-    const resizeObserver = new ResizeObserver(() => {
-      setCanvasSize();
-    });
+    const resizeObserver = new ResizeObserver(setCanvasSize);
     resizeObserver.observe(document.body);
     
     const handleMouseMove = (e) => {

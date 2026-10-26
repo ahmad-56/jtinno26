@@ -12,7 +12,6 @@ export default function Layout() {
       <Outlet />
       <Footer />
 
-      {/* Fixed the HUD corners' positions with dynamic positioning based on scroll */}
       <div className="fixed top-20 left-6 w-16 h-16 border-t-2 border-l-2 border-[var(--site-border)] animate-pulse z-50 transition-all duration-300"></div>
       <div className="fixed top-20 right-6 w-16 h-16 border-t-2 border-r-2 border-[var(--site-border)] animate-pulse [animation-delay:300ms] z-50 transition-all duration-300"></div>
       <div className="fixed bottom-6 left-6 w-16 h-16 border-b-2 border-l-2 border-[var(--site-border)] animate-pulse [animation-delay:600ms] z-50"></div>

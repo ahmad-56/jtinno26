@@ -145,9 +145,6 @@ function About({ id }) {
                 <Button
                   text="Categories"
                   color="rgba(17, 17, 17, 0.063)"
-                  // onClick={() =>
-                  //   (window.location.href = `${window.location.origin}/categories`)
-                  // }
                 />
               </Link>
             </div>

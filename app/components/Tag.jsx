@@ -6,7 +6,7 @@ function Tag({ text }) {
           WebkitTextFillColor: "transparent",
           WebkitBackgroundClip: "text",
         }}
-        className="bg-linear-65 from-purple-500 from-5% via-pink-500 to-orange-500 to-90% animate-gradientSlide font-bold tracking-wider animate-gradientSlide animate-pulse"
+        className="bg-linear-65 from-purple-500 from-5% via-pink-500 to-orange-500 to-90% font-bold tracking-wider animate-pulse"
       >
         {text}
       </p>

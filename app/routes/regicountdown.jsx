@@ -97,7 +97,6 @@ export default function RegistrationComingSoon() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Background grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
@@ -117,7 +116,6 @@ export default function RegistrationComingSoon() {
         aria-hidden="true"
       />
 
-      {/* Top-left glowing dot */}
       <div
         className="pointer-events-none absolute left-[10%] top-[20%] h-3 w-3 animate-pulse rounded-full"
         style={{
@@ -127,7 +125,6 @@ export default function RegistrationComingSoon() {
         aria-hidden="true"
       />
 
-      {/* Bottom-right glowing dot */}
       <div
         className="pointer-events-none absolute bottom-[20%] right-[12%] h-2 w-2 animate-pulse rounded-full"
         style={{
@@ -148,7 +145,6 @@ export default function RegistrationComingSoon() {
           `,
         }}
       >
-        {/* Top glowing line */}
         <div
           className="absolute inset-x-0 top-0 h-1"
           style={{

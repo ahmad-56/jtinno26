@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
+import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router";
 import Logo from "../assets/main-logo.webp?url";
 import Button from "../components/Button";
-import CountdownTimer from "../components/Timer"; // Adjust path as needed
-import "../app.css";
+import CountdownTimer from "../components/Timer";
 
 const Hero = ({ id = "hero" }) => {
   const navigate = useNavigate();
@@ -18,10 +17,9 @@ const Hero = ({ id = "hero" }) => {
   const ANIMATION_INTERVAL = 1000 / 60;
 
   const handleRegisterClick = useCallback(() => {
-    navigate("/preview");
+    navigate("/register");
   }, [navigate]);
 
-  // Detect if device is mobile
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -87,7 +85,6 @@ const Hero = ({ id = "hero" }) => {
     }
   }, [textAnimationComplete]);
 
-  // Load particles only after everything else is loaded
   useEffect(() => {
     if (allContentLoaded && particles.length === 0) {
       setParticles(initialParticles);

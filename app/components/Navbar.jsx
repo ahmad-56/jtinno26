@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router";
 import categoryData from "../categoryData";
 import "../app.css";
 
+const showCategoryDropdown = false;
+
 function Chevron({ open = false }) {
   return (
     <svg
@@ -44,7 +46,7 @@ function Navbar() {
   const isCategoriesActive =
     location.pathname.startsWith("/categories");
   const isRegisterActive =
-    location.pathname === "/preview";
+    location.pathname === "/register" || location.pathname === "/preview";
   const isSponsorsActive =
     location.pathname === "/" && activeSection === "sponsors";
   const isContactActive =
@@ -225,8 +227,8 @@ function Navbar() {
 
           <li
             className="relative w-full sm:w-auto"
-            onMouseEnter={() => setIsCategoriesOpen(true)}
-            onMouseLeave={() => setIsCategoriesOpen(false)}
+            onMouseEnter={() => showCategoryDropdown && setIsCategoriesOpen(true)}
+            onMouseLeave={() => showCategoryDropdown && setIsCategoriesOpen(false)}
           >
             <div className="flex items-center justify-center">
               <Link
@@ -243,6 +245,8 @@ function Navbar() {
               >
                 Categories
               </Link>
+              {showCategoryDropdown && (
+              <>
               <button
                 type="button"
                 className="mr-2 rounded p-2 text-[var(--site-accent)] sm:hidden"
@@ -264,8 +268,11 @@ function Navbar() {
               >
                 <Chevron />
               </span>
+              </>
+              )}
             </div>
 
+            {showCategoryDropdown && (
             <div
               className={`z-[70] overflow-hidden transition-all duration-300 sm:absolute sm:left-1/2 sm:top-full sm:max-h-none sm:w-[34rem] sm:-translate-x-1/2 sm:rounded-xl sm:border sm:border-[var(--site-border)] sm:bg-[var(--site-background-secondary)]/95 sm:p-3 sm:shadow-2xl sm:shadow-[var(--site-glow)] sm:backdrop-blur-xl ${
                 isCategoriesOpen
@@ -283,9 +290,12 @@ function Navbar() {
                 </Link>
 
                 {categoryData.map((category) => (
-                  <Link
+                  <a
                     key={category.slug}
-                    to={`/categories/${category.slug}`}
+                    href={category.pdfLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open the ${category.title} study guide PDF in a new tab`}
                     onClick={closeMenus}
                     className="!flex min-h-10 w-full flex-row items-center justify-between rounded-lg px-3 py-2.5 text-left text-xs text-slate-200 transition-all duration-200 hover:bg-[var(--site-primary)]/15 hover:text-white active:translate-y-0.5 active:scale-[0.97] active:bg-[var(--site-accent)]/20"
                   >
@@ -311,10 +321,11 @@ function Navbar() {
                         </span>
                       </span>
                     )}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
+            )}
           </li>
 
           <li className="group relative w-full sm:w-auto">
@@ -324,7 +335,7 @@ function Navbar() {
                   ? "nav-link-active text-[var(--site-heading)]"
                   : ""
               }`}
-              to="/preview"
+              to="/register"
               onClick={closeMenus}
             >
               <span className="absolute inset-0 bg-[var(--site-primary)]/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-[var(--site-accent)]/25" />
