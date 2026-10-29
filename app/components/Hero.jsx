@@ -4,7 +4,7 @@ import Logo from "../assets/main-logo.webp?url";
 import Button from "../components/Button";
 import CountdownTimer from "../components/Timer";
 
-const Hero = ({ id = "hero" }) => {
+const Hero = ({ id = "hero", motion = true }) => {
   const navigate = useNavigate();
   const [textAnimationComplete, setTextAnimationComplete] = useState(false);
   const [allContentLoaded, setAllContentLoaded] = useState(false);
@@ -42,6 +42,7 @@ const Hero = ({ id = "hero" }) => {
   }, []);
 
   const initialParticles = useMemo(() => {
+    if (!motion) return [];
     const particleCount = isMobile ? 40 : 75;
     return [...Array(particleCount)].map((_, i) => {
       const baseX = Math.random() * 100;
@@ -60,14 +61,14 @@ const Hero = ({ id = "hero" }) => {
         phase: Math.random() * Math.PI * 2,
       };
     });
-  }, [isMobile]);
+  }, [isMobile, motion]);
 
   useEffect(() => {
     setTextAnimationComplete(true);
   }, []);
 
   useEffect(() => {
-    if (textAnimationComplete) {
+    if (motion && textAnimationComplete) {
       const checkContentLoaded = () => {
         const images = document.querySelectorAll("img");
         const allImagesLoaded = Array.from(images).every((img) => img.complete);
@@ -83,14 +84,14 @@ const Hero = ({ id = "hero" }) => {
 
       checkContentLoaded();
     }
-  }, [textAnimationComplete]);
+  }, [textAnimationComplete, motion]);
 
   useEffect(() => {
-    if (allContentLoaded && particles.length === 0) {
+    if (motion && allContentLoaded && particles.length === 0) {
       setParticles(initialParticles);
       particlesRef.current = initialParticles;
     }
-  }, [allContentLoaded, particles.length, initialParticles]);
+  }, [allContentLoaded, particles.length, initialParticles, motion]);
 
   useEffect(() => {
     const animate = (currentTime) => {
@@ -120,7 +121,7 @@ const Hero = ({ id = "hero" }) => {
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    if (allContentLoaded && particles.length > 0) {
+    if (motion && allContentLoaded && particles.length > 0) {
       animationFrameRef.current = requestAnimationFrame(animate);
     }
 
@@ -129,7 +130,7 @@ const Hero = ({ id = "hero" }) => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [allContentLoaded, particles.length]);
+  }, [allContentLoaded, particles.length, motion]);
 
   const updateParticlesFromPosition = useCallback((x, y) => {
     particlesRef.current = particlesRef.current.map((p) => {
@@ -210,7 +211,7 @@ const Hero = ({ id = "hero" }) => {
 
   useEffect(() => {
     const el = heroRef.current;
-    if (allContentLoaded && el) {
+    if (motion && allContentLoaded && el) {
       el.addEventListener("mousemove", throttleMouseMove, { passive: true });
       el.addEventListener("touchstart", throttleTouch, { passive: true });
       el.addEventListener("touchmove", throttleTouch, { passive: true });
@@ -225,7 +226,7 @@ const Hero = ({ id = "hero" }) => {
         }
       };
     }
-  }, [allContentLoaded, throttleMouseMove, throttleTouch]);
+  }, [allContentLoaded, throttleMouseMove, throttleTouch, motion]);
 
   const particleElements = useMemo(() => {
     return particles.map((particle) => (
@@ -253,7 +254,7 @@ const Hero = ({ id = "hero" }) => {
       className="relative h-[100vh] w-full flex flex-col items-center justify-start overflow-hidden pb-5 md:pb-8"
       id={id}
     >
-      {allContentLoaded && particles.length > 0 && (
+      {motion && allContentLoaded && particles.length > 0 && (
         <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
           {particleElements}
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import categoryData from "../categoryData";
+import { showContact } from "../homepagePresentation";
 import "../app.css";
 
 const showCategoryDropdown = false;
@@ -26,7 +27,7 @@ function Chevron({ open = false }) {
   );
 }
 
-function Navbar() {
+function Navbar({ motion = true }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,6 +54,10 @@ function Navbar() {
     location.pathname === "/" && activeSection === "contact";
 
   useEffect(() => {
+    if (!motion) {
+      setIsScrolled(false);
+      return;
+    }
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
 
     window.addEventListener("scroll", handleScroll, {
@@ -62,7 +67,7 @@ function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [motion]);
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -112,6 +117,7 @@ function Navbar() {
         isScrolled ? "bg-black/70 pb-1 pt-2" : "bg-black/40 pb-2 pt-3"
       }`}
       aria-label="Primary navigation"
+      data-motion={motion ? "on" : "off"}
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,_#0c6177_1px,_transparent_1px)] bg-[length:20px_20px] opacity-30"
@@ -361,6 +367,7 @@ function Navbar() {
             </Link>
           </li>
 
+          {showContact && (
           <li className="relative w-full sm:w-auto">
             <Link
               className={`nav-link relative block px-2 py-2 md:px-3 ${
@@ -377,6 +384,7 @@ function Navbar() {
               Contact
             </Link>
           </li>
+          )}
         </ul>
       </div>
 

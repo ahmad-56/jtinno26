@@ -1,13 +1,20 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
+import { staticHomepage, staticHeader } from "../homepagePresentation";
+import "../static-homepage.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HeroBg from "../components/HeroBg";
 
 export default function Layout() {
+  const { pathname } = useLocation();
+  const isStaticHome = staticHomepage && pathname === "/";
   return (
-    <main>
+    <main
+      className={isStaticHome ? "static-home" : undefined}
+      data-header-motion={staticHeader ? "off" : "on"}
+    >
       <HeroBg />
-      <Navbar />
+      <Navbar motion={!staticHeader && !isStaticHome} />
 
       <Outlet />
       <Footer />
