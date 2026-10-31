@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import Button from "./Button";
 
-function About({ id, motion = true }) {
+function About({ id }) {
   const svgRef = useRef(null);
   const svgRef2 = useRef(null);
   const headingRef = useRef(null);
@@ -27,7 +27,7 @@ function About({ id, motion = true }) {
     window.addEventListener("resize", handleResize);
 
     let observer;
-    if (motion && contentRef.current) {
+    if (contentRef.current) {
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -47,7 +47,7 @@ function About({ id, motion = true }) {
       window.removeEventListener("resize", handleResize);
       observer?.disconnect();
     };
-  }, [motion]);
+  }, []);
 
   return (
     <section

@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import categoryData from "../categoryData";
-import { showContact } from "../homepagePresentation";
 import "../app.css";
-
-const showCategoryDropdown = false;
 
 function Chevron({ open = false }) {
   return (
@@ -27,7 +24,7 @@ function Chevron({ open = false }) {
   );
 }
 
-function Navbar({ motion = true }) {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,17 +44,13 @@ function Navbar({ motion = true }) {
   const isCategoriesActive =
     location.pathname.startsWith("/categories");
   const isRegisterActive =
-    location.pathname === "/register" || location.pathname === "/preview";
+    location.pathname === "/preview";
   const isSponsorsActive =
     location.pathname === "/" && activeSection === "sponsors";
   const isContactActive =
     location.pathname === "/" && activeSection === "contact";
 
   useEffect(() => {
-    if (!motion) {
-      setIsScrolled(false);
-      return;
-    }
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
 
     window.addEventListener("scroll", handleScroll, {
@@ -67,7 +60,7 @@ function Navbar({ motion = true }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [motion]);
+  }, []);
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -117,7 +110,6 @@ function Navbar({ motion = true }) {
         isScrolled ? "bg-black/70 pb-1 pt-2" : "bg-black/40 pb-2 pt-3"
       }`}
       aria-label="Primary navigation"
-      data-motion={motion ? "on" : "off"}
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,_#0c6177_1px,_transparent_1px)] bg-[length:20px_20px] opacity-30"
@@ -233,8 +225,8 @@ function Navbar({ motion = true }) {
 
           <li
             className="relative w-full sm:w-auto"
-            onMouseEnter={() => showCategoryDropdown && setIsCategoriesOpen(true)}
-            onMouseLeave={() => showCategoryDropdown && setIsCategoriesOpen(false)}
+            onMouseEnter={() => setIsCategoriesOpen(true)}
+            onMouseLeave={() => setIsCategoriesOpen(false)}
           >
             <div className="flex items-center justify-center">
               <Link
@@ -251,8 +243,6 @@ function Navbar({ motion = true }) {
               >
                 Categories
               </Link>
-              {showCategoryDropdown && (
-              <>
               <button
                 type="button"
                 className="mr-2 rounded p-2 text-[var(--site-accent)] sm:hidden"
@@ -274,11 +264,8 @@ function Navbar({ motion = true }) {
               >
                 <Chevron />
               </span>
-              </>
-              )}
             </div>
 
-            {showCategoryDropdown && (
             <div
               className={`z-[70] overflow-hidden transition-all duration-300 sm:absolute sm:left-1/2 sm:top-full sm:max-h-none sm:w-[34rem] sm:-translate-x-1/2 sm:rounded-xl sm:border sm:border-[var(--site-border)] sm:bg-[var(--site-background-secondary)]/95 sm:p-3 sm:shadow-2xl sm:shadow-[var(--site-glow)] sm:backdrop-blur-xl ${
                 isCategoriesOpen
@@ -296,12 +283,9 @@ function Navbar({ motion = true }) {
                 </Link>
 
                 {categoryData.map((category) => (
-                  <a
+                  <Link
                     key={category.slug}
-                    href={category.pdfLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Open the ${category.title} study guide PDF in a new tab`}
+                    to={`/categories/${category.slug}`}
                     onClick={closeMenus}
                     className="!flex min-h-10 w-full flex-row items-center justify-between rounded-lg px-3 py-2.5 text-left text-xs text-slate-200 transition-all duration-200 hover:bg-[var(--site-primary)]/15 hover:text-white active:translate-y-0.5 active:scale-[0.97] active:bg-[var(--site-accent)]/20"
                   >
@@ -327,11 +311,10 @@ function Navbar({ motion = true }) {
                         </span>
                       </span>
                     )}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
-            )}
           </li>
 
           <li className="group relative w-full sm:w-auto">
@@ -341,7 +324,7 @@ function Navbar({ motion = true }) {
                   ? "nav-link-active text-[var(--site-heading)]"
                   : ""
               }`}
-              to="/register"
+              to="/preview"
               onClick={closeMenus}
             >
               <span className="absolute inset-0 bg-[var(--site-primary)]/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-[var(--site-accent)]/25" />
@@ -367,7 +350,6 @@ function Navbar({ motion = true }) {
             </Link>
           </li>
 
-          {showContact && (
           <li className="relative w-full sm:w-auto">
             <Link
               className={`nav-link relative block px-2 py-2 md:px-3 ${
@@ -384,7 +366,6 @@ function Navbar({ motion = true }) {
               Contact
             </Link>
           </li>
-          )}
         </ul>
       </div>
 

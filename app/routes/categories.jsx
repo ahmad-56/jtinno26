@@ -20,7 +20,7 @@ export default function Categories() {
             <Card
               key={c.slug}
               title={c.title}
-              pdfLink={c.pdfLink}
+              slug={c.slug}
               description={c.description}
               img={c.img}
               compulsory={c.compulsory}

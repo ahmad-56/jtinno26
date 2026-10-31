@@ -27,12 +27,11 @@ const contacts = [
   },
 ];
 
-function Contact({ motion = true }) {
+function Contact() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!motion) return;
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(entry.isIntersecting),
       { threshold: [0, 0.2] }
@@ -40,7 +39,7 @@ function Contact({ motion = true }) {
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [motion]);
+  }, []);
 
   return (
     <section
@@ -68,7 +67,7 @@ function Contact({ motion = true }) {
           {contacts.map((contact) => (
             <article
               key={contact.email}
-              className="group relative overflow-hidden rounded-xl border-2 bg-[#33363a] p-6 transition duration-300 hover:-translate-y-1 sm:p-8"
+              className="group relative overflow-hidden rounded-xl border-2 bg-black p-6 transition duration-300 hover:-translate-y-1 sm:p-8"
               style={{
                 borderColor: `${contact.accent}99`,
                 boxShadow: `
@@ -78,7 +77,7 @@ function Contact({ motion = true }) {
               }}
             >
               <div
-                className="contact-dot pointer-events-none absolute right-4 top-4 z-20 flex h-5 w-5 items-center justify-center"
+                className="pointer-events-none absolute right-4 top-4 z-20 flex h-5 w-5 items-center justify-center"
                 aria-hidden="true"
               >
                 <span
@@ -112,7 +111,7 @@ function Contact({ motion = true }) {
               />
 
               <div className="relative z-10 min-w-0">
-                <div className="contact-card-heading mb-6 text-center">
+                <div className="mb-6 text-center">
                   <h2
                     className="mb-2 font-monaspace text-2xl font-semibold"
                     style={{
@@ -134,7 +133,7 @@ function Contact({ motion = true }) {
                   </p>
                 </div>
 
-                <div className="contact-card-details mx-auto max-w-sm space-y-1">
+                <div className="mx-auto max-w-sm space-y-1">
                   <a
                     href={`tel:${contact.phoneHref}`}
                     className="flex items-center gap-3 rounded-md px-1 py-2 text-sm text-slate-300 transition hover:text-[var(--site-heading)]"

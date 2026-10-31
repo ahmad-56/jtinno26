@@ -3,7 +3,6 @@ import SpotlightCanvas from "../components/SpotlightCanvas";
 import About from "../components/About";
 import Sponsors from "../components/Sponsors";
 import Contact from "../components/Contact";
-import { staticHomepage, showContact } from "../homepagePresentation";
 
 export const meta = () => {
   return [
@@ -51,12 +50,12 @@ export const meta = () => {
 export default function Home() {
   return (
     <main className="relative w-full h-full flex flex-col items-center justify-center overflow-visible">
-      {!staticHomepage && <SpotlightCanvas />}
-      <Hero id="hero" motion={!staticHomepage} />
+      <SpotlightCanvas />
+      <Hero id="hero" />
       <div className="w-full border-4 border-[var(--site-border)]">
-        <About id="about" motion={!staticHomepage} />
+        <About id="about" />
         <Sponsors id="sponsors" />
-        {showContact && <Contact id="contact" motion={!staticHomepage} />}
+        <Contact id="contact" />
       </div>
     </main>
   );
