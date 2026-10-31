@@ -110,6 +110,50 @@ nav li:not(:last-child) {
   }
 }
 
+@media (min-width: 768px) and (hover: hover) {
+  .cards:has(> a:hover) > a:not(:hover) {
+    filter: blur(4px);
+    opacity: 0.6;
+    transition: all 0.2s ease;
+  }
+}
+
+@keyframes sponsor-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.sponsor-marquee {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.sponsor-marquee-track {
+  animation: sponsor-marquee 26s linear infinite;
+  will-change: transform;
+}
+
+.sponsor-marquee:hover .sponsor-marquee-track,
+.sponsor-marquee:focus-within .sponsor-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .sponsor-marquee-track {
+    animation-duration: 20s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
 /* Button ripple, hero logo and entrance fades */
 @keyframes ripple {
   0% {
