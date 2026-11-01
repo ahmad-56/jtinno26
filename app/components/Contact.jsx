@@ -8,7 +8,7 @@ import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const contacts = [
   {
-    name: "Shayan Akbar",
+    name: "Mian Shaayan Akbar",
     initials: "SA",
     role: "Event Head",
     phoneLabel: "+92 309 9333096",
