@@ -137,6 +137,8 @@ function About({ id }) {
           challenges, participants will investigate, prototype, and showcase their work.
           Driven by “Indulge. Invent. Innovate.” Innoventions ’26 is where curiosity meets 
           action and ideas become real.
+          This year's event is headed by LGS JT's Science Society President Mian Shaayan Akbar 
+          and Vice President Muhammad Anas Salman.
         </p>
         <div>
           <div className="relative group inline-block p-1">
