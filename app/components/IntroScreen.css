@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "Nexa Bold";
+  src: url("../assets/nexa-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.society-intro {
+  --intro-progress-delay: 400ms;
+  --intro-progress-duration: 1800ms;
+  --intro-fade-duration: 800ms;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #020812;
+  color: #f5f8ff;
+  overflow: hidden;
+}
+
+.society-intro::backdrop {
+  background: transparent;
+}
+
+.society-intro[open] {
+  display: block;
+  animation: intro-exit var(--intro-fade-duration) ease-in-out
+    calc(var(--intro-progress-delay) + var(--intro-progress-duration)) forwards;
+}
+
+.society-intro * {
+  font-family: "Nexa Bold", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.intro-content {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 5rem 1rem 0;
+  text-align: center;
+}
+
+.intro-event-logo {
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto 28px;
+  animation: intro-arrive 650ms ease-out both;
+}
+
+.intro-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.5vw, 12px);
+  margin: 0;
+  font-size: clamp(12px, 2vw, 18px);
+  line-height: 1.3;
+  animation: intro-arrive 700ms ease-out 220ms both;
+}
+
+.intro-label {
+  color: #9bafc7;
+  font-size: clamp(11px, 1.5vw, 14px);
+}
+
+.intro-society-logo {
+  width: clamp(24px, 4vw, 32px);
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 22%;
+}
+
+.intro-line {
+  display: block;
+  width: 80px;
+  height: 3px;
+  margin: 22px auto 0;
+  background: linear-gradient(90deg, #25c9f4, #6652a3);
+  transform-origin: left;
+  animation: intro-line var(--intro-progress-duration) linear var(--intro-progress-delay) both;
+}
+
+@keyframes intro-arrive {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes intro-line {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes intro-exit {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .society-intro[open],
+  .society-intro * {
+    animation: none;
+  }
+}

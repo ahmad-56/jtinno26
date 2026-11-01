@@ -3,6 +3,7 @@ import SpotlightCanvas from "../components/SpotlightCanvas";
 import About from "../components/About";
 import Sponsors from "../components/Sponsors";
 import Contact from "../components/Contact";
+import IntroScreen from "../components/IntroScreen";
 
 export const meta = () => {
   return [
@@ -50,6 +51,7 @@ export const meta = () => {
 export default function Home() {
   return (
     <main className="relative w-full h-full flex flex-col items-center justify-center overflow-visible">
+      <IntroScreen />
       <SpotlightCanvas />
       <Hero id="hero" />
       <div className="w-full border-4 border-[var(--site-border)]">
