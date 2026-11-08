@@ -1,8 +1,7 @@
-import { Link } from "react-router";
+import { GlowingLink } from "../components/Button";
 import CountdownTimer from "../components/Timer";
 
-const REGISTRATION_OPENING_DATE =
-  "2026-08-25T10:00:00+05:00";
+const registrationOpeningDate = "2026-08-25T10:00:00+05:00";
 
 export function meta() {
   return [
@@ -16,52 +15,6 @@ export function meta() {
         "Registration for JT Innoventions '26 will open soon.",
     },
   ];
-}
-
-function GlowingLink({
-  to,
-  children,
-  theme,
-}) {
-  return (
-    <div className="group relative inline-flex">
-      <div
-        className="pointer-events-none absolute -inset-3 rounded-xl opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
-        style={{
-          background: `linear-gradient(
-            90deg,
-            ${theme.primary}33,
-            ${theme.secondary}33,
-            ${theme.primary}33
-          )`,
-        }}
-        aria-hidden="true"
-      />
-
-      <Link
-        to={to}
-        className="relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-md border border-white/20 px-6 py-2 text-sm font-medium uppercase tracking-widest text-white backdrop-blur-md transition duration-300 hover:-translate-y-1 active:scale-95"
-        style={{
-          backgroundColor:
-            "rgba(17, 17, 17, 0.65)",
-          boxShadow: `0 0 12px ${theme.glow}`,
-        }}
-      >
-        <span
-          className="pointer-events-none absolute inset-0 rounded-md border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            borderColor: theme.primary,
-            boxShadow: `inset 0 0 10px ${theme.glow}`,
-          }}
-          aria-hidden="true"
-        />
-
-        <span className="relative z-10 inline-flex items-center gap-2">
-          {children}
-        </span>
-      </Link>
-    </div>
-  );
 }
 
 export default function RegistrationComingSoon() {
@@ -198,9 +151,7 @@ export default function RegistrationComingSoon() {
 
         <div className="mb-9 flex justify-center">
           <CountdownTimer
-            targetDate={
-              REGISTRATION_OPENING_DATE
-            }
+            targetDate={registrationOpeningDate}
             expiredText="Registration is now open"
           />
         </div>
@@ -208,6 +159,7 @@ export default function RegistrationComingSoon() {
         <GlowingLink
           to="/"
           theme={theme}
+          className="transition duration-300 hover:-translate-y-1"
         >
           <span>Return Home</span>
         </GlowingLink>

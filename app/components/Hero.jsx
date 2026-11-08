@@ -1,53 +1,47 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router";
 import Logo from "../assets/main-logo.webp?url";
-import Button from "../components/Button";
-import CountdownTimer from "../components/Timer";
+import Button from "./Button";
+import CountdownTimer from "./Timer";
+
+const frameInterval = 1000 / 60;
 
 const Hero = ({ id = "hero" }) => {
   const navigate = useNavigate();
-  const [textAnimationComplete, setTextAnimationComplete] = useState(false);
   const [allContentLoaded, setAllContentLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [particles, setParticles] = useState([]);
   const particlesRef = useRef([]);
   const heroRef = useRef(null);
   const animationFrameRef = useRef(null);
   const lastUpdateTimeRef = useRef(0);
+  const pointerTimeoutRef = useRef(null);
 
-  const ANIMATION_INTERVAL = 1000 / 60;
-
-  const handleRegisterClick = useCallback(() => {
-    navigate("/preview");
-  }, [navigate]);
-
-  const [isMobile, setIsMobile] = useState(false);
+  function handleRegisterClick() {
+    navigate("/register");
+  }
 
   useEffect(() => {
-    const checkIsMobile = () => {
-      return (
+    const handleResize = () => {
+      setIsMobile(
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
         ) || window.innerWidth < 768
       );
     };
 
-    setIsMobile(checkIsMobile());
-
-    const handleResize = () => {
-      setIsMobile(checkIsMobile());
-    };
-
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const initialParticles = useMemo(() => {
     const particleCount = isMobile ? 40 : 75;
-    return [...Array(particleCount)].map((_, i) => {
+    return Array.from({ length: particleCount }, (_, id) => {
       const baseX = Math.random() * 100;
       const baseY = Math.random() * 100;
       return {
-        id: i,
+        id,
         size: Math.random() * 2 + 1.5,
         baseX,
         baseY,
@@ -63,27 +57,22 @@ const Hero = ({ id = "hero" }) => {
   }, [isMobile]);
 
   useEffect(() => {
-    setTextAnimationComplete(true);
-  }, []);
+    let timeout;
 
-  useEffect(() => {
-    if (textAnimationComplete) {
-      const checkContentLoaded = () => {
-        const images = document.querySelectorAll("img");
-        const allImagesLoaded = Array.from(images).every((img) => img.complete);
+    function checkContentLoaded() {
+      const images = document.querySelectorAll("img");
+      const allImagesLoaded = Array.from(images).every((img) => img.complete);
 
-        if (allImagesLoaded) {
-          setTimeout(() => {
-            setAllContentLoaded(true);
-          }, 500);
-        } else {
-          setTimeout(checkContentLoaded, 100);
-        }
-      };
-
-      checkContentLoaded();
+      if (allImagesLoaded) {
+        timeout = window.setTimeout(() => setAllContentLoaded(true), 500);
+      } else {
+        timeout = window.setTimeout(checkContentLoaded, 100);
+      }
     }
-  }, [textAnimationComplete]);
+
+    checkContentLoaded();
+    return () => window.clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
     if (allContentLoaded && particles.length === 0) {
@@ -94,7 +83,7 @@ const Hero = ({ id = "hero" }) => {
 
   useEffect(() => {
     const animate = (currentTime) => {
-      if (currentTime - lastUpdateTimeRef.current < ANIMATION_INTERVAL) {
+      if (currentTime - lastUpdateTimeRef.current < frameInterval) {
         animationFrameRef.current = requestAnimationFrame(animate);
         return;
       }
@@ -174,58 +163,41 @@ const Hero = ({ id = "hero" }) => {
     });
   }, []);
 
-  const throttledUpdateRef = useRef(null);
-  const throttleMouseMove = useCallback(
-    (e) => {
-      if (throttledUpdateRef.current) return;
+  const handlePointerMove = useCallback(
+    (event) => {
+      if (pointerTimeoutRef.current) return;
+      const { clientX, clientY } = event.touches?.[0] ?? event;
 
-      throttledUpdateRef.current = setTimeout(() => {
+      pointerTimeoutRef.current = window.setTimeout(() => {
+        pointerTimeoutRef.current = null;
         if (!heroRef.current) return;
-        const rect = heroRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        updateParticlesFromPosition(x, y);
-        throttledUpdateRef.current = null;
-      }, 16);
-    },
-    [updateParticlesFromPosition]
-  );
 
-  const throttleTouch = useCallback(
-    (e) => {
-      if (throttledUpdateRef.current) return;
-
-      throttledUpdateRef.current = setTimeout(() => {
-        if (!heroRef.current) return;
         const rect = heroRef.current.getBoundingClientRect();
-        const touch = e.touches[0];
-        const x = ((touch.clientX - rect.left) / rect.width) * 100;
-        const y = ((touch.clientY - rect.top) / rect.height) * 100;
+        const x = ((clientX - rect.left) / rect.width) * 100;
+        const y = ((clientY - rect.top) / rect.height) * 100;
         updateParticlesFromPosition(x, y);
-        throttledUpdateRef.current = null;
       }, 16);
     },
     [updateParticlesFromPosition]
   );
 
   useEffect(() => {
-    const el = heroRef.current;
-    if (allContentLoaded && el) {
-      el.addEventListener("mousemove", throttleMouseMove, { passive: true });
-      el.addEventListener("touchstart", throttleTouch, { passive: true });
-      el.addEventListener("touchmove", throttleTouch, { passive: true });
+    const hero = heroRef.current;
+    if (!allContentLoaded || !hero) return;
 
-      return () => {
-        el.removeEventListener("mousemove", throttleMouseMove);
-        el.removeEventListener("touchstart", throttleTouch);
-        el.removeEventListener("touchmove", throttleTouch);
-
-        if (throttledUpdateRef.current) {
-          clearTimeout(throttledUpdateRef.current);
-        }
-      };
+    const events = ["mousemove", "touchstart", "touchmove"];
+    for (const event of events) {
+      hero.addEventListener(event, handlePointerMove, { passive: true });
     }
-  }, [allContentLoaded, throttleMouseMove, throttleTouch]);
+
+    return () => {
+      for (const event of events) {
+        hero.removeEventListener(event, handlePointerMove);
+      }
+      window.clearTimeout(pointerTimeoutRef.current);
+      pointerTimeoutRef.current = null;
+    };
+  }, [allContentLoaded, handlePointerMove]);
 
   const particleElements = useMemo(() => {
     return particles.map((particle) => (

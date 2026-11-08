@@ -3,15 +3,15 @@ import { Link } from "react-router";
 import Button from "./Button";
 
 function About({ id }) {
-  const svgRef = useRef(null);
-  const svgRef2 = useRef(null);
+  const mobileWaveRef = useRef(null);
+  const desktopWaveRef = useRef(null);
   const headingRef = useRef(null);
   const contentRef = useRef(null);
   const [padding, setPadding] = useState(30);
 
   useEffect(() => {
     const handleResize = () => {
-      const svg = window.innerWidth < 640 ? svgRef : svgRef2;
+      const svg = window.innerWidth < 640 ? mobileWaveRef : desktopWaveRef;
       if (svg.current) {
         const extra =
           window.innerWidth >= 1280 ? -64 : window.innerWidth >= 1024 ? -20 : 0;
@@ -31,11 +31,10 @@ function About({ id }) {
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.lastElementChild.classList.add("animate-fade-in");
-            } else {
-              entry.target.lastElementChild.classList.remove("animate-fade-in");
-            }
+            entry.target.lastElementChild.classList.toggle(
+              "animate-fade-in",
+              entry.isIntersecting
+            );
           });
         },
         { threshold: [0, 0.4] }
@@ -74,7 +73,7 @@ function About({ id }) {
             </filter>
           </defs>
           <path
-            ref={svgRef2}
+            ref={desktopWaveRef}
             preserveAspectRatio="none"
             fill="#000000"
             fillOpacity="0.7"
@@ -106,7 +105,7 @@ function About({ id }) {
             </filter>
           </defs>
           <path
-            ref={svgRef}
+            ref={mobileWaveRef}
             fill="#000000"
             fillOpacity="0.7"
             d="M0,240L80,250C160,260,320,280,480,270C640,260,800,220,960,200C1120,180,1280,180,1360,180L1440,180L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"

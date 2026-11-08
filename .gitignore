@@ -1,6 +1,10 @@
 .DS_Store
 /node_modules/
 
-# React Router
 /.react-router/
 /build/
+
+/scripts/check-study-guide-rendering.py
+/scripts/generate-asset-versions.mjs
+/scripts/optimize-site-images.py
+/scripts/optimize-study-guides.py

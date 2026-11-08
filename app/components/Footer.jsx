@@ -41,7 +41,7 @@ function Footer() {
           <li
             key={i}
             className={`px-2 lg:px-3 py-1 transition-all duration-300 hover:text-[var(--site-accent)] ${
-              i % 2 === 1 && "hidden md:inline text-[var(--site-primary)]/50"
+              i % 2 === 1 ? "hidden md:inline text-[var(--site-primary)]/50" : ""
             }`}
           >
             {item}

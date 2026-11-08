@@ -1,13 +1,27 @@
-import { useCallback } from "react";
 import { useNavigate } from "react-router";
-import Button from "../components/Button";
+import Button, { DownloadIcon, ExternalLinkIcon } from "../components/Button";
 import { assetUrl } from "../assetUrl";
 
-const head_delegate =
-  assetUrl("/rules/headdelegate.pdf");
+const theme = {
+  primary: "#149488",
+  secondary: "#0d766f",
+  glow: "rgba(20, 148, 136, 0.35)",
+};
 
-const codeofconduct =
-  assetUrl("/rules/codeofconduct.pdf");
+const documents = [
+  {
+    title: "Head Delegate Form",
+    file: assetUrl("/rules/headdelegate.pdf"),
+    accent: "#149488",
+    glow: "rgba(20, 148, 136, 0.3)",
+  },
+  {
+    title: "Code of Conduct",
+    file: assetUrl("/rules/codeofconduct.pdf"),
+    accent: "#0c7489",
+    glow: "rgba(12, 116, 137, 0.3)",
+  },
+];
 
 export function meta() {
   return [
@@ -20,46 +34,6 @@ export function meta() {
         "Review the required documents and register for JT Innoventions '26.",
     },
   ];
-}
-
-function DownloadIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4"
-    >
-      <path d="M12 3v12" />
-      <path d="m7 10 5 5 5-5" />
-      <path d="M5 21h14" />
-    </svg>
-  );
-}
-
-function ExternalLinkIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4"
-    >
-      <path d="M15 3h6v6" />
-      <path d="M10 14 21 3" />
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    </svg>
-  );
 }
 
 function RegisterButton({ onClick }) {
@@ -144,30 +118,9 @@ function PDFCard({ document }) {
 export default function RegistrationDocuments() {
   const navigate = useNavigate();
 
-  const handleRegisterClick = useCallback(() => {
+  function handleRegisterClick() {
     navigate("/register");
-  }, [navigate]);
-
-  const theme = {
-    primary: "#149488",
-    secondary: "#0d766f",
-    glow: "rgba(20, 148, 136, 0.35)",
-  };
-
-  const documents = [
-    {
-      title: "Head Delegate Form",
-      file: head_delegate,
-      accent: "#149488",
-      glow: "rgba(20, 148, 136, 0.3)",
-    },
-    {
-      title: "Code of Conduct",
-      file: codeofconduct,
-      accent: "#0c7489",
-      glow: "rgba(12, 116, 137, 0.3)",
-    },
-  ];
+  }
 
   return (
     <main
@@ -234,7 +187,6 @@ export default function RegistrationDocuments() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
-
         <header className="mb-12 text-center">
           <p
             className="mb-4 font-mono text-xs uppercase tracking-[0.35em]"
@@ -260,17 +212,12 @@ export default function RegistrationDocuments() {
         </header>
 
         <div className="mb-10 flex justify-center">
-          <RegisterButton
-            onClick={handleRegisterClick}
-          />
+          <RegisterButton onClick={handleRegisterClick} />
         </div>
 
         <section className="grid gap-7 lg:grid-cols-2">
           {documents.map((document) => (
-            <PDFCard
-              key={document.title}
-              document={document}
-            />
+            <PDFCard key={document.title} document={document} />
           ))}
         </section>
       </div>

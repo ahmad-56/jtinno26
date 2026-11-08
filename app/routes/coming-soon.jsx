@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
+import { GlowingLink } from "../components/Button";
 import categoryData from "../categoryData";
 
 export function meta({ params }) {
@@ -34,46 +35,6 @@ export default function ComingSoon() {
     glow: "rgba(20, 148, 136, 0.35)",
   };
 
-function GlowingLink({ to, children, theme }) {
-  return (
-    <div className="group relative inline-flex">
-      <div
-        className="pointer-events-none absolute -inset-3 rounded-xl opacity-60 blur-lg transition duration-500 group-hover:opacity-100 group-hover:blur-xl"
-        style={{
-          background: `linear-gradient(
-            90deg,
-            ${theme.primary}33,
-            ${theme.secondary}33,
-            ${theme.primary}33
-          )`,
-        }}
-        aria-hidden="true"
-      />
-
-      <Link
-        to={to}
-        className="relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-md border border-white/20 px-6 py-2 text-sm font-medium uppercase tracking-widest text-white backdrop-blur-md active:scale-95"
-        style={{
-          backgroundColor: "rgba(17, 17, 17, 0.65)",
-          boxShadow: `0 0 12px ${theme.glow}`,
-        }}
-      >
-        <span
-          className="pointer-events-none absolute inset-0 rounded-md border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            borderColor: theme.primary,
-            boxShadow: `inset 0 0 10px ${theme.glow}`,
-          }}
-          aria-hidden="true"
-        />
-
-        <span className="relative z-10 inline-flex items-center gap-2">
-          {children}
-        </span>
-      </Link>
-    </div>
-  );
-}
   return (
     <main
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pb-20 pt-28 text-slate-100"
@@ -100,7 +61,7 @@ function GlowingLink({ to, children, theme }) {
         backgroundRepeat: "no-repeat",
       }}
     >
-  
+
       <div
         className="pointer-events-none absolute left-[10%] top-[20%] h-3 w-3 animate-pulse rounded-full"
         style={{
@@ -186,12 +147,9 @@ function GlowingLink({ to, children, theme }) {
           aria-hidden="true"
         />
 
-      <GlowingLink
-        to="/categories"
-        theme={theme}
-      >
-        <span>All Categories</span>
-      </GlowingLink>
+        <GlowingLink to="/categories" theme={theme}>
+          <span>All Categories</span>
+        </GlowingLink>
       </section>
     </main>
   );

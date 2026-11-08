@@ -1,15 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const contacts = [
   {
     name: "Mian Shaayan Akbar",
-    initials: "SA",
     role: "Event Head",
     phoneLabel: "+92 309 9333096",
     phoneHref: "+923099333096",
@@ -18,7 +14,6 @@ const contacts = [
   },
   {
     name: "M Anas Salman",
-    initials: "AS",
     role: "Event Head",
     phoneLabel: "+92 317 0222290",
     phoneHref: "+923170222290",

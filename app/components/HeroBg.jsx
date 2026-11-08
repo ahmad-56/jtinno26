@@ -8,8 +8,8 @@ import school1440 from "../assets/backgrounds/school-1440.webp";
 
 function HeroBg() {
   const { pathname } = useLocation();
-  // Category and document pages draw their own gradients over this same photo.
-  const hasPageOverlay = pathname.startsWith("/categories/") || pathname === "/preview";
+  const hasPageOverlay =
+    pathname.startsWith("/categories/") || pathname === "/preview";
 
   return (
     <>

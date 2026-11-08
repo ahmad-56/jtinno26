@@ -1,23 +1,16 @@
 import { useEffect, useState } from "react";
 
 function calculateTimeLeft(targetDate) {
-  const difference =
-    new Date(targetDate).getTime() - Date.now();
+  const difference = new Date(targetDate).getTime() - Date.now();
 
   if (difference <= 0) {
     return null;
   }
 
   return {
-    days: Math.floor(
-      difference / (1000 * 60 * 60 * 24)
-    ),
-    hours: Math.floor(
-      (difference / (1000 * 60 * 60)) % 24
-    ),
-    minutes: Math.floor(
-      (difference / (1000 * 60)) % 60
-    ),
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / (1000 * 60)) % 60),
     seconds: Math.floor((difference / 1000) % 60),
   };
 }
@@ -30,15 +23,13 @@ const CountdownTimer = ({
     calculateTimeLeft(targetDate)
   );
 
-  const [prevTime, setPrevTime] =
-    useState(timeLeft);
+  const [prevTime, setPrevTime] = useState(timeLeft);
 
   useEffect(() => {
     let timer;
 
     const updateCountdown = () => {
-      const updated =
-        calculateTimeLeft(targetDate);
+      const updated = calculateTimeLeft(targetDate);
 
       setTimeLeft((previous) => {
         setPrevTime(previous);
@@ -52,10 +43,7 @@ const CountdownTimer = ({
 
     updateCountdown();
 
-    timer = window.setInterval(
-      updateCountdown,
-      1000
-    );
+    timer = window.setInterval(updateCountdown, 1000);
 
     return () => window.clearInterval(timer);
   }, [targetDate]);
@@ -85,9 +73,7 @@ const CountdownTimer = ({
                 key={current}
                 id="Timer"
                 className={`bg-gradient-to-r from-[var(--site-primary-hover)] to-[var(--site-accent)] bg-clip-text text-base font-extrabold text-transparent drop-shadow-[0_0_8px_var(--site-glow-strong)] transition-transform duration-300 sm:text-lg ${
-                  isChanged
-                    ? "scale-110"
-                    : "scale-100"
+                  isChanged ? "scale-110" : "scale-100"
                 }`}
               >
                 {String(current).padStart(2, "0")}

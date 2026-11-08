@@ -59,7 +59,6 @@ html {
   font-family: "Vermin", sans-serif;
 }
 
-/* Navigation */
 nav li a {
   display: inline-block;
   transition: all 0.3s ease-out;
@@ -156,7 +155,6 @@ nav li:not(:last-child) {
   }
 }
 
-/* Button ripple, hero logo and entrance fades */
 @keyframes ripple {
   0% {
     transform: scale(0);

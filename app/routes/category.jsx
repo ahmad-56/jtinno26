@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router";
 import categoryData from "../categoryData";
-import Button from "../components/Button";
+import Button, { DownloadIcon } from "../components/Button";
 
 export function meta({ params }) {
   const category = categoryData.find(
@@ -43,47 +43,23 @@ export default function Category() {
       </main>
     );
   }
-const handleOpenStudyGuide = () => {
-  window.open(
-    category.pdfLink,
-    "_blank",
-    "noopener,noreferrer"
-  );
-};
+
+  const handleOpenStudyGuide = () => {
+    window.open(category.pdfLink, "_blank", "noopener,noreferrer");
+  };
 
   const handleDownloadStudyGuide = () => {
     const downloadLink = document.createElement("a");
 
     downloadLink.href = category.pdfLink;
-    downloadLink.download =
-      `${category.title}-Study-Guide.pdf`;
+    downloadLink.download = `${category.title}-Study-Guide.pdf`;
 
     document.body.appendChild(downloadLink);
     downloadLink.click();
-    document.body.removeChild(downloadLink);
+    downloadLink.remove();
   };
 
   const { theme } = category;
-
-function DownloadIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4"
-    >
-      <path d="M12 3v12" />
-      <path d="m7 10 5 5 5-5" />
-      <path d="M5 21h14" />
-    </svg>
-  );
-}
 
   return (
     <main

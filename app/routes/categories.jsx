@@ -21,6 +21,7 @@ export default function Categories() {
               key={c.slug}
               title={c.title}
               slug={c.slug}
+              pdfLink={c.pdfLink}
               description={c.description}
               img={c.img}
               compulsory={c.compulsory}

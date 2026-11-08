@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import categoryData from "../categoryData";
-import "../app.css";
+
+const showCategoryDropdown = false;
 
 function Chevron({ open = false }) {
   return (
@@ -28,27 +29,21 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const location = useLocation();
 
   const closeMenus = () => {
     setIsOpen(false);
     setIsCategoriesOpen(false);
   };
 
-  const [activeSection, setActiveSection] = useState("hero");
-  const location = useLocation();
-
-  const isHomeActive =
-    location.pathname === "/" && activeSection === "hero";
-  const isAboutActive =
-    location.pathname === "/" && activeSection === "about";
-  const isCategoriesActive =
-    location.pathname.startsWith("/categories");
-  const isRegisterActive =
-    location.pathname === "/preview";
-  const isSponsorsActive =
-    location.pathname === "/" && activeSection === "sponsors";
-  const isContactActive =
-    location.pathname === "/" && activeSection === "contact";
+  const isHomePage = location.pathname === "/";
+  const isHomeActive = isHomePage && activeSection === "hero";
+  const isAboutActive = isHomePage && activeSection === "about";
+  const isCategoriesActive = location.pathname.startsWith("/categories");
+  const isRegisterActive = location.pathname === "/register";
+  const isSponsorsActive = isHomePage && activeSection === "sponsors";
+  const isContactActive = isHomePage && activeSection === "contact";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -225,7 +220,7 @@ function Navbar() {
 
           <li
             className="relative w-full sm:w-auto"
-            onMouseEnter={() => setIsCategoriesOpen(true)}
+            onMouseEnter={() => showCategoryDropdown && setIsCategoriesOpen(true)}
             onMouseLeave={() => setIsCategoriesOpen(false)}
           >
             <div className="flex items-center justify-center">
@@ -243,78 +238,84 @@ function Navbar() {
               >
                 Categories
               </Link>
-              <button
-                type="button"
-                className="mr-2 rounded p-2 text-[var(--site-accent)] sm:hidden"
-                onClick={() =>
-                  setIsCategoriesOpen((open) => !open)
-                }
-                aria-label="Toggle category links"
-                aria-expanded={isCategoriesOpen}
-              >
-                <Chevron open={isCategoriesOpen} />
-              </button>
+              {showCategoryDropdown && (
+                <button
+                  type="button"
+                  className="mr-2 rounded p-2 text-[var(--site-accent)] sm:hidden"
+                  onClick={() =>
+                    setIsCategoriesOpen((open) => !open)
+                  }
+                  aria-label="Toggle category links"
+                  aria-expanded={isCategoriesOpen}
+                >
+                  <Chevron open={isCategoriesOpen} />
+                </button>
+              )}
 
-              <span
-                className={`pointer-events-none -ml-2 mr-1 hidden origin-center text-[var(--site-accent)] transition-all duration-300 ease-out sm:inline-flex ${
+              {showCategoryDropdown && (
+                <span
+                  className={`pointer-events-none -ml-2 mr-1 hidden origin-center text-[var(--site-accent)] transition-all duration-300 ease-out sm:inline-flex ${
+                    isCategoriesOpen
+                      ? "translate-y-0.5 rotate-180 drop-shadow-[0_0_6px_var(--site-glow-strong)]"
+                      : ""
+                  }`}
+                >
+                  <Chevron />
+                </span>
+              )}
+            </div>
+
+            {showCategoryDropdown && (
+              <div
+                className={`z-[70] overflow-hidden transition-all duration-300 sm:absolute sm:left-1/2 sm:top-full sm:max-h-none sm:w-[34rem] sm:-translate-x-1/2 sm:rounded-xl sm:border sm:border-[var(--site-border)] sm:bg-[var(--site-background-secondary)]/95 sm:p-3 sm:shadow-2xl sm:shadow-[var(--site-glow)] sm:backdrop-blur-xl ${
                   isCategoriesOpen
-                    ? "translate-y-0.5 rotate-180 drop-shadow-[0_0_6px_var(--site-glow-strong)]"
-                    : ""
+                    ? "visible max-h-[70vh] translate-y-0 opacity-100 sm:visible sm:opacity-100"
+                    : "invisible max-h-0 translate-y-2 opacity-0 sm:invisible sm:max-h-none sm:opacity-0"
                 }`}
               >
-                <Chevron />
-              </span>
-            </div>
-
-            <div
-              className={`z-[70] overflow-hidden transition-all duration-300 sm:absolute sm:left-1/2 sm:top-full sm:max-h-none sm:w-[34rem] sm:-translate-x-1/2 sm:rounded-xl sm:border sm:border-[var(--site-border)] sm:bg-[var(--site-background-secondary)]/95 sm:p-3 sm:shadow-2xl sm:shadow-[var(--site-glow)] sm:backdrop-blur-xl ${
-                isCategoriesOpen
-                  ? "visible max-h-[70vh] translate-y-0 opacity-100 sm:visible sm:opacity-100"
-                  : "invisible max-h-0 translate-y-2 opacity-0 sm:invisible sm:max-h-none sm:opacity-0"
-              }`}
-            >
-              <div className="grid gap-1 py-2 sm:grid-cols-2 sm:py-0">
-                <Link
-                  to="/categories"
-                  onClick={closeMenus}
-                  className="rounded-lg border border-[var(--site-border)] bg-[var(--site-primary)]/10 px-3 py-2.5 text-left text-xs text-[var(--site-heading)] transition-all duration-200 hover:border-[var(--site-border-hover)] hover:bg-[var(--site-primary)]/20 active:translate-y-0.5 active:scale-[0.98] active:bg-[var(--site-accent)]/20 sm:col-span-2"
-                >
-                  View all categories
-                </Link>
-
-                {categoryData.map((category) => (
+                <div className="grid gap-1 py-2 sm:grid-cols-2 sm:py-0">
                   <Link
-                    key={category.slug}
-                    to={`/categories/${category.slug}`}
+                    to="/categories"
                     onClick={closeMenus}
-                    className="!flex min-h-10 w-full flex-row items-center justify-between rounded-lg px-3 py-2.5 text-left text-xs text-slate-200 transition-all duration-200 hover:bg-[var(--site-primary)]/15 hover:text-white active:translate-y-0.5 active:scale-[0.97] active:bg-[var(--site-accent)]/20"
+                    className="rounded-lg border border-[var(--site-border)] bg-[var(--site-primary)]/10 px-3 py-2.5 text-left text-xs text-[var(--site-heading)] transition-all duration-200 hover:border-[var(--site-border-hover)] hover:bg-[var(--site-primary)]/20 active:translate-y-0.5 active:scale-[0.98] active:bg-[var(--site-accent)]/20 sm:col-span-2"
                   >
-                    <span className="flex min-w-0 items-center">
-                      <span
-                        className="mr-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full transition-transform duration-200"
-                        style={{
-                          backgroundColor: category.theme.primary,
-                          boxShadow: `0 0 7px ${category.theme.glow}`,
-                        }}
-                        aria-hidden="true"
-                      />
+                    View all categories
+                  </Link>
 
-                      <span className="truncate" style={{ fontFamily: '"Vermin", sans-serif' }}>
-                        {category.title}
-                      </span>
-                    </span>
+                  {categoryData.map((category) => (
+                    <Link
+                      key={category.slug}
+                      to={`/categories/${category.slug}`}
+                      onClick={closeMenus}
+                      className="!flex min-h-10 w-full flex-row items-center justify-between rounded-lg px-3 py-2.5 text-left text-xs text-slate-200 transition-all duration-200 hover:bg-[var(--site-primary)]/15 hover:text-white active:translate-y-0.5 active:scale-[0.97] active:bg-[var(--site-accent)]/20"
+                    >
+                      <span className="flex min-w-0 items-center">
+                        <span
+                          className="mr-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full transition-transform duration-200"
+                          style={{
+                            backgroundColor: category.theme.primary,
+                            boxShadow: `0 0 7px ${category.theme.glow}`,
+                          }}
+                          aria-hidden="true"
+                        />
 
-                    {category.compulsory && (
-                      <span className="pointer-events-none ml-auto inline-flex shrink-0 items-center rounded-sm bg-[#111] px-2 py-1">
-                        <span className="bg-linear-65 from-purple-500 from-5% via-pink-500 to-orange-500 to-90% bg-clip-text text-[10px] font-bold uppercase tracking-wider text-transparent">
-                          Compulsory
+                        <span className="truncate" style={{ fontFamily: '"Vermin", sans-serif' }}>
+                          {category.title}
                         </span>
                       </span>
-                    )}
-                  </Link>
-                ))}
+
+                      {category.compulsory && (
+                        <span className="pointer-events-none ml-auto inline-flex shrink-0 items-center rounded-sm bg-[#111] px-2 py-1">
+                          <span className="bg-linear-65 from-purple-500 from-5% via-pink-500 to-orange-500 to-90% bg-clip-text text-[10px] font-bold uppercase tracking-wider text-transparent">
+                            Compulsory
+                          </span>
+                        </span>
+                      )}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </li>
 
           <li className="group relative w-full sm:w-auto">
@@ -324,7 +325,7 @@ function Navbar() {
                   ? "nav-link-active text-[var(--site-heading)]"
                   : ""
               }`}
-              to="/preview"
+              to="/register"
               onClick={closeMenus}
             >
               <span className="absolute inset-0 bg-[var(--site-primary)]/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-[var(--site-accent)]/25" />
